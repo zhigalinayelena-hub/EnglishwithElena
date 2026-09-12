@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English with Elena</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f8ff;
+}
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+}
+h1{
+  text-align:center;
+  color:#234;
+  font-size:48px;
+}
+.subtitle{
+  text-align:center;
+  color:#666;
+  margin-bottom:40px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  text-decoration:none;
+  color:#234;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:.2s;
+}
+.card:hover{
+  transform:translateY(-5px);
+}
+.icon{
+  font-size:46px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>English with Elena</h1>
+<p class="subtitle">Choose your course</p>
+
+<div class="grid">
+
+<a class="card" href="#">
+<div class="icon">🌍</div>
+<h2>Wider World 1</h2>
+<p>Interactive activities</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">🌎</div>
+<h2>Wider World 2</h2>
+<p>Interactive activities</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">📚</div>
+<h2>Reading Club</h2>
+<p>Books & readers</p>
+</a>
+
+<a class="card" href="#">
+<div class="icon">🎬</div>
+<h2>Movie Club</h2>
+<p>Films & cartoons</p>
+</a>
+
+</div>
+</div>
+</body>
+</html>
