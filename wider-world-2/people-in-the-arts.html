@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People in the Arts</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#eef3f8;
+    margin:0;
+    padding:30px;
+}
+h1{
+    text-align:center;
+    color:#1f3552;
+}
+p{
+    text-align:center;
+    color:#556;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:16px;
+    margin-top:25px;
+}
+.card{
+    background:#dff1df;
+    border-radius:18px;
+    padding:18px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    transition:.2s;
+}
+.card:hover{
+    transform:translateY(-4px);
+}
+.emoji{
+    font-size:42px;
+}
+.word{
+    font-size:20px;
+    font-weight:bold;
+    color:#1f3552;
+    margin:10px 0 6px;
+}
+.sentence{
+    color:#444;
+}
+.progress{
+    margin:25px 0 15px;
+    text-align:center;
+    color:#2563eb;
+    font-weight:bold;
+}
+button{
+    display:block;
+    margin:0 auto;
+    border:none;
+    background:#3b82f6;
+    color:white;
+    padding:14px 24px;
+    border-radius:14px;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{
+    background:#2563eb;
+}
+.learned{
+    background:#c7ebc7 !important;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎭 People in the Arts</h1>
+<p>Click a card. Listen, read and repeat!</p>
+
+<div class="grid" id="grid"></div>
+
+<div class="progress" id="progress">0 / 10 learned</div>
+
+<button onclick="shuffleCards()">🔀 Shuffle cards</button>
+
+<script>
+const words=[
+["🎭","actor","I am an actor."],
+["🎨","artist","I am an artist."],
+["💃","dancer","I am a dancer."],
+["🎬","director","I am a director."],
+["🎸","guitarist","I am a guitarist."],
+["🎵","musician","I am a musician."],
+["🖌️","painter","I am a painter."],
+["📷","photographer","I am a photographer."],
+["📝","poet","I am a poet."],
+["✍️","writer","I am a writer."]
+];
+
+const learned=new Set();
+const grid=document.getElementById("grid");
+
+function speak(text){
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang="en-GB";
+    u.rate=0.9;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+}
+
+function render(){
+    grid.innerHTML="";
+    words.forEach((w,i)=>{
+        const card=document.createElement("div");
+        card.className="card";
+        if(learned.has(i)) card.classList.add("learned");
+        card.innerHTML=`
+          <div class="emoji">${w[0]}</div>
+          <div class="word">${w[1]}</div>
+          <div class="sentence">${w[2]}</div>`;
+        card.onclick=()=>{
+            speak(w[1]);
+            setTimeout(()=>speak(w[2]),800);
+            learned.add(i);
+            render();
+        };
+        grid.appendChild(card);
+    });
+    document.getElementById("progress").textContent=
+      `${learned.size} / ${words.length} learned`;
+}
+
+function shuffleCards(){
+    for(let i=words.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [words[i],words[j]]=[words[j],words[i]];
+    }
+    render();
+}
+
+render();
+</script>
+
+</body>
+</html>
