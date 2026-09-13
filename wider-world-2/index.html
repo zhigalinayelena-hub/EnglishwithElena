@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wider World 2</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#eef3f8;
+  color:#1f3552;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1{
+  text-align:center;
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#666;
+  margin-bottom:40px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:white;
+  border-radius:22px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.emoji{
+  font-size:46px;
+}
+
+.unit{
+  font-size:30px;
+  font-weight:bold;
+  margin:18px 0 8px;
+}
+
+.desc{
+  color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌍 Wider World 2</h1>
+<p class="subtitle">Choose a unit</p>
+
+<div class="grid">
+
+<div class="card" onclick="alert('Unit 1 will open soon!')">
+<div class="emoji">🎭</div>
+<div class="unit">Unit 1</div>
+<div class="desc">Arts & Culture</div>
+</div>
+
+<div class="card" onclick="alert('Coming soon')">
+<div class="emoji">🌿</div>
+<div class="unit">Unit 2</div>
+<div class="desc">Coming soon</div>
+</div>
+
+<div class="card" onclick="alert('Coming soon')">
+<div class="emoji">🌎</div>
+<div class="unit">Unit 3</div>
+<div class="desc">Coming soon</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
