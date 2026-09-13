@@ -1,150 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>People in the Arts</title>
+<title>English with Elena</title>
+
 <style>
 body{
-font-family:Arial,sans-serif;
-background:#eef3f8;
-margin:0;
-padding:30px;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef3f8;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
 }
 h1{
-text-align:center;
-color:#1f3552;
+  text-align:center;
+  font-size:64px;
+  color:#1f3552;
+  margin-bottom:10px;
 }
-p{
-text-align:center;
-color:#556;
+.subtitle{
+  text-align:center;
+  color:#666;
+  font-size:22px;
+  margin-bottom:40px;
 }
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:16px;
-margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 .card{
-background:white;
-border-radius:18px;
-padding:18px;
-text-align:center;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,.08);
-transition:.2s;
+  background:white;
+  border-radius:24px;
+  padding:40px 20px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  transition:.25s;
 }
 .card:hover{
-transform:translateY(-4px);
+  transform:translateY(-6px);
 }
 .emoji{
-font-size:42px;
+  font-size:54px;
 }
-.word{
-font-size:24px;
-font-weight:bold;
-margin:10px 0;
-color:#20344d;
+.title{
+  font-size:24px;
+  font-weight:bold;
+  color:#1f3552;
+  margin:18px 0 8px;
 }
-.sentence{
-color:#4b5563;
-min-height:42px;
-font-size:15px;
-}
-.done{
-background:#d8f5dc;
-}
-button{
-display:block;
-margin:28px auto 0;
-padding:12px 22px;
-font-size:16px;
-background:#3b82f6;
-color:white;
-border:none;
-border-radius:12px;
-cursor:pointer;
-}
-.progress{
-text-align:center;
-margin-top:18px;
-font-weight:bold;
-color:#2563eb;
+.desc{
+  color:#666;
+  font-size:18px;
 }
 </style>
 </head>
+
 <body>
 
-<h1>People in the Arts</h1>
-<p>Click a card. Listen, read and repeat!</p>
+<div class="container">
 
-<div class="grid" id="grid"></div>
+<h1>English with Elena</h1>
+<p class="subtitle">Choose your course</p>
 
-<div class="progress" id="progress">0 / 10 learned</div>
+<div class="grid">
 
-<button onclick="shuffleCards()">🔀 Shuffle cards</button>
+<div class="card" onclick="alert('Coming soon')">
+<div class="emoji">🌍</div>
+<div class="title">Wider World 1</div>
+<div class="desc">Interactive activities</div>
+</div>
 
-<script>
-const words=[
-["🎭","actor","I am an actor."],
-["🎨","artist","I am an artist."],
-["💃","dancer","I am a dancer."],
-["🎬","director","I am a director."],
-["🎸","guitarist","I am a guitarist."],
-["🎵","musician","I am a musician."],
-["🖌️","painter","I am a painter."],
-["📷","photographer","I am a photographer."],
-["📝","poet","I am a poet."],
-["✍️","writer","I am a writer."]
-];
+<div class="card" onclick="window.location.href='wider-world-2/index.html'">
+<div class="emoji">🌍</div>
+<div class="title">Wider World 2</div>
+<div class="desc">Interactive activities</div>
+</div>
 
-let learned=new Set();
+<div class="card" onclick="alert('Reading Club coming soon')">
+<div class="emoji">📚</div>
+<div class="title">Reading Club</div>
+<div class="desc">Books & readers</div>
+</div>
 
-function speak(text){
-const u=new SpeechSynthesisUtterance(text);
-u.lang="en-GB";
-speechSynthesis.cancel();
-speechSynthesis.speak(u);
-}
+<div class="card" onclick="alert('Movie Club coming soon')">
+<div class="emoji">🎬</div>
+<div class="title">Movie Club</div>
+<div class="desc">Films & cartoons</div>
+</div>
 
-function render(){
-const grid=document.getElementById("grid");
-grid.innerHTML="";
-words.forEach((w,i)=>{
-const card=document.createElement("div");
-card.className="card"+(learned.has(i)?" done":"");
-card.innerHTML=`
-<div class="emoji">${w[0]}</div>
-<div class="word">${w[1]}</div>
-<div class="sentence">${learned.has(i)?w[2]:"Click to listen"}</div>`;
-card.onclick=()=>{
-speak(w[1]);
-setTimeout(()=>speak(w[2]),800);
-learned.add(i);
-update();
-render();
-};
-grid.appendChild(card);
-});
-}
+</div>
 
-function update(){
-document.getElementById("progress").textContent=
-`${learned.size} / ${words.length} learned`;
-}
-
-function shuffleCards(){
-for(let i=words.length-1;i>0;i--){
-const j=Math.floor(Math.random()*(i+1));
-[words[i],words[j]]=[words[j],words[i]];
-}
-render();
-}
-
-render();
-update();
-</script>
+</div>
 
 </body>
 </html>
