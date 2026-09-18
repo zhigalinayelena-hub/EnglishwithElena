@@ -78,7 +78,7 @@ button:hover{
 
 <body>
 
-<h1>🎭 People in the Arts</h1>
+<h1>🎭 People in the Arts 🎨</h1>
 <p>Click a card. Listen, read and repeat!</p>
 
 <div class="grid" id="grid"></div>
@@ -105,9 +105,21 @@ const learned=new Set();
 const grid=document.getElementById("grid");
 
 function speak(text){
-    const u=new SpeechSynthesisUtterance(text);
-    u.lang="en-GB";
-    u.rate=0.9;
+    const u = new SpeechSynthesisUtterance(text);
+
+    const voices = speechSynthesis.getVoices();
+    const female =
+        voices.find(v => v.name.includes("Samantha")) ||
+        voices.find(v => v.name.includes("Karen")) ||
+        voices.find(v => v.lang === "en-GB" && v.name.toLowerCase().includes("female")) ||
+        voices.find(v => v.lang.startsWith("en"));
+
+    if (female) u.voice = female;
+
+    u.lang = "en-GB";
+    u.rate = 0.9;
+    u.pitch = 1.05;
+
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
 }
