@@ -1,80 +1,129 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Super Minds 2</title>
 
 <style>
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#eef3f8;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef3f8;
+  color:#1f3552;
 }
+
 .container{
-    max-width:1200px;
-    margin:auto;
-    padding:40px 20px;
+  max-width:1200px;
+  margin:auto;
+  padding:50px 30px;
 }
+
 h1{
-    text-align:center;
-    font-size:56px;
-    color:#1f3552;
-    margin-bottom:10px;
+  text-align:center;
+  font-size:56px;
+  margin:0 0 12px;
 }
+
 .subtitle{
-    text-align:center;
-    color:#666;
-    font-size:22px;
-    margin-bottom:40px;
+  text-align:center;
+  color:#666;
+  font-size:22px;
+  margin-bottom:45px;
 }
+
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:24px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
 }
+
 .card{
-    background:white;
-    border-radius:22px;
-    padding:30px 20px;
-    text-align:center;
-    text-decoration:none;
-    color:#1f3552;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-    transition:.2s;
+  display:block;
+  background:white;
+  border-radius:24px;
+  padding:35px 20px;
+  text-align:center;
+  text-decoration:none;
+  color:#1f3552;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:transform .2s, box-shadow .2s;
 }
+
 .card:hover{
-    transform:translateY(-4px);
+  transform:translateY(-5px);
+  box-shadow:0 12px 25px rgba(0,0,0,.12);
 }
+
 .emoji{
-    font-size:42px;
-    margin-bottom:12px;
+  font-size:52px;
+  margin-bottom:15px;
 }
+
 .unit{
-    font-size:28px;
-    font-weight:bold;
+  font-size:28px;
+  font-weight:bold;
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
+
 <h1>🎒 Super Minds 2</h1>
 <p class="subtitle">Choose a Unit</p>
 
 <div class="grid">
-<a class="card" href="Unit1/"><div class="emoji">📘</div><div class="unit">Unit 1</div></a>
-<a class="card" href="Unit2/"><div class="emoji">📗</div><div class="unit">Unit 2</div></a>
-<a class="card" href="Unit3/"><div class="emoji">📙</div><div class="unit">Unit 3</div></a>
-<a class="card" href="Unit4/"><div class="emoji">📕</div><div class="unit">Unit 4</div></a>
-<a class="card" href="Unit5/"><div class="emoji">📒</div><div class="unit">Unit 5</div></a>
-<a class="card" href="Unit6/"><div class="emoji">📓</div><div class="unit">Unit 6</div></a>
-<a class="card" href="Unit7/"><div class="emoji">📝</div><div class="unit">Unit 7</div></a>
-<a class="card" href="Unit8/"><div class="emoji">✏️</div><div class="unit">Unit 8</div></a>
-<a class="card" href="Unit9/"><div class="emoji">🎯</div><div class="unit">Unit 9</div></a>
-</div>
+
+<a class="card" href="Unit1/">
+  <div class="emoji">✏️</div>
+  <div class="unit">Unit 1</div>
+</a>
+
+<a class="card" href="Unit2/">
+  <div class="emoji">📗</div>
+  <div class="unit">Unit 2</div>
+</a>
+
+<a class="card" href="Unit3/">
+  <div class="emoji">🟧</div>
+  <div class="unit">Unit 3</div>
+</a>
+
+<a class="card" href="Unit4/">
+  <div class="emoji">❤️</div>
+  <div class="unit">Unit 4</div>
+</a>
+
+<a class="card" href="Unit5/">
+  <div class="emoji">⭐</div>
+  <div class="unit">Unit 5</div>
+</a>
+
+<a class="card" href="Unit6/">
+  <div class="emoji">☕</div>
+  <div class="unit">Unit 6</div>
+</a>
+
+<a class="card" href="Unit7/">
+  <div class="emoji">✏️</div>
+  <div class="unit">Unit 7</div>
+</a>
+
+<a class="card" href="Unit8/">
+  <div class="emoji">✈️</div>
+  <div class="unit">Unit 8</div>
+</a>
+
+<a class="card" href="Unit9/">
+  <div class="emoji">🎯</div>
+  <div class="unit">Unit 9</div>
+</a>
 
 </div>
+</div>
+
 </body>
 </html>
