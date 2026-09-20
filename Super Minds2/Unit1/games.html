@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Going, Getting, Arriving and Leaving</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef7ff;
+  color:#17365d;
+}
+
+.game{
+  max-width:1000px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.header{
+  background:#ffffff;
+  border-radius:28px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  margin-bottom:25px;
+}
+
+.header h1{
+  margin:0 0 8px;
+  font-size:38px;
+}
+
+.header p{
+  margin:0;
+  font-size:20px;
+  color:#666;
+}
+
+.progress{
+  margin-top:18px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.card{
+  background:#ffffff;
+  border-radius:28px;
+  padding:35px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.picture{
+  font-size:80px;
+  margin-bottom:15px;
+}
+
+.context{
+  font-size:20px;
+  color:#666;
+  margin-bottom:25px;
+}
+
+.question{
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:30px;
+}
+
+.answers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.answer{
+  border:none;
+  border-radius:18px;
+  padding:18px 12px;
+  font-size:22px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#dff0ff;
+  color:#17365d;
+  transition:.2s;
+}
+
+.answer:hover{
+  transform:translateY(-3px);
+}
+
+.answer.correct{
+  background:#c9f7d5;
+}
+
+.answer.wrong{
+  background:#ffd0d0;
+}
+
+.feedback{
+  min-height:70px;
+  margin-top:25px;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.next{
+  display:none;
+  margin:10px auto 0;
+  border:none;
+  border-radius:18px;
+  padding:16px 30px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#2869d8;
+  color:white;
+}
+
+.result{
+  display:none;
+  background:white;
+  border-radius:28px;
+  padding:45px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.result h2{
+  font-size:40px;
+  margin-top:0;
+}
+
+.restart{
+  border:none;
+  border-radius:18px;
+  padding:16px 30px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#2869d8;
+  color:white;
+}
+
+@media(max-width:700px){
+  .answers{
+    grid-template-columns:1fr;
+  }
+
+  .question{
+    font-size:26px;
+  }
+
+  .header h1{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+  <div class="header">
+    <h1>🎒 Going, Getting, Arriving and Leaving</h1>
+    <p>Choose the correct word.</p>
+    <div class="progress" id="progress">Question 1 of 6</div>
+  </div>
+
+  <div class="card" id="questionCard">
+
+    <div class="picture" id="picture">🏫</div>
+
+    <div class="context" id="context">
+      He is walking towards the school.
+    </div>
+
+    <div class="question" id="question">
+      He ___ to school every morning.
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <button class="next" id="nextButton" onclick="nextQuestion()">
+      Next →
+    </button>
+
+  </div>
+
+  <div class="result" id="result">
+    <h2>⭐ Great job!</h2>
+    <p id="scoreText"></p>
+    <button class="restart" onclick="restartGame()">Play again</button>
+  </div>
+
+</div>
+
+<script>
+
+const questions = [
+
+  {
+    picture:"🏫",
+    context:"He is walking towards the school.",
+    question:"He ___ to school every morning.",
+    answers:["goes","gets","arrives"],
+    correct:0,
+    explanation:"GO TO = move to a place."
+  },
+
+  {
+    picture:"🚌",
+    context:"He has just finished a 20-minute bus journey.",
+    question:"He ___ to school after the bus journey.",
+    answers:["goes","gets","arrives"],
+    correct:1,
+    explanation:"GET TO = reach a place, especially after a journey."
+  },
+
+  {
+    picture:"🏫",
+    context:"He reaches school at 9:00.",
+    question:"He ___ at school at 9:00.",
+    answers:["arrives","gets","goes"],
+    correct:0,
+    explanation:"ARRIVE AT = reach a small or specific place."
+  },
+
+  {
+    picture:"🚶‍♂️🏫",
+    context:"He goes away from school at 4:00.",
+    question:"He ___ school at 4:00.",
+    answers:["leaves","gets","arrives"],
+    correct:0,
+    explanation:"LEAVE = go away from a place."
+  },
+
+  {
+    picture:"🇬🇧🌍",
+    context:"He reaches London at 10:00.",
+    question:"He ___ in London at 10:00.",
+    answers:["arrives","gets","leaves"],
+    correct:0,
+    explanation:"ARRIVE IN = reach a big place, such as a city or country."
+  },
+
+  {
+    picture:"🏠",
+    context:"He returns home at 6:00.",
+    question:"He ___ home at 6:00.",
+    answers:["gets to","gets","arrives at"],
+    correct:1,
+    explanation:"GET HOME = reach home. We do not use TO."
+  }
+
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion(){
+
+  answered = false;
+
+  const q = questions[current];
+
+  document.getElementById("progress").textContent =
+    `Question ${current + 1} of ${questions.length}`;
+
+  document.getElementById("picture").textContent = q.picture;
+
+  document.getElementById("context").textContent = q.context;
+
+  document.getElementById("question").textContent = q.question;
+
+  document.getElementById("feedback").textContent = "";
+
+  document.getElementById("nextButton").style.display = "none";
+
+  const answers = document.getElementById("answers");
+
+  answers.innerHTML = "";
+
+  q.answers.forEach((answer,index)=>{
+
+    const button = document.createElement("button");
+
+    button.className = "answer";
+
+    button.textContent = answer;
+
+    button.onclick = () => checkAnswer(index,button);
+
+    answers.appendChild(button);
+
+  });
+
+}
+
+function checkAnswer(index,button){
+
+  if(answered) return;
+
+  answered = true;
+
+  const q = questions[current];
+
+  const buttons = document.querySelectorAll(".answer");
+
+  buttons.forEach(b => b.disabled = true);
+
+  if(index === q.correct){
+
+    score++;
+
+    button.classList.add("correct");
+
+    document.getElementById("feedback").innerHTML =
+      "✅ Correct!<br><span style='font-size:18px'>" +
+      q.explanation +
+      "</span>";
+
+  }else{
+
+    button.classList.add("wrong");
+
+    buttons[q.correct].classList.add("correct");
+
+    document.getElementById("feedback").innerHTML =
+      "❌ Not quite.<br><span style='font-size:18px'>" +
+      q.explanation +
+      "</span>";
+
+  }
+
+  document.getElementById("nextButton").style.display = "inline-block";
+
+}
+
+function nextQuestion(){
+
+  current++;
+
+  if(current < questions.length){
+
+    loadQuestion();
+
+  }else{
+
+    document.getElementById("questionCard").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("scoreText").textContent =
+      `You got ${score} out of ${questions.length} correct.`;
+
+  }
+
+}
+
+function restartGame(){
+
+  current = 0;
+  score = 0;
+
+  document.getElementById("result").style.display = "none";
+  document.getElementById("questionCard").style.display = "block";
+
+  loadQuestion();
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
