@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 2 • Move the words • Super Minds 1</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef3f8;color:#1f3552}
+.container{max-width:1200px;margin:auto;padding:34px 22px 46px}
+h1{text-align:center;font-size:clamp(1.9rem,4.5vw,3rem);margin:0 0 8px}
+.subtitle{text-align:center;color:#5f6d7a;font-size:1.08rem;line-height:1.5;margin:0 0 23px}
+.scorebar{position:sticky;top:8px;z-index:5;display:flex;align-items:center;justify-content:center;gap:16px;width:max-content;max-width:100%;margin:0 auto 22px;padding:10px 16px;background:#fff;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.08);font-weight:bold;font-size:1.1rem}
+.layout{display:grid;grid-template-columns:minmax(250px,340px) minmax(0,1fr);gap:20px;align-items:start}
+.panel{background:#fff;border-radius:22px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.panel h2{font-size:1.35rem;margin:0 0 14px}
+.word-bank{display:grid;gap:10px}
+.word-card{display:block;width:100%;border:2px solid #bcd6fa;border-radius:15px;background:#eef6ff;padding:12px 13px;color:#1f3552;text-align:left;font:inherit;font-size:1rem;font-weight:bold;line-height:1.35;cursor:grab;touch-action:manipulation}
+.word-card:hover,.word-card:focus-visible{border-color:#2869d8;outline:3px solid #d5e5ff}
+.word-card.selected{background:#fff2bf;border-color:#e2a900}
+.word-card.dragging{opacity:.45}
+.picture-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.picture-card{min-width:0;background:#fff;border:3px solid #dbe6f3;border-radius:20px;padding:12px 12px 10px;box-shadow:0 5px 14px rgba(0,0,0,.06);text-align:center;transition:border-color .15s,background .15s}
+.picture-card.over{border-color:#2869d8;background:#f3f8ff}
+.letter{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 4px;border-radius:50%;background:#ffd45c;color:#533d0b;font-size:1.2rem;font-weight:bold}
+.scene{display:block;width:100%;height:112px}
+.dropzone{min-height:58px;display:flex;align-items:center;justify-content:center;margin-top:4px;padding:5px;border:2px dashed #c9d8eb;border-radius:13px;background:#f8fbff}
+.dropzone:focus-visible{outline:3px solid #b9d5ff}
+.dropzone .word-card{font-size:.88rem;padding:8px;border-radius:10px;cursor:grab}
+.picture-feedback{min-height:2.65em;margin:7px 0 0;font-size:.9rem;font-weight:bold;line-height:1.35}
+.picture-feedback.correct{color:#168447}.picture-feedback.wrong{color:#bd3838}
+.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px auto 0}
+button.action{border:0;border-radius:14px;background:#2869d8;color:#fff;padding:12px 24px;font:inherit;font-size:1.05rem;font-weight:bold;cursor:pointer}
+button.action:hover{background:#1d55b7}button.action:focus-visible,.back:focus-visible{outline:3px solid #f5bd38;outline-offset:3px}
+button.reset{background:#f2a900;color:#253653}button.reset:hover{background:#df9700}
+.result{display:none;margin:18px auto 0;padding:15px 20px;width:max-content;max-width:100%;background:#fff;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.08);font-size:1.2rem;font-weight:bold;text-align:center}
+.result.show{display:block}
+.back{display:block;width:max-content;margin:27px auto 0;padding:12px 22px;border-radius:16px;background:#2869d8;color:#fff;text-decoration:none;font-weight:bold}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.word-bank{grid-template-columns:repeat(2,minmax(0,1fr))}.picture-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.container{padding:25px 12px 36px}.panel{padding:15px}.picture-grid{gap:9px}.picture-card{padding:9px 8px}.scene{height:94px}.word-bank{grid-template-columns:1fr}.scorebar{font-size:1rem}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>🧩 Exercise 2 — Move the words to the correct picture</h1>
+  <p class="subtitle">Drag each sentence to a picture.<br>You can also tap a sentence, then tap a picture.</p>
+  <div class="scorebar" aria-live="polite">Score: <span id="score">0</span> / 6</div>
+
+  <div class="layout">
+    <section class="panel" aria-labelledby="bank-title">
+      <h2 id="bank-title">Word bank</h2>
+      <div class="word-bank" id="word-bank">
+        <div class="word-card" id="word-1" draggable="true" tabindex="0" data-word="1">1. Open your book, please.</div>
+        <div class="word-card" id="word-2" draggable="true" tabindex="0" data-word="2">2. Write one to ten.</div>
+        <div class="word-card" id="word-3" draggable="true" tabindex="0" data-word="3">3. Now get a pen.</div>
+        <div class="word-card" id="word-4" draggable="true" tabindex="0" data-word="4">4. Sit at your desk, please.</div>
+        <div class="word-card" id="word-5" draggable="true" tabindex="0" data-word="5">5. Close your bag, please.</div>
+        <div class="word-card" id="word-6" draggable="true" tabindex="0" data-word="6">6. Pass me a pen, please.</div>
+      </div>
+    </section>
+
+    <section class="picture-grid" aria-label="Pictures to match">
+      <article class="picture-card" data-letter="A" data-answer="4">
+        <div class="letter">A</div>
+        <svg class="scene" viewBox="0 0 160 112" role="img" aria-label="A child sitting at a desk">
+          <rect x="20" y="69" width="120" height="10" rx="4" fill="#d8974a"/><path d="M32 79v26m96-26v26" stroke="#8d5d32" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="80" cy="31" r="17" fill="#ffd1a6" stroke="#a96442" stroke-width="3"/><path d="M63 29c1-15 26-23 35-4l-3 8H64z" fill="#68432e"/><circle cx="74" cy="32" r="2" fill="#263b58"/><circle cx="86" cy="32" r="2" fill="#263b58"/><path d="M76 40q4 4 8 0" fill="none" stroke="#a64c43" stroke-width="2" stroke-linecap="round"/>
+          <path d="M62 53q18-12 36 0v19H62z" fill="#54a9e8" stroke="#2675ad" stroke-width="3"/><path d="M64 58 48 70m48-12 15 12" stroke="#ffd1a6" stroke-width="8" stroke-linecap="round"/><path d="M70 72v16m20-16v16" stroke="#314762" stroke-width="8"/><rect x="58" y="85" width="43" height="7" rx="3" fill="#f2a900"/>
+        </svg>
+        <div class="dropzone" tabindex="0" aria-label="Drop a sentence on picture A"></div><p class="picture-feedback" aria-live="polite"></p>
+      </article>
+      <article class="picture-card" data-letter="B" data-answer="3">
+        <div class="letter">B</div>
+        <svg class="scene" viewBox="0 0 160 112" role="img" aria-label="A hand picking up a pen">
+          <rect x="19" y="72" width="122" height="12" rx="5" fill="#d8974a"/><path d="M31 84v20m98-20v20" stroke="#8d5d32" stroke-width="6" stroke-linecap="round"/>
+          <g transform="rotate(25 91 52)"><rect x="83" y="17" width="15" height="57" rx="6" fill="#438ee8" stroke="#2459a2" stroke-width="3"/><path d="M83 26h15m-15 35h15l-7.5 15z" fill="#dbeaff" stroke="#2459a2" stroke-width="2"/><path d="M87 17v-6h7v6" fill="#fff" stroke="#2459a2" stroke-width="2"/></g>
+          <path d="M19 58q15-12 29-7l19 9q6 3 3 8t-9 2l-9-4 16 8q6 4 2 9-4 5-10 1L44 75q8 8 2 12-5 3-10-2L21 70z" fill="#ffd1a6" stroke="#a96442" stroke-width="3" stroke-linejoin="round"/><path d="m66 53 11-9m-7 19 12-5" stroke="#ffb83d" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="dropzone" tabindex="0" aria-label="Drop a sentence on picture B"></div><p class="picture-feedback" aria-live="polite"></p>
+      </article>
+      <article class="picture-card" data-letter="C" data-answer="1">
+        <div class="letter">C</div>
+        <svg class="scene" viewBox="0 0 160 112" role="img" aria-label="An open book on a desk">
+          <rect x="18" y="82" width="124" height="9" rx="4" fill="#d8974a"/><path d="M31 91v13m98-13v13" stroke="#8d5d32" stroke-width="5" stroke-linecap="round"/>
+          <path d="M31 34q28-13 49 4v40Q57 61 31 72z" fill="#fffdf3" stroke="#3875b2" stroke-width="4" stroke-linejoin="round"/><path d="M129 34q-28-13-49 4v40q23-17 49-6z" fill="#fffdf3" stroke="#3875b2" stroke-width="4" stroke-linejoin="round"/><path d="M80 38v40" stroke="#3875b2" stroke-width="3"/>
+          <path d="M40 45q15-6 31 1m-31 8q14-5 31 1m18-9q14-6 31-1m-31 10q15-6 31-1" stroke="#79b8e7" stroke-width="3" stroke-linecap="round"/><path d="m53 28 5-8m49 8-5-8" stroke="#f2a900" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="dropzone" tabindex="0" aria-label="Drop a sentence on picture C"></div><p class="picture-feedback" aria-live="polite"></p>
+      </article>
+      <article class="picture-card" data-letter="D" data-answer="2">
+        <div class="letter">D</div>
+        <svg class="scene" viewBox="0 0 160 112" role="img" aria-label="A hand writing numbers one to ten on paper">
+          <rect x="28" y="18" width="103" height="76" rx="7" fill="#fffdf3" stroke="#6fa5d5" stroke-width="3"/><path d="M39 38h80m-80 17h80m-80 17h80" stroke="#c6e0f5" stroke-width="2"/><text x="43" y="35" font-size="14" font-family="Arial" font-weight="bold" fill="#2869d8">1 2 3 4 5</text><text x="43" y="53" font-size="14" font-family="Arial" font-weight="bold" fill="#2869d8">6 7 8 9 10</text>
+          <g transform="rotate(-33 112 61)"><rect x="105" y="35" width="10" height="44" rx="4" fill="#f2a900" stroke="#9d6e13" stroke-width="2"/><path d="M105 35h10l-5-11z" fill="#f3c99f" stroke="#9d6e13" stroke-width="2"/><path d="M107 75h6" stroke="#d96767" stroke-width="3"/></g><path d="M77 95q18 8 36-1" fill="none" stroke="#ffd1a6" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <div class="dropzone" tabindex="0" aria-label="Drop a sentence on picture D"></div><p class="picture-feedback" aria-live="polite"></p>
+      </article>
+      <article class="picture-card" data-letter="E" data-answer="6">
+        <div class="letter">E</div>
+        <svg class="scene" viewBox="0 0 160 112" role="img" aria-label="One child passing a pen to another child">
+          <circle cx="39" cy="35" r="15" fill="#ffd1a6" stroke="#a96442" stroke-width="3"/><path d="M24 32q7-21 30-8l-1 8z" fill="#68432e"/><path d="M23 55q16-10 31 0v42H23z" fill="#f2a900" stroke="#c58a19" stroke-width="3"/>
+          <circle cx="121" cy="35" r="15" fill="#e9b88d" stroke="#a96442" stroke-width="3"/><path d="M106 31q8-18 30-7v10z" fill="#503c31"/><path d="M105 55q16-10 31 0v42h-31z" fill="#54a9e8" stroke="#2675ad" stroke-width="3"/>
+          <path d="M48 61q17 13 34 0l15-10q7-4 10 2 2 5-4 9l-17 13q-16 12-33 0l-9-6m69-8q-13 8-23 6" fill="#ffd1a6" stroke="#a96442" stroke-width="3" stroke-linejoin="round"/><g transform="rotate(38 82 54)"><rect x="77" y="38" width="9" height="37" rx="4" fill="#438ee8" stroke="#2459a2" stroke-width="2"/><path d="M77 38h9l-4.5-8z" fill="#dbeaff" stroke="#2459a2" stroke-width="2"/></g>
+        </svg>
+        <div class="dropzone" tabindex="0" aria-label="Drop a sentence on picture E"></div><p class="picture-feedback" aria-live="polite"></p>
+      </article>
+      <article class="picture-card" data-letter="F" data-answer="5">
+        <div class="letter">F</div>
+        <svg class="scene" viewBox="0 0 160 112" role="img" aria-label="A school backpack being zipped closed">
+          <path d="M57 25v-8a23 23 0 0 1 46 0v8" fill="none" stroke="#76521a" stroke-width="5"/><rect x="42" y="24" width="76" height="77" rx="22" fill="#ed6664" stroke="#a7353c" stroke-width="4"/><path d="M51 41q0-11 12-11h34q12 0 12 11v41H51z" fill="#ff9a82" stroke="#a7353c" stroke-width="3"/><path d="M80 32v49" fill="none" stroke="#f7d46d" stroke-width="4" stroke-dasharray="4 3"/><path d="M73 65h14l-2 10h-10z" fill="#f7d46d" stroke="#a7353c" stroke-width="2"/><circle cx="80" cy="70" r="3" fill="#a7353c"/>
+          <path d="M36 52q-12 7-8 20 4 7 11 1l12-11m73-10q12 7 8 20-4 7-11 1l-12-11" fill="none" stroke="#ffd1a6" stroke-width="8" stroke-linecap="round"/><path d="m53 52-7 8m61-8 7 8" stroke="#a96442" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="dropzone" tabindex="0" aria-label="Drop a sentence on picture F"></div><p class="picture-feedback" aria-live="polite"></p>
+      </article>
+    </section>
+  </div>
+  <div class="actions"><button class="action" id="check" type="button">Check</button><button class="action reset" id="reset" type="button">Try again / Reset</button></div>
+  <div class="result" id="result" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Games</a>
+</main>
+<script>
+const bank = document.getElementById('word-bank');
+const words = [...document.querySelectorAll('.word-card')];
+const pictures = [...document.querySelectorAll('.picture-card')];
+const sentenceById = Object.fromEntries(words.map(word => [word.dataset.word, word.textContent]));
+const result = document.getElementById('result');
+const score = document.getElementById('score');
+let draggedWord = null;
+let selectedWord = null;
+const correctMatches = {A:'4',B:'3',C:'1',D:'2',E:'6',F:'5'};
+
+function clearCheckState() {
+  pictures.forEach(picture => {
+    const feedback = picture.querySelector('.picture-feedback');
+    feedback.textContent = '';
+    feedback.className = 'picture-feedback';
+  });
+  score.textContent = '0';
+  result.textContent = '';
+  result.classList.remove('show');
+}
+function placeWord(word, picture) {
+  if (!word || !picture) return;
+  const zone = picture.querySelector('.dropzone');
+  zone.appendChild(word);
+  word.classList.remove('selected');
+  selectedWord = null;
+  pictures.forEach(card => card.classList.remove('over'));
+  clearCheckState();
+}
+words.forEach(word => {
+  word.addEventListener('dragstart', event => {
+    draggedWord = word;
+    word.classList.add('dragging');
+    event.dataTransfer.setData('text/plain', word.id);
+    event.dataTransfer.effectAllowed = 'move';
+  });
+  word.addEventListener('dragend', () => {
+    word.classList.remove('dragging');
+    draggedWord = null;
+  });
+  word.addEventListener('click', () => {
+    if (selectedWord === word) {
+      word.classList.remove('selected');
+      selectedWord = null;
+      return;
+    }
+    words.forEach(item => item.classList.remove('selected'));
+    selectedWord = word;
+    word.classList.add('selected');
+  });
+  word.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      word.click();
+    }
+  });
+});
+pictures.forEach(picture => {
+  const zone = picture.querySelector('.dropzone');
+  picture.addEventListener('dragover', event => {
+    event.preventDefault();
+    picture.classList.add('over');
+  });
+  picture.addEventListener('dragleave', event => {
+    if (!picture.contains(event.relatedTarget)) picture.classList.remove('over');
+  });
+  picture.addEventListener('drop', event => {
+    event.preventDefault();
+    const id = event.dataTransfer.getData('text/plain');
+    placeWord(document.getElementById(id) || draggedWord, picture);
+  });
+  picture.addEventListener('click', event => {
+    if (event.target.closest('.word-card')) return;
+    if (selectedWord) placeWord(selectedWord, picture);
+  });
+  zone.addEventListener('keydown', event => {
+    if ((event.key === 'Enter' || event.key === ' ') && selectedWord) {
+      event.preventDefault();
+      placeWord(selectedWord, picture);
+    }
+  });
+});
+document.getElementById('check').addEventListener('click', () => {
+  let total = 0;
+  pictures.forEach(picture => {
+    const letter = picture.dataset.letter;
+    const chosen = picture.querySelector('.dropzone .word-card');
+    const feedback = picture.querySelector('.picture-feedback');
+    const correct = chosen && chosen.dataset.word === correctMatches[letter];
+    if (correct) {
+      total++;
+      feedback.textContent = '✅ Correct';
+      feedback.className = 'picture-feedback correct';
+    } else {
+      const answer = correctMatches[letter];
+      feedback.textContent = `❌ Try again. Correct: ${sentenceById[answer]}`;
+      feedback.className = 'picture-feedback wrong';
+    }
+  });
+  score.textContent = total;
+  result.textContent = `Your score: ${total} / 6`;
+  result.classList.add('show');
+});
+document.getElementById('reset').addEventListener('click', () => {
+  words.sort((a,b) => Number(a.dataset.word) - Number(b.dataset.word)).forEach(word => {
+    bank.appendChild(word);
+    word.classList.remove('selected','dragging');
+  });
+  selectedWord = null;
+  draggedWord = null;
+  clearCheckState();
+});
+</script>
+</body>
+</html>
