@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 1 • Complete the text • Super Minds 2</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef3f8;color:#1f3552}
+.container{max-width:1050px;margin:auto;padding:34px 22px 46px}
+h1{text-align:center;font-size:clamp(1.8rem,4.2vw,2.8rem);line-height:1.15;margin:0 0 22px}
+.main-card{background:#fff;border-radius:24px;padding:26px;box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.instruction{font-size:1.12rem;font-weight:bold;text-align:center;margin:0 0 20px}
+.content{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:25px;align-items:center}
+.words{padding:17px 18px;background:#eef6ff;border:2px solid #d1e3fa;border-radius:18px;margin-bottom:18px}
+.words h2{font-size:1.2rem;margin:0 0 11px}
+.word-bank{display:flex;flex-wrap:wrap;gap:9px;min-height:47px}
+.word{display:inline-block;background:#fff;border:2px solid #8bb9ec;border-radius:12px;padding:8px 14px;font-size:1.05rem;font-weight:bold;color:#1f3552;cursor:grab;touch-action:manipulation;user-select:none}
+.word:hover,.word:focus-visible{border-color:#2869d8;outline:3px solid #d5e5ff}
+.word.selected{background:#fff1b8;border-color:#e1a500}
+.word.dragging{opacity:.45}
+.sentences{margin:0;padding-left:2.1rem;display:grid;gap:13px;font-size:1.1rem;line-height:2}
+.sentences li{padding-left:5px}
+.blank{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;min-width:91px;min-height:38px;margin:0 3px;padding:2px 4px;border:2px dashed #8bb9ec;border-radius:10px;background:#f5faff;line-height:1.25;cursor:pointer}
+.blank.over{border-color:#2869d8;background:#e6f1ff}
+.blank:focus-visible{outline:3px solid #b9d5ff}
+.blank .word{padding:4px 10px;font-size:.98rem;white-space:nowrap}
+.feedback{min-height:1.35em;margin:3px 0 0;font-size:.95rem;font-weight:bold;line-height:1.35}
+.feedback.correct{color:#168447}.feedback.wrong{color:#be3838}
+.illustration{width:100%;max-width:250px;justify-self:center}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0 0}
+button{border:0;border-radius:14px;background:#2869d8;color:#fff;padding:12px 25px;font:inherit;font-weight:bold;font-size:1.05rem;cursor:pointer}
+button:hover{background:#1d55b7}button:focus-visible,.back:focus-visible{outline:3px solid #f5bd38;outline-offset:3px}
+.try-again{background:#f2a900;color:#253653}.try-again:hover{background:#df9700}
+.score{text-align:center;font-size:1.18rem;font-weight:bold;margin:19px 0 0}
+.final{display:none;text-align:center;margin:15px auto 0;padding:15px;background:#f2f8ff;border-radius:16px;font-size:1.15rem;font-weight:bold}
+.final.show{display:block}.final button{margin-left:10px}
+.back{display:block;width:max-content;margin:26px auto 0;background:#2869d8;color:#fff;padding:12px 22px;border-radius:16px;text-decoration:none;font-weight:bold}
+@media(max-width:760px){.content{grid-template-columns:1fr}.illustration{grid-row:1;width:170px}.main-card{padding:20px}.sentences{font-size:1.02rem;line-height:1.8}}
+@media(max-width:420px){.container{padding:24px 12px 34px}.main-card{padding:15px}.sentences{padding-left:1.8rem}.blank{min-width:80px}.word{padding:7px 11px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 1: Complete the text with the words from the box.</h1>
+  <section class="main-card" aria-label="Complete the text activity">
+    <p class="instruction">Drag the words to the correct place in the sentence.</p>
+    <div class="content">
+      <div>
+        <section class="words" aria-labelledby="word-bank-title">
+          <h2 id="word-bank-title">Word bank</h2>
+          <div class="word-bank" id="word-bank">
+            <div class="word" id="word-has" draggable="true" tabindex="0" data-word="has">has</div>
+            <div class="word" id="word-leaves" draggable="true" tabindex="0" data-word="leaves">leaves</div>
+            <div class="word" id="word-arrives" draggable="true" tabindex="0" data-word="arrives">arrives</div>
+            <div class="word" id="word-gets" draggable="true" tabindex="0" data-word="gets">gets</div>
+            <div class="word" id="word-starts" draggable="true" tabindex="0" data-word="starts">starts</div>
+            <div class="word" id="word-works" draggable="true" tabindex="0" data-word="works">works</div>
+          </div>
+        </section>
+        <ol class="sentences">
+          <li>Alison is a teacher. She <span class="blank" tabindex="0" role="button" aria-label="Blank 1" data-answer="works"></span> in a big school in New York.<p class="feedback" aria-live="polite"></p></li>
+          <li>In the morning, she <span class="blank" tabindex="0" role="button" aria-label="Blank 2" data-answer="leaves"></span> the house at seven o'clock.<p class="feedback" aria-live="polite"></p></li>
+          <li>She <span class="blank" tabindex="0" role="button" aria-label="Blank 3" data-answer="arrives"></span> at school at eight o'clock.<p class="feedback" aria-live="polite"></p></li>
+          <li>She <span class="blank" tabindex="0" role="button" aria-label="Blank 4" data-answer="has"></span> two classes in the morning and then she has lunch.<p class="feedback" aria-live="polite"></p></li>
+          <li>She <span class="blank" tabindex="0" role="button" aria-label="Blank 5" data-answer="starts"></span> her afternoon class at one o'clock.<p class="feedback" aria-live="polite"></p></li>
+          <li>She leaves school at six o'clock and <span class="blank" tabindex="0" role="button" aria-label="Blank 6" data-answer="gets"></span> home and has dinner.<p class="feedback" aria-live="polite"></p></li>
+        </ol>
+      </div>
+      <svg class="illustration" viewBox="0 0 250 280" role="img" aria-label="A teacher in a classroom next to a school desk">
+        <rect x="15" y="18" width="220" height="145" rx="18" fill="#eaf6ff"/>
+        <rect x="37" y="39" width="176" height="93" rx="9" fill="#35865a" stroke="#8f633b" stroke-width="8"/>
+        <path d="M58 67h57m-57 19h95m-95 19h66" stroke="#e9fff1" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="154" cy="83" r="4" fill="#ffd45c"/><circle cx="169" cy="83" r="4" fill="#ffd45c"/><circle cx="184" cy="83" r="4" fill="#ffd45c"/>
+        <path d="M101 164v25m48-25v25" stroke="#6a4a32" stroke-width="8" stroke-linecap="round"/>
+        <path d="M83 189h84l17 12H65z" fill="#d99a52" stroke="#9e6938" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M98 201v44m56-44v44" stroke="#9e6938" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="63" cy="181" r="21" fill="#f1bf91" stroke="#a96442" stroke-width="3"/>
+        <path d="M43 179q3-27 39-22l3 16-9-7-8 7-7-6-8 12z" fill="#67432e"/>
+        <circle cx="57" cy="181" r="2.5" fill="#243b58"/><circle cx="69" cy="181" r="2.5" fill="#243b58"/>
+        <path d="M58 190q5 5 10 0" fill="none" stroke="#a64c43" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M42 207q21-14 42 0l9 45H32z" fill="#5aa8e8" stroke="#2675ad" stroke-width="3"/>
+        <path d="M46 213 28 229m51-16 19 10" stroke="#f1bf91" stroke-width="10" stroke-linecap="round"/>
+        <path d="M31 250h65" stroke="#f2a900" stroke-width="6" stroke-linecap="round"/>
+        <path d="M184 222h31v28h-31z" fill="#fffdf3" stroke="#477bb5" stroke-width="3"/><path d="M190 231h19m-19 7h19" stroke="#74b8ed" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="actions"><button id="check" type="button">Check</button></div>
+    <p class="score" aria-live="polite">Score: <span id="score">0</span> / 6</p>
+    <div class="final" id="final" aria-live="polite"><span id="final-text"></span><button class="try-again" id="try-again" type="button">Try again</button></div>
+  </section>
+  <a class="back" href="index.html">← Back to Writing</a>
+</main>
+<script>
+const bank = document.getElementById('word-bank');
+const words = [...document.querySelectorAll('.word')];
+const blanks = [...document.querySelectorAll('.blank')];
+const score = document.getElementById('score');
+const final = document.getElementById('final');
+const finalText = document.getElementById('final-text');
+let dragged = null;
+let selected = null;
+const wordOrder = ['has','leaves','arrives','gets','starts','works'];
+
+function clearResults() {
+  blanks.forEach(blank => {
+    const feedback = blank.parentElement.querySelector('.feedback');
+    feedback.textContent = '';
+    feedback.className = 'feedback';
+  });
+  score.textContent = '0';
+  final.classList.remove('show');
+  finalText.textContent = '';
+}
+function placeWord(word, blank) {
+  if (!word || !blank) return;
+  const displaced = blank.querySelector('.word');
+  if (displaced && displaced !== word) bank.appendChild(displaced);
+  blank.appendChild(word);
+  word.classList.remove('selected');
+  selected = null;
+  words.forEach(item => item.classList.remove('selected'));
+  blanks.forEach(item => item.classList.remove('over'));
+  clearResults();
+}
+words.forEach(word => {
+  word.addEventListener('dragstart', event => {
+    dragged = word;
+    word.classList.add('dragging');
+    event.dataTransfer.setData('text/plain', word.id);
+    event.dataTransfer.effectAllowed = 'move';
+  });
+  word.addEventListener('dragend', () => {
+    word.classList.remove('dragging');
+    dragged = null;
+  });
+  word.addEventListener('click', () => {
+    if (selected === word) {
+      word.classList.remove('selected');
+      selected = null;
+      return;
+    }
+    words.forEach(item => item.classList.remove('selected'));
+    selected = word;
+    word.classList.add('selected');
+  });
+  word.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      word.click();
+    }
+  });
+});
+blanks.forEach(blank => {
+  blank.addEventListener('dragover', event => {
+    event.preventDefault();
+    blank.classList.add('over');
+  });
+  blank.addEventListener('dragleave', () => blank.classList.remove('over'));
+  blank.addEventListener('drop', event => {
+    event.preventDefault();
+    const id = event.dataTransfer.getData('text/plain');
+    placeWord(document.getElementById(id) || dragged, blank);
+  });
+  blank.addEventListener('click', () => {
+    if (selected) placeWord(selected, blank);
+  });
+  blank.addEventListener('keydown', event => {
+    if ((event.key === 'Enter' || event.key === ' ') && selected) {
+      event.preventDefault();
+      placeWord(selected, blank);
+    }
+  });
+});
+document.getElementById('check').addEventListener('click', () => {
+  let total = 0;
+  blanks.forEach(blank => {
+    const chosen = blank.querySelector('.word');
+    const expected = blank.dataset.answer;
+    const feedback = blank.parentElement.querySelector('.feedback');
+    if (chosen && chosen.dataset.word === expected) {
+      total++;
+      feedback.textContent = '✅ Correct!';
+      feedback.className = 'feedback correct';
+    } else {
+      feedback.textContent = `❌ Try again. Correct answer: ${expected}`;
+      feedback.className = 'feedback wrong';
+    }
+  });
+  score.textContent = total;
+  finalText.textContent = `Your score: ${total} / 6`;
+  final.classList.add('show');
+});
+document.getElementById('try-again').addEventListener('click', () => {
+  words.sort((a,b) => wordOrder.indexOf(a.dataset.word) - wordOrder.indexOf(b.dataset.word)).forEach(word => {
+    bank.appendChild(word);
+    word.classList.remove('selected','dragging');
+  });
+  selected = null;
+  dragged = null;
+  clearResults();
+});
+</script>
+</body>
+</html>
