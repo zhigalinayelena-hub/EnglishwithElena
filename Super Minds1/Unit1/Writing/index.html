@@ -3,25 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Super Minds 1 • Unit 1 • Writing</title>
+<title>Look and write • Super Minds 1 • Unit 1</title>
 <style>
+*{box-sizing:border-box}
 :root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
-body{margin:0}.container{max-width:1000px;margin:auto;padding:48px 24px;text-align:center}
-h1{font-size:clamp(2rem,5vw,3.25rem);margin:0 0 10px}.subtitle{color:#5f6d7a;font-size:1.1rem;margin:0 0 36px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px}
-.card,.back{display:block;background:#fff;border-radius:22px;padding:26px 18px;text-decoration:none;color:inherit;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
-.card:hover,.back:hover{transform:translateY(-4px);box-shadow:0 12px 25px rgba(0,0,0,.12)}.emoji{font-size:2.8rem;margin-bottom:10px}.title{font-size:1.4rem;font-weight:bold}
-.back{width:max-content;margin:35px auto 0;background:#2869d8;color:#fff;padding:12px 22px;font-weight:bold}
-.message{background:#fff;border-radius:22px;padding:34px;box-shadow:0 8px 20px rgba(0,0,0,.08);font-size:1.1rem}
+body{margin:0;min-height:100vh}
+.container{max-width:1000px;margin:auto;padding:38px 22px 48px;text-align:center}
+h1{font-size:clamp(2rem,5vw,3.15rem);margin:0 0 10px}
+.subtitle{color:#5f6d7a;font-size:1.15rem;margin:0 0 12px}
+.instructions{font-size:1.15rem;margin:0 auto 20px;line-height:1.5}
+.score{position:sticky;top:10px;z-index:2;width:max-content;max-width:100%;margin:0 auto 24px;padding:10px 18px;background:#fff;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.08);font-size:1.2rem;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;text-align:left}
+.card{background:#fff;border-radius:22px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);display:grid;grid-template-columns:84px minmax(0,1fr);gap:16px;align-items:center}
+.picture{width:84px;height:84px;border-radius:20px;background:#f1f6ff;display:grid;place-items:center;font-size:3.2rem}
+.question{font-size:1.25rem;font-weight:bold;margin:0 0 12px}
+.answer-row{display:flex;gap:8px}
+input{min-width:0;flex:1;border:2px solid #c9d8eb;border-radius:12px;padding:11px 12px;font:inherit;font-size:1rem;color:#1f3552}
+input:focus{outline:3px solid #b9d5ff;border-color:#2869d8}
+button{border:0;border-radius:12px;background:#2869d8;color:white;padding:11px 16px;font:inherit;font-weight:bold;cursor:pointer}
+button:hover{background:#1d55b7}button:focus-visible,.back:focus-visible{outline:3px solid #f5bd38;outline-offset:3px}
+.feedback{min-height:1.5em;margin:10px 0 0;font-weight:bold;font-size:1rem;line-height:1.4}
+.feedback.correct{color:#168447}.feedback.wrong{color:#c33a3a}
+.final{display:none;margin:22px auto 0;padding:18px;background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.08);font-size:1.3rem;font-weight:bold}
+.final.show{display:block}.again{margin-top:12px;background:#f2a900;color:#253653}.again:hover{background:#df9700}
+.back{display:block;width:max-content;margin:30px auto 0;background:#2869d8;color:#fff;padding:12px 22px;border-radius:16px;text-decoration:none;font-weight:bold}
+@media(max-width:650px){.container{padding:28px 14px 36px}.grid{grid-template-columns:1fr;gap:14px}.card{padding:18px}.score{margin-bottom:18px}}
+@media(max-width:380px){.card{grid-template-columns:64px minmax(0,1fr);gap:12px;padding:15px}.picture{width:64px;height:64px;font-size:2.5rem}.answer-row{flex-direction:column}.answer-row button{width:100%}}
 </style>
 </head>
 <body>
-<div class="container">
-<h1>✍️ Super Minds 1 • Unit 1</h1>
-<p class="subtitle">Writing</p>
-<div class="message">Activities for this section will appear here.</div>
-<a class="back" href="../index.html">← Back to Unit 1</a>
-</div>
+<main class="container">
+  <h1>✍️ Look and write.</h1>
+  <p class="subtitle">Super Minds 1 • Unit 1</p>
+  <p class="instructions">Look at the picture. Type the whole answer.<br>Then tap <strong>Check</strong>.</p>
+  <div class="score" aria-live="polite">Score: <span id="score">0</span> / 6</div>
+
+  <section class="grid" aria-label="Writing questions">
+    <article class="card" data-answer="No, it isn't.">
+      <div class="picture" role="img" aria-label="school bag">🎒</div>
+      <div><p class="question">1. Is it a bag?</p><div class="answer-row"><input aria-label="Answer to question 1" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
+    </article>
+    <article class="card" data-answer="Yes, it is.">
+      <div class="picture" role="img" aria-label="book">📘</div>
+      <div><p class="question">2. Is it a book?</p><div class="answer-row"><input aria-label="Answer to question 2" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
+    </article>
+    <article class="card" data-answer="No, it isn't.">
+      <div class="picture" role="img" aria-label="pen">🖊️</div>
+      <div><p class="question">3. Is it a pen?</p><div class="answer-row"><input aria-label="Answer to question 3" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
+    </article>
+    <article class="card" data-answer="No, it isn't.">
+      <div class="picture" role="img" aria-label="ruler">📏</div>
+      <div><p class="question">4. Is it a ruler?</p><div class="answer-row"><input aria-label="Answer to question 4" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
+    </article>
+    <article class="card" data-answer="Yes, it is.">
+      <div class="picture" role="img" aria-label="rubber">🧽</div>
+      <div><p class="question">5. Is it a rubber?</p><div class="answer-row"><input aria-label="Answer to question 5" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
+    </article>
+    <article class="card" data-answer="No, it isn't.">
+      <div class="picture" role="img" aria-label="pencil case">🖍️</div>
+      <div><p class="question">6. Is it a pencil case?</p><div class="answer-row"><input aria-label="Answer to question 6" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
+    </article>
+  </section>
+
+  <div class="final" id="final" aria-live="polite"><div id="finalScore"></div><button class="again" id="again" type="button">Try again</button></div>
+  <a class="back" href="../index.html">← Back to Writing</a>
+</main>
+<script>
+const cards = [...document.querySelectorAll('.card')];
+const scoreEl = document.getElementById('score');
+const final = document.getElementById('final');
+const finalScore = document.getElementById('finalScore');
+
+function normalize(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
+}
+function updateScore() {
+  const score = cards.filter(card => card.dataset.checked === 'true').length;
+  scoreEl.textContent = score;
+  const completed = cards.every(card => card.dataset.checked === 'true' || card.dataset.checked === 'false');
+  if (completed) {
+    finalScore.textContent = `Your score: ${score} / 6`;
+    final.classList.add('show');
+  } else {
+    final.classList.remove('show');
+  }
+}
+function check(card) {
+  const input = card.querySelector('input');
+  const feedback = card.querySelector('.feedback');
+  const correct = normalize(input.value) === normalize(card.dataset.answer);
+  card.dataset.checked = String(correct);
+  feedback.className = `feedback ${correct ? 'correct' : 'wrong'}`;
+  feedback.textContent = correct ? '✅ Correct!' : `❌ Try again. Answer: ${card.dataset.answer}`;
+  updateScore();
+}
+cards.forEach(card => {
+  const input = card.querySelector('input');
+  card.querySelector('button').addEventListener('click', () => check(card));
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Enter') check(card);
+  });
+  input.addEventListener('input', () => {
+    if (card.dataset.checked !== undefined) {
+      delete card.dataset.checked;
+      card.querySelector('.feedback').textContent = '';
+      card.querySelector('.feedback').className = 'feedback';
+      updateScore();
+    }
+  });
+});
+document.getElementById('again').addEventListener('click', () => {
+  cards.forEach(card => {
+    delete card.dataset.checked;
+    card.querySelector('input').value = '';
+    card.querySelector('.feedback').textContent = '';
+    card.querySelector('.feedback').className = 'feedback';
+  });
+  updateScore();
+  cards[0].querySelector('input').focus();
+});
+</script>
 </body>
 </html>
-
