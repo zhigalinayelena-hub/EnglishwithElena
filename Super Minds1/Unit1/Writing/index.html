@@ -3,222 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Look and write • Super Minds 1 • Unit 1</title>
+<title>Super Minds 1 • Unit 1 • Writing</title>
 <style>
 *{box-sizing:border-box}
-:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
-body{margin:0;min-height:100vh}
-.container{max-width:1000px;margin:auto;padding:38px 22px 48px;text-align:center}
-h1{font-size:clamp(2rem,5vw,3.15rem);margin:0 0 10px}
-.subtitle{color:#5f6d7a;font-size:1.15rem;margin:0 0 12px}
-.instructions{font-size:1.15rem;margin:0 auto 20px;line-height:1.5}
-.score{position:sticky;top:10px;z-index:2;width:max-content;max-width:100%;margin:0 auto 24px;padding:10px 18px;background:#fff;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.08);font-size:1.2rem;font-weight:bold}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;text-align:left}
-.card{background:#fff;border-radius:22px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);display:grid;grid-template-columns:84px minmax(0,1fr);gap:16px;align-items:center}
-.picture{width:84px;height:84px;border-radius:20px;background:#f1f6ff;display:grid;place-items:center;font-size:3.2rem}
-.question{font-size:1.25rem;font-weight:bold;margin:0 0 12px}
-.answer-row{display:flex;gap:8px}
-input{min-width:0;flex:1;border:2px solid #c9d8eb;border-radius:12px;padding:11px 12px;font:inherit;font-size:1rem;color:#1f3552}
-input:focus{outline:3px solid #b9d5ff;border-color:#2869d8}
-button{border:0;border-radius:12px;background:#2869d8;color:white;padding:11px 16px;font:inherit;font-weight:bold;cursor:pointer}
-button:hover{background:#1d55b7}button:focus-visible,.back:focus-visible{outline:3px solid #f5bd38;outline-offset:3px}
-.feedback{min-height:1.5em;margin:10px 0 0;font-weight:bold;font-size:1rem;line-height:1.4}
-.feedback.correct{color:#168447}.feedback.wrong{color:#c33a3a}
-.final{display:none;margin:22px auto 0;padding:18px;background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(0,0,0,.08);font-size:1.3rem;font-weight:bold}
-.final.show{display:block}.again{margin-top:12px;background:#f2a900;color:#253653}.again:hover{background:#df9700}
-.back{display:block;width:max-content;margin:30px auto 0;background:#2869d8;color:#fff;padding:12px 22px;border-radius:16px;text-decoration:none;font-weight:bold}
-.exercise-title{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 8px}
-.word-task{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:24px;align-items:center;text-align:left;background:#fff;border-radius:22px;padding:24px;margin:0 0 32px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.word-task h2{font-size:1.45rem;margin:0 0 14px}
-.word-bank{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 14px}
-.word-bank span{background:#eaf3ff;border:2px solid #c9ddfa;border-radius:14px;padding:7px 14px;font-weight:bold;font-size:1.1rem}
-.word-list{display:grid;gap:12px;padding:0;margin:0;list-style:none}
-.word-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;font-size:1.08rem;line-height:1.5}
-.word-sentence{display:flex;flex-wrap:wrap;align-items:center;gap:5px}
-.word-input{width:100px;flex:0 0 100px;padding:7px 9px}
-.word-item button{padding:9px 13px}
-.word-feedback{grid-column:1/-1;min-height:1.35em;margin:0;font-size:.98rem;font-weight:bold}
-.word-feedback.correct{color:#168447}.word-feedback.wrong{color:#c33a3a}
-.word-score{margin:15px 0 0;font-size:1.15rem;font-weight:bold}
-.word-final{display:none;margin-top:12px;font-size:1.1rem;font-weight:bold}
-.word-final.show{display:block}.word-again{margin-left:10px;background:#f2a900;color:#253653}.word-again:hover{background:#df9700}
-.penguin{width:180px;max-width:100%;justify-self:center}
-.exercise-two{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 10px}
-@media(max-width:650px){.container{padding:28px 14px 36px}.grid{grid-template-columns:1fr;gap:14px}.card{padding:18px}.score{margin-bottom:18px}}
-@media(max-width:650px){.word-task{grid-template-columns:1fr;padding:19px;gap:10px}.penguin{grid-row:1;width:115px}.word-item{grid-template-columns:1fr auto}}
-@media(max-width:380px){.card{grid-template-columns:64px minmax(0,1fr);gap:12px;padding:15px}.picture{width:64px;height:64px;font-size:2.5rem}.answer-row{flex-direction:column}.answer-row button{width:100%}}
+body{margin:0;font-family:Arial,sans-serif;background:#eef3f8;color:#1f3552}
+.container{max-width:1000px;margin:auto;padding:48px 24px}
+h1{text-align:center;font-size:clamp(2rem,5vw,3.25rem);margin:0 0 10px}
+.subtitle{text-align:center;color:#5f6d7a;font-size:1.1rem;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{display:block;background:#fff;border-radius:22px;padding:30px 22px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
+.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 12px 25px rgba(0,0,0,.12)}
+.emoji{font-size:2.8rem;margin-bottom:10px}.title{font-size:1.4rem;font-weight:bold}.description{margin:9px 0 0;color:#5f6d7a;font-size:1rem}
+.back{display:block;width:max-content;margin:35px auto 0;background:#2869d8;color:#fff;padding:12px 22px;border-radius:16px;text-decoration:none;font-weight:bold}
+@media(max-width:640px){.grid{grid-template-columns:1fr;gap:14px}.card{padding:24px 16px}}
 </style>
 </head>
 <body>
 <main class="container">
-  <h1 class="exercise-title">✍️ Exercise 2: Write the words.</h1>
-  <p class="subtitle">Super Minds 1 • Unit 1</p>
-  <section class="word-task" aria-labelledby="word-task-title">
-    <div>
-      <h2 id="word-task-title">Write the words.</h2>
-      <div class="word-bank" aria-label="Word bank"><span>get</span><span>Open</span><span>Sit</span><span>Write</span></div>
-      <ol class="word-list">
-        <li class="word-item" data-answer="Sit"><label class="word-sentence" for="word-1"><span>1.</span><input class="word-input" id="word-1" aria-label="Missing word in sentence 1" autocomplete="off"> <span>at your desk, please.</span></label><button type="button">Check</button><p class="word-feedback" aria-live="polite"></p></li>
-        <li class="word-item" data-answer="get"><label class="word-sentence" for="word-2"><span>2.</span><span>Now</span><input class="word-input" id="word-2" aria-label="Missing word in sentence 2" autocomplete="off"> <span>a pen.</span></label><button type="button">Check</button><p class="word-feedback" aria-live="polite"></p></li>
-        <li class="word-item" data-answer="Open"><label class="word-sentence" for="word-3"><span>3.</span><input class="word-input" id="word-3" aria-label="Missing word in sentence 3" autocomplete="off"> <span>your book, please.</span></label><button type="button">Check</button><p class="word-feedback" aria-live="polite"></p></li>
-        <li class="word-item" data-answer="Write"><label class="word-sentence" for="word-4"><span>4.</span><input class="word-input" id="word-4" aria-label="Missing word in sentence 4" autocomplete="off"> <span>one to ten.</span></label><button type="button">Check</button><p class="word-feedback" aria-live="polite"></p></li>
-      </ol>
-      <p class="word-score" aria-live="polite">Score: <span id="word-score">0</span> / 4</p>
-      <div class="word-final" id="word-final" aria-live="polite"><span id="word-final-score"></span><button class="word-again" id="word-again" type="button">Try again</button></div>
-    </div>
-    <svg class="penguin" viewBox="0 0 180 220" role="img" aria-label="A friendly penguin wearing a blue scarf">
-      <ellipse cx="90" cy="198" rx="58" ry="10" fill="#dce8f5"/>
-      <path d="M42 105c0-48 20-80 48-80s48 32 48 80v59c0 24-21 40-48 40s-48-16-48-40z" fill="#263b58"/>
-      <ellipse cx="90" cy="129" rx="34" ry="55" fill="#fffdf5"/>
-      <circle cx="72" cy="81" r="6" fill="#24344a"/><circle cx="108" cy="81" r="6" fill="#24344a"/>
-      <path d="M82 94h16l-8 12z" fill="#ffb83d" stroke="#d8891b" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M48 112c-18 9-26 27-19 43 12 1 25-7 32-20m71-23c18 9 26 27 19 43-12 1-25-7-32-20" fill="#263b58"/>
-      <path d="M57 116c20 10 46 10 66 0v18c-20 11-46 11-66 0z" fill="#48a7e8"/>
-      <path d="M112 131l19 6-9 21-14-12z" fill="#48a7e8" stroke="#2679b5" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M61 191l-17 11c-5 4-2 10 4 10h39v-6zm58 0 17 11c5 4 2 10-4 10H93v-6z" fill="#ffb83d" stroke="#d8891b" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M68 70c4-4 9-6 14-6m16 0c5 0 10 2 14 6" fill="none" stroke="#516984" stroke-width="3" stroke-linecap="round"/>
-    </svg>
-  </section>
-  <h2 class="exercise-two">Exercise 2: Look and write.</h2>
-  <p class="instructions">Look at the picture. Type the whole answer.<br>Then tap <strong>Check</strong>.</p>
-  <div class="score" aria-live="polite">Score: <span id="score">0</span> / 6</div>
-
-  <section class="grid" aria-label="Writing questions">
-    <article class="card" data-answer="No, it isn't.">
-      <div class="picture" role="img" aria-label="yellow pencil case with pencils"><svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true"><path d="M27 39V20l8-9 8 9v19m5 0V15l8-9 8 9v24m5 0V22l8-9 8 9v18" fill="#f7c948" stroke="#76521a" stroke-width="3" stroke-linejoin="round"/><path d="M27 20h16m5-5h16m5 7h16" stroke="#e85e5e" stroke-width="3"/><rect x="13" y="37" width="74" height="48" rx="15" fill="#ffd45c" stroke="#c58a19" stroke-width="4"/><path d="M18 48h64" stroke="#fff1b7" stroke-width="3"/><path d="M74 45v6" stroke="#76521a" stroke-width="3" stroke-linecap="round"/></svg></div>
-      <div><p class="question">1. Is it a bag?</p><div class="answer-row"><input aria-label="Answer to question 1" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
-    </article>
-    <article class="card" data-answer="Yes, it is.">
-      <div class="picture" role="img" aria-label="blue hardback book"><svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true"><path d="M19 20h49a12 12 0 0 1 12 12v51H31a12 12 0 0 1-12-12z" fill="#4b91e8" stroke="#2459a2" stroke-width="4"/><path d="M31 20v62m0-62a12 12 0 0 0-12 12v39a12 12 0 0 1 12-12h49" fill="none" stroke="#2459a2" stroke-width="4"/><path d="M40 39h28m-28 10h22" stroke="#d8edff" stroke-width="4" stroke-linecap="round"/><path d="M44 64l6-6 6 6 6-6 6 6" fill="none" stroke="#ffd45c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div><p class="question">2. Is it a book?</p><div class="answer-row"><input aria-label="Answer to question 2" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
-    </article>
-    <article class="card" data-answer="Yes, it is.">
-      <div class="picture" role="img" aria-label="blue ink pen"><svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true"><g transform="rotate(38 50 50)"><rect x="39" y="16" width="22" height="58" rx="7" fill="#438ee8" stroke="#2459a2" stroke-width="4"/><path d="M39 27h22m-15-11v-7h8v7" fill="none" stroke="#2459a2" stroke-width="4" stroke-linejoin="round"/><path d="M39 61h22L50 86z" fill="#dbeaff" stroke="#2459a2" stroke-width="4" stroke-linejoin="round"/><path d="M50 86v7" stroke="#2459a2" stroke-width="3" stroke-linecap="round"/></g></svg></div>
-      <div><p class="question">3. Is it a pen?</p><div class="answer-row"><input aria-label="Answer to question 3" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
-    </article>
-    <article class="card" data-answer="No, it isn't.">
-      <div class="picture" role="img" aria-label="red school backpack"><svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true"><path d="M33 28V20a17 17 0 0 1 34 0v8" fill="none" stroke="#76521a" stroke-width="5"/><rect x="22" y="25" width="56" height="61" rx="17" fill="#ed6664" stroke="#a7353c" stroke-width="4"/><path d="M29 38a10 10 0 0 1 10-10m32 0a10 10 0 0 1 10 10" fill="none" stroke="#ffb5a9" stroke-width="4"/><rect x="31" y="54" width="38" height="24" rx="8" fill="#ff9a82" stroke="#a7353c" stroke-width="3"/><path d="M50 56v19m-4-12h8" stroke="#a7353c" stroke-width="3" stroke-linecap="round"/><path d="M17 48v24m66-24v24" stroke="#a7353c" stroke-width="5" stroke-linecap="round"/></svg></div>
-      <div><p class="question">4. Is it a ruler?</p><div class="answer-row"><input aria-label="Answer to question 4" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
-    </article>
-    <article class="card" data-answer="Yes, it is.">
-      <div class="picture" role="img" aria-label="pink and white school eraser rubber"><svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true"><g transform="rotate(-28 50 50)"><rect x="17" y="31" width="66" height="42" rx="9" fill="#fff4d6" stroke="#bd596e" stroke-width="4"/><path d="M17 40a9 9 0 0 1 9-9h24v42H26a9 9 0 0 1-9-9z" fill="#ff8fa3"/><path d="M50 32v40" stroke="#bd596e" stroke-width="3"/><path d="M25 37h17" stroke="#ffd0d8" stroke-width="3" stroke-linecap="round"/></g></svg></div>
-      <div><p class="question">5. Is it a rubber?</p><div class="answer-row"><input aria-label="Answer to question 5" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
-    </article>
-    <article class="card" data-answer="No, it isn't.">
-      <div class="picture" role="img" aria-label="open lined notebook"><svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true"><path d="M12 25a10 10 0 0 1 10-10h27v66H22a10 10 0 0 0-10 10z" fill="#fffdf3" stroke="#477bb5" stroke-width="4"/><path d="M88 25a10 10 0 0 0-10-10H51v66h27a10 10 0 0 1 10 10z" fill="#fffdf3" stroke="#477bb5" stroke-width="4"/><path d="M51 15v66" stroke="#477bb5" stroke-width="4"/><path d="M22 31h20m-20 11h20m-20 11h20m16-22h20m-20 11h20m-20 11h20" stroke="#74b8ed" stroke-width="3" stroke-linecap="round"/><path d="M17 23v5m0 7v5m0 7v5m0 7v5m0 7v5m66-43v5m0 7v5m0 7v5m0 7v5" stroke="#ff8fa3" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <div><p class="question">6. Is it a pencil case?</p><div class="answer-row"><input aria-label="Answer to question 6" autocomplete="off" placeholder="Type your answer"><button type="button">Check</button></div><p class="feedback" aria-live="polite"></p></div>
-    </article>
-  </section>
-
-  <div class="final" id="final" aria-live="polite"><div id="finalScore"></div><button class="again" id="again" type="button">Try again</button></div>
-  <a class="back" href="../index.html">← Back to Writing</a>
+<h1>✍️ Super Minds 1 • Unit 1</h1>
+<p class="subtitle">Writing • Choose an exercise</p>
+<div class="grid">
+<a class="card" href="exercise1.html"><div class="emoji">🎒</div><div class="title">Exercise 1 — Look and write</div><p class="description">Look at each picture and write the answer.</p></a>
+<a class="card" href="exercise2.html"><div class="emoji">🐧</div><div class="title">Exercise 2 — Write the words</div><p class="description">Complete each sentence with a word.</p></a>
+</div>
+<a class="back" href="../index.html">← Back to Unit 1</a>
 </main>
-<script>
-const cards = [...document.querySelectorAll('.card')];
-const scoreEl = document.getElementById('score');
-const final = document.getElementById('final');
-const finalScore = document.getElementById('finalScore');
-
-function normalize(text) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
-}
-function updateScore() {
-  const score = cards.filter(card => card.dataset.checked === 'true').length;
-  scoreEl.textContent = score;
-  const completed = cards.every(card => card.dataset.checked === 'true' || card.dataset.checked === 'false');
-  if (completed) {
-    finalScore.textContent = `Your score: ${score} / 6`;
-    final.classList.add('show');
-  } else {
-    final.classList.remove('show');
-  }
-}
-function check(card) {
-  const input = card.querySelector('input');
-  const feedback = card.querySelector('.feedback');
-  const correct = normalize(input.value) === normalize(card.dataset.answer);
-  card.dataset.checked = String(correct);
-  feedback.className = `feedback ${correct ? 'correct' : 'wrong'}`;
-  feedback.textContent = correct ? '✅ Correct!' : `❌ Try again. Answer: ${card.dataset.answer}`;
-  updateScore();
-}
-cards.forEach(card => {
-  const input = card.querySelector('input');
-  card.querySelector('button').addEventListener('click', () => check(card));
-  input.addEventListener('keydown', event => {
-    if (event.key === 'Enter') check(card);
-  });
-  input.addEventListener('input', () => {
-    if (card.dataset.checked !== undefined) {
-      delete card.dataset.checked;
-      card.querySelector('.feedback').textContent = '';
-      card.querySelector('.feedback').className = 'feedback';
-      updateScore();
-    }
-  });
-});
-document.getElementById('again').addEventListener('click', () => {
-  cards.forEach(card => {
-    delete card.dataset.checked;
-    card.querySelector('input').value = '';
-    card.querySelector('.feedback').textContent = '';
-    card.querySelector('.feedback').className = 'feedback';
-  });
-  updateScore();
-  cards[0].querySelector('input').focus();
-});
-
-const wordItems = [...document.querySelectorAll('.word-item')];
-const wordScore = document.getElementById('word-score');
-const wordFinal = document.getElementById('word-final');
-const wordFinalScore = document.getElementById('word-final-score');
-function updateWordScore() {
-  const total = wordItems.filter(item => item.dataset.checked === 'true').length;
-  wordScore.textContent = total;
-  const complete = wordItems.every(item => item.dataset.checked === 'true' || item.dataset.checked === 'false');
-  if (complete) {
-    wordFinalScore.textContent = `Your score: ${total} / 4`;
-    wordFinal.classList.add('show');
-  } else {
-    wordFinal.classList.remove('show');
-  }
-}
-function checkWord(item) {
-  const input = item.querySelector('input');
-  const feedback = item.querySelector('.word-feedback');
-  const correct = input.value.trim().toLowerCase() === item.dataset.answer.toLowerCase();
-  item.dataset.checked = String(correct);
-  feedback.className = `word-feedback ${correct ? 'correct' : 'wrong'}`;
-  feedback.textContent = correct ? '✅ Correct!' : '❌ Try again.';
-  updateWordScore();
-}
-wordItems.forEach(item => {
-  const input = item.querySelector('input');
-  item.querySelector('button').addEventListener('click', () => checkWord(item));
-  input.addEventListener('keydown', event => {
-    if (event.key === 'Enter') checkWord(item);
-  });
-  input.addEventListener('input', () => {
-    if (item.dataset.checked !== undefined) {
-      delete item.dataset.checked;
-      const feedback = item.querySelector('.word-feedback');
-      feedback.textContent = '';
-      feedback.className = 'word-feedback';
-      updateWordScore();
-    }
-  });
-});
-document.getElementById('word-again').addEventListener('click', () => {
-  wordItems.forEach(item => {
-    delete item.dataset.checked;
-    item.querySelector('input').value = '';
-    const feedback = item.querySelector('.word-feedback');
-    feedback.textContent = '';
-    feedback.className = 'word-feedback';
-  });
-  updateWordScore();
-  wordItems[0].querySelector('input').focus();
-});
-</script>
 </body>
 </html>
