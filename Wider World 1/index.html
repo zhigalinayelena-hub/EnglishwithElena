@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wider World 1</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef3f8;
+  color:#1f3552;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+h1{
+  text-align:center;
+  font-size:48px;
+  margin:0 0 10px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#666;
+  font-size:22px;
+  margin:0 0 40px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:white;
+  border-radius:22px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+.unit-number{
+  color:#4775a6;
+  font-size:17px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.unit-name{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.progress-section{
+  margin-top:38px;
+}
+
+.progress-section h2{
+  text-align:center;
+  margin:0 0 18px;
+  font-size:27px;
+}
+
+.progress-card{
+  max-width:430px;
+  margin:0 auto;
+}
+
+@media(max-width:560px){
+  h1{font-size:38px;}
+  .subtitle{font-size:20px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🌍 Wider World 1</h1>
+  <p class="subtitle">Choose a Unit</p>
+
+  <main class="grid" aria-label="Units">
+    <section class="card"><div class="unit-number">Unit 1</div><div class="unit-name">Who are you?</div></section>
+    <section class="card"><div class="unit-number">Unit 2</div><div class="unit-name">Let’s eat!</div></section>
+    <section class="card"><div class="unit-number">Unit 3</div><div class="unit-name">Daily life</div></section>
+    <section class="card"><div class="unit-number">Unit 4</div><div class="unit-name">Live and learn</div></section>
+    <section class="card"><div class="unit-number">Unit 5</div><div class="unit-name">The sound of music</div></section>
+    <section class="card"><div class="unit-number">Unit 6</div><div class="unit-name">Game on!</div></section>
+    <section class="card"><div class="unit-number">Unit 7</div><div class="unit-name">The digital age</div></section>
+    <section class="card"><div class="unit-number">Unit 8</div><div class="unit-name">Our world</div></section>
+    <section class="card"><div class="unit-number">Unit 9</div><div class="unit-name">On the go</div></section>
+  </main>
+
+  <section class="progress-section" aria-labelledby="progress-heading">
+    <h2 id="progress-heading">Progress Tests</h2>
+    <div class="card progress-card"><div class="unit-name">Progress Tests</div></div>
+  </section>
+</div>
+</body>
+</html>
