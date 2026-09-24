@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 4 — Vocabulary — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1080px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+h2{font-size:1.3rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:45px}
+.word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 16px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}
+.word:hover{background:#dceeff}.word.selected{outline:3px solid #2869d8;background:#dceeff}.word:focus-visible,.blank:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.sentences{display:grid;gap:12px}.sentence{display:grid;grid-template-columns:112px 34px 1fr;align-items:center;gap:12px;background:#fff;border:2px solid #e1eaf3;border-radius:15px;padding:11px 14px;transition:border-color .15s,background .15s}
+.illustration{height:82px;border-radius:11px;background:#f1f7fc;display:flex;align-items:center;justify-content:center;overflow:hidden}.illustration svg{width:100%;height:100%}.number{font-weight:bold;font-size:1.05rem;align-self:start;padding-top:8px}.sentence-body{font-size:1.05rem;line-height:1.65;min-width:0}.blank{display:inline-flex;vertical-align:baseline;min-width:112px;min-height:34px;align-items:center;justify-content:center;border-bottom:3px dashed #89a5c1;color:#2869d8;font-weight:bold;padding:1px 7px;cursor:pointer;line-height:1.3}.blank.has-word{border-bottom-style:solid;background:#edf6ff;border-radius:7px 7px 0 0}.blank.drag-over{background:#e3f0ff;border-bottom-color:#2869d8}.sentence.correct{border-color:#219653;background:#f0fff5}.sentence.incorrect{border-color:#d84343;background:#fff4f4}.result{display:block;min-height:21px;margin-top:4px;font-size:.9rem;font-weight:bold;line-height:1.4}.sentence.correct .result{color:#168344}.sentence.incorrect .result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:16px}.sentence{grid-template-columns:88px 26px 1fr;gap:8px;padding:10px}.illustration{height:72px}.sentence-body{font-size:.98rem}.blank{min-width:90px}}
+@media(max-width:410px){.sentence{grid-template-columns:72px 22px 1fr;gap:6px;padding:8px}.illustration{height:64px}.blank{min-width:80px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 4: Look at the pictures and complete the sentences with these words.</h1>
+  <p class="subtitle">Look at the pictures and complete the sentences with these words.</p>
+
+  <section class="card" aria-labelledby="word-bank-title">
+    <h2 id="word-bank-title">Word bank</h2>
+    <div class="word-bank" id="wordBank" aria-label="Word bank"></div>
+  </section>
+
+  <section class="card sentences" aria-label="Complete the sentences">
+    <div class="sentence" data-answer="in">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="Pens inside an open pencil case"><path d="M20 43q0-9 10-9h80q10 0 10 9l-7 32H28z" fill="#63c39a" stroke="#33855b" stroke-width="4"/><path d="M22 43h96" stroke="#f4ca50" stroke-width="5"/><path d="M39 42V17m17 25V11m18 31V18m18 24V14" stroke="#e46755" stroke-width="7" stroke-linecap="round"/><path d="M34 59h72" stroke="#eaf9f1" stroke-width="3"/></svg></div>
+      <span class="number">1.</span><div class="sentence-body">My pen is <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 1">______</span> my pencil case.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="behind">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="Boy standing in front of a rubbish bin"><path d="M88 25h35l-4 48H92z" fill="#f3be52" stroke="#b27c23" stroke-width="3"/><path d="M84 25h43v7H84zM95 19h22" stroke="#7a6748" stroke-width="4" stroke-linecap="round"/><circle cx="51" cy="23" r="13" fill="#f2c49b"/><path d="M39 22q2-15 17-14 10 1 11 13l-8-5-9 3-8-3z" fill="#513a32"/><path d="M36 42q15-10 30 0l7 29H30z" fill="#4b8ed3" stroke="#315f90" stroke-width="3"/><path d="M43 70l-4 13m24-13 4 13" stroke="#304965" stroke-width="6" stroke-linecap="round"/></svg></div>
+      <span class="number">2.</span><div class="sentence-body">The rubbish bin is <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 2">______</span> you.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="between">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="A poster hanging between two windows"><rect x="5" y="14" width="35" height="58" fill="#bde9ff" stroke="#6c9dbb" stroke-width="4"/><path d="M22 15v56M6 43h33" stroke="#fff" stroke-width="3"/><rect x="100" y="14" width="35" height="58" fill="#bde9ff" stroke="#6c9dbb" stroke-width="4"/><path d="M117 15v56m-16-28h33" stroke="#fff" stroke-width="3"/><rect x="53" y="19" width="34" height="48" rx="2" fill="#fff" stroke="#956b47" stroke-width="3"/><circle cx="70" cy="37" r="9" fill="#ffd45c"/><path d="M58 57l10-11 8 8 5-7 5 10" fill="#4fa678"/></svg></div>
+      <span class="number">3.</span><div class="sentence-body">Let’s put this poster <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 3">______</span> these two windows.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="next to">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="Two students sitting at desks next to each other"><path d="M8 43h55v7H8zm5 7v29m44-29v29M76 43h55v7H76zm5 7v29m44-29v29" stroke="#a57445" stroke-width="4"/><circle cx="36" cy="20" r="9" fill="#f0c29c"/><circle cx="104" cy="20" r="9" fill="#e9b78d"/><path d="M26 33q10-8 20 0l4 11H22zm68 0q10-8 20 0l4 11H90z" fill="#6aa6df"/><path d="M28 14q7-12 17-1" stroke="#563d32" stroke-width="5" stroke-linecap="round"/><path d="M96 13q8-11 17 0" stroke="#754832" stroke-width="5" stroke-linecap="round"/><path d="M30 67h15m53 0h15" stroke="#e46755" stroke-width="4"/></svg></div>
+      <span class="number">4.</span><div class="sentence-body">John’s chair is <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 4">______</span> Sarah’s chair.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="on">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="Calculator on a table"><path d="M20 51h100v8H20z" fill="#a57445"/><path d="M29 59v24m82-24v24" stroke="#805a37" stroke-width="5"/><rect x="52" y="11" width="36" height="39" rx="5" fill="#43566b" stroke="#293c50" stroke-width="3"/><rect x="58" y="16" width="24" height="9" rx="2" fill="#c9edce"/><g fill="#e8edf2"><circle cx="61" cy="32" r="3"/><circle cx="70" cy="32" r="3"/><circle cx="79" cy="32" r="3"/><circle cx="61" cy="41" r="3"/><circle cx="70" cy="41" r="3"/><circle cx="79" cy="41" r="3"/></g></svg></div>
+      <span class="number">5.</span><div class="sentence-body">Your calculator is <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 5">______</span> the table.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="under">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="A pen lying on the floor underneath a desk"><path d="M15 28h110v8H15zm8 8v32m94-32v32" stroke="#a57445" stroke-width="5"/><path d="M36 76h70" stroke="#91a9bf" stroke-width="3"/><g transform="rotate(-8 71 61)"><rect x="44" y="57" width="52" height="9" rx="4" fill="#e85a53"/><path d="M96 57l10 4-10 5z" fill="#d6dfe8"/><path d="M43 57v9" stroke="#f5d25c" stroke-width="3"/></g></svg></div>
+      <span class="number">6.</span><div class="sentence-body">Your pen is <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 6">______</span> the desk on the floor.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="in front of">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="One desk in front of another desk"><path d="M12 23h62v7H12zm5 7v26m52-26v26" stroke="#a57445" stroke-width="4"/><path d="M58 49h70v8H58zm6 8v25m58-25v25" stroke="#8d613b" stroke-width="5"/><path d="M44 40h38" stroke="#4c84bd" stroke-width="3" stroke-dasharray="5 4"/><path d="M80 35l8 5-8 5" fill="none" stroke="#4c84bd" stroke-width="3"/><text x="18" y="78" font-size="10" fill="#315f90">BACK</text><text x="91" y="78" font-size="10" fill="#315f90">FRONT</text></svg></div>
+      <span class="number">7.</span><div class="sentence-body">Katy’s desk is <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 7">______</span> Paul’s desk.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="in">
+      <div class="illustration"><svg viewBox="0 0 140 90" role="img" aria-label="Trainers inside an open sports bag"><path d="M17 43q3-10 14-10h78q12 0 15 11l4 24q2 9-9 9H22q-10 0-8-10z" fill="#e96d5d" stroke="#a8433b" stroke-width="4"/><path d="M43 34q2-19 25-19t25 19" fill="none" stroke="#344e6d" stroke-width="6"/><path d="M21 49h104" stroke="#4e8fe0" stroke-width="6"/><path d="M34 48q2-13 14-13h11v11H47l-3 8H29zm44 0q2-13 14-13h11v11H91l-3 8H73z" fill="#f6f5eb" stroke="#75869a" stroke-width="2"/><path d="M45 39h10m34 0h10" stroke="#4e8fe0" stroke-width="2"/></svg></div>
+      <span class="number">8.</span><div class="sentence-body">The trainers are <span class="blank" tabindex="0" role="button" aria-label="Blank for sentence 8">______</span> the sports bag.<span class="result" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 8</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const words = ['behind','between','in','in','in front of','next to','on','under'];
+  const bank = document.getElementById('wordBank');
+  const blanks = [...document.querySelectorAll('.blank')];
+  const sentences = [...document.querySelectorAll('.sentence[data-answer]')];
+  const score = document.getElementById('score');
+  const feedback = document.getElementById('feedback');
+  let selectedWord = null;
+  let checked = false;
+
+  function clearSelection(){selectedWord=null;document.querySelectorAll('.word.selected').forEach(word=>word.classList.remove('selected'));}
+  function makeWord(word){
+    const chip=document.createElement('div');chip.className='word';chip.textContent=word;chip.draggable=true;chip.tabIndex=0;chip.setAttribute('role','button');chip.setAttribute('aria-label',`Select ${word}`);
+    chip.addEventListener('dragstart',event=>{event.dataTransfer.setData('text/plain',word);event.dataTransfer.effectAllowed='move';selectChip(chip);});
+    chip.addEventListener('click',()=>selectChip(chip));
+    chip.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();selectChip(chip);}});
+    return chip;
+  }
+  function selectChip(chip){document.querySelectorAll('.word.selected').forEach(item=>item.classList.remove('selected'));chip.classList.add('selected');selectedWord=chip;}
+  function clearBlank(blank){
+    if(!blank.dataset.word)return;
+    bank.appendChild(makeWord(blank.dataset.word));delete blank.dataset.word;blank.textContent='______';blank.classList.remove('has-word','correct','incorrect','drag-over');
+    const sentence=blank.closest('.sentence');sentence.classList.remove('correct','incorrect');sentence.querySelector('.result').textContent='';
+  }
+  function placeWord(blank,word){
+    if(!words.includes(word))return;
+    if(blank.dataset.word===word)return;
+    if(blank.dataset.word)clearBlank(blank);
+    const source=[...bank.querySelectorAll('.word')].find(chip=>chip.textContent===word);if(!source)return;
+    source.remove();blank.dataset.word=word;blank.textContent=word;blank.classList.add('has-word');clearSelection();
+    if(checked)checkAnswers();
+  }
+  blanks.forEach(blank=>{
+    blank.addEventListener('dragover',event=>{event.preventDefault();blank.classList.add('drag-over');});
+    blank.addEventListener('dragleave',()=>blank.classList.remove('drag-over'));
+    blank.addEventListener('drop',event=>{event.preventDefault();blank.classList.remove('drag-over');placeWord(blank,event.dataTransfer.getData('text/plain'));});
+    blank.addEventListener('click',()=>{if(selectedWord)placeWord(blank,selectedWord.textContent);else if(blank.dataset.word){clearBlank(blank);if(checked)checkAnswers();}});
+    blank.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();if(selectedWord)placeWord(blank,selectedWord.textContent);else if(blank.dataset.word){clearBlank(blank);if(checked)checkAnswers();}}});
+  });
+  function checkAnswers(){
+    checked=true;let points=0;
+    sentences.forEach(sentence=>{
+      const blank=sentence.querySelector('.blank');const correct=blank.dataset.word===sentence.dataset.answer;
+      sentence.classList.remove('correct','incorrect');sentence.classList.add(correct?'correct':'incorrect');
+      sentence.querySelector('.result').textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${sentence.dataset.answer}.`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 8`;
+    feedback.textContent=points===8?'Excellent work! All answers are correct.':'Check the feedback on each sentence and try again.';
+    feedback.className=`feedback ${points===8?'good':'try'}`;
+  }
+  function reset(){
+    bank.replaceChildren(...words.map(makeWord));
+    blanks.forEach(blank=>{delete blank.dataset.word;blank.textContent='______';blank.classList.remove('has-word','correct','incorrect','drag-over');});
+    sentences.forEach(sentence=>{sentence.classList.remove('correct','incorrect');sentence.querySelector('.result').textContent='';});
+    clearSelection();checked=false;score.textContent='Score: 0 / 8';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
