@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 4 — Grammar — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+.questions{display:grid;gap:13px}.question{background:#fff;border:2px solid #e1eaf3;border-radius:15px;padding:15px;transition:border-color .15s,background .15s}.question.example{background:#f1f7fc;border-color:#d9e5f1}.question.correct{border-color:#219653;background:#f0fff5}.question.incorrect{border-color:#d84343;background:#fff4f4}
+.question-heading{display:flex;align-items:flex-start;gap:12px;font-size:1.08rem;line-height:1.55}.number{font-weight:bold;flex:0 0 27px}.example-label{display:block;color:#4775a6;font-size:.88rem;font-weight:bold;line-height:1.3;margin-top:4px}
+.word-tray,.answer-tray{display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-height:48px;padding:9px;border-radius:12px}.word-tray{margin-top:12px;background:#f1f7fc;border:1px solid #d9e5f1}.answer-tray{margin-top:9px;background:#fbfdff;border:2px dashed #b9cde0}.word-tray.drag-over,.answer-tray.drag-over{background:#eaf4ff;border-color:#2869d8}.tray-label{display:block;color:#5f6d7a;font-size:.88rem;font-weight:bold;margin:10px 0 0 2px}
+.tile{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:10px;padding:8px 12px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}.tile:hover{background:#dceeff}.tile:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.tile:active{cursor:grabbing}.tile.punctuation{padding-left:10px;padding-right:10px}.question-text{font-size:1.12rem;font-weight:bold;padding:5px 2px}.result{min-height:21px;margin:8px 2px 0;font-size:.92rem;font-weight:bold;line-height:1.4}.question.correct .result{color:#168344}.question.incorrect .result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:600px){.container{padding:25px 14px 36px}.card{padding:16px}.question{padding:12px}.tile{padding:7px 9px;font-size:.95rem}.word-tray,.answer-tray{gap:6px;padding:7px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 4 — Order the words to make questions</h1>
+  <p class="subtitle">Order the words to make questions.</p>
+
+  <section class="card questions" aria-label="Order the words">
+    <article class="question example">
+      <div class="question-heading"><span class="number">1.</span><div><strong>Is it raining?</strong><span class="example-label">Example — already complete</span></div></div>
+    </article>
+
+    <article class="question" data-words="running|?|Hannah|why|is" data-answer="why|is|Hannah|running|?" data-correct="Why is Hannah running?">
+      <div class="question-heading"><span class="number">2.</span><strong>Arrange the words:</strong></div>
+      <span class="tray-label">Word tiles — click or drag a word to your question. Click a placed tile to return it.</span>
+      <div class="word-tray" aria-label="Question 2 word tiles"></div>
+      <span class="tray-label">Your question</span>
+      <div class="answer-tray" aria-label="Question 2 answer area" tabindex="0"></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+
+    <article class="question" data-words="your|?|working|dad|today|is" data-answer="is|your|dad|working|today|?" data-correct="Is your dad working today?">
+      <div class="question-heading"><span class="number">3.</span><strong>Arrange the words:</strong></div>
+      <span class="tray-label">Word tiles — click or drag a word to your question. Click a placed tile to return it.</span>
+      <div class="word-tray" aria-label="Question 3 word tiles"></div>
+      <span class="tray-label">Your question</span>
+      <div class="answer-tray" aria-label="Question 3 answer area" tabindex="0"></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+
+    <article class="question" data-words="test|the|?|students|a|doing|are" data-answer="are|the|students|doing|a|test|?" data-correct="Are the students doing a test?">
+      <div class="question-heading"><span class="number">4.</span><strong>Arrange the words:</strong></div>
+      <span class="tray-label">Word tiles — click or drag a word to your question. Click a placed tile to return it.</span>
+      <div class="word-tray" aria-label="Question 4 word tiles"></div>
+      <span class="tray-label">Your question</span>
+      <div class="answer-tray" aria-label="Question 4 answer area" tabindex="0"></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+
+    <article class="question" data-words="on|TV|you|?|watching|what|are" data-answer="what|are|you|watching|on|TV|?" data-correct="What are you watching on TV?">
+      <div class="question-heading"><span class="number">5.</span><strong>Arrange the words:</strong></div>
+      <span class="tray-label">Word tiles — click or drag a word to your question. Click a placed tile to return it.</span>
+      <div class="word-tray" aria-label="Question 5 word tiles"></div>
+      <span class="tray-label">Your question</span>
+      <div class="answer-tray" aria-label="Question 5 answer area" tabindex="0"></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 4</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const questions=[...document.querySelectorAll('.question[data-answer]')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  let draggedTile=null;
+  let checked=false;
+
+  function makeTile(word){
+    const tile=document.createElement('button');tile.type='button';tile.className=`tile${word==='?'?' punctuation':''}`;tile.textContent=word;tile.dataset.word=word;tile.draggable=true;
+    tile.setAttribute('aria-label',word==='?'?'Question mark':word);
+    tile.addEventListener('dragstart',event=>{draggedTile=tile;event.dataTransfer.setData('text/plain',word);event.dataTransfer.effectAllowed='move';});
+    tile.addEventListener('dragend',()=>{draggedTile=null;});
+    tile.addEventListener('click',()=>{
+      const question=tile.closest('.question');
+      if(tile.parentElement.classList.contains('word-tray'))question.querySelector('.answer-tray').appendChild(tile);
+      else question.querySelector('.word-tray').appendChild(tile);
+      refreshCapitalization(question);
+      if(checked)checkAnswers();
+    });
+    return tile;
+  }
+  function refreshCapitalization(question){
+    const tiles=[...question.querySelector('.answer-tray').querySelectorAll('.tile')];
+    tiles.forEach((tile,index)=>{
+      const word=tile.dataset.word;
+      tile.textContent=index===0&&word!=='?'?word.charAt(0).toUpperCase()+word.slice(1):word;
+    });
+  }
+  questions.forEach(question=>{
+    const tray=question.querySelector('.word-tray');
+    const answer=question.querySelector('.answer-tray');
+    [tray,answer].forEach(zone=>{
+      zone.addEventListener('dragover',event=>{event.preventDefault();zone.classList.add('drag-over');});
+      zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
+      zone.addEventListener('drop',event=>{
+        event.preventDefault();zone.classList.remove('drag-over');
+        if(!draggedTile||draggedTile.closest('.question')!==question)return;
+        zone.appendChild(draggedTile);refreshCapitalization(question);if(checked)checkAnswers();
+      });
+    });
+    answer.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){
+        const source=question.querySelector('.word-tray').querySelector('.tile');
+        if(source){event.preventDefault();answer.appendChild(source);refreshCapitalization(question);}
+      }
+    });
+  });
+  function checkAnswers(){
+    checked=true;let points=0;
+    questions.forEach(question=>{
+      const actual=[...question.querySelector('.answer-tray').querySelectorAll('.tile')].map(tile=>tile.dataset.word.toLowerCase());
+      const expected=question.dataset.answer.split('|').map(word=>word.toLowerCase());
+      const correct=actual.length===expected.length&&actual.every((word,index)=>word===expected[index]);
+      question.classList.remove('correct','incorrect');question.classList.add(correct?'correct':'incorrect');
+      question.querySelector('.result').textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${question.dataset.correct}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 4`;
+    feedback.textContent=points===4?'Excellent work! All questions are correct.':'Check the feedback on each question and try again.';
+    feedback.className=`feedback ${points===4?'good':'try'}`;
+  }
+  function reset(){
+    questions.forEach(question=>{
+      const bank=question.querySelector('.word-tray');const answer=question.querySelector('.answer-tray');
+      bank.replaceChildren(...question.dataset.words.split('|').map(makeTile));answer.replaceChildren();
+      question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';
+    });
+    checked=false;score.textContent='Score: 0 / 4';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
