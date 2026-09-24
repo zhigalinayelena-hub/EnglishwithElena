@@ -5,31 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vocabulary — Unit 1</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#eef3f8;color:#1f3552;}
-.container{max-width:1000px;margin:auto;padding:40px 20px;}
-h1{text-align:center;font-size:48px;margin:0 0 10px;}
-.subtitle{text-align:center;color:#666;font-size:22px;margin:0 0 36px;}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
-.card{display:block;background:#fff;border-radius:22px;padding:30px 20px;text-align:center;box-shadow:0 8px 18px rgba(0,0,0,.08);color:inherit;text-decoration:none;transition:transform .2s,box-shadow .2s;}
-.card:hover{transform:translateY(-5px);box-shadow:0 12px 24px rgba(0,0,0,.12);}
-.category{font-size:25px;font-weight:bold;}
-.unit-title{font-size:20px;font-weight:bold;margin:12px 0 30px;}
-.actions{text-align:center;margin-top:32px;}
-.button{display:inline-block;background:#1f3552;color:#fff;text-decoration:none;padding:13px 22px;border-radius:12px;font-weight:bold;}
-.button:hover{background:#31577f;}
-@media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}h1{font-size:40px;}}
-@media(max-width:480px){.grid{grid-template-columns:1fr;}h1{font-size:34px;}.subtitle{font-size:20px;}}
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+body{margin:0}.container{max-width:1000px;margin:auto;padding:48px 24px;text-align:center}
+h1{font-size:clamp(2rem,5vw,3.25rem);margin:0 0 10px}.subtitle{color:#5f6d7a;font-size:1.1rem;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card,.back{display:block;background:#fff;border-radius:22px;padding:26px 20px;text-decoration:none;color:inherit;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
+.card:hover,.back:hover{transform:translateY(-4px);box-shadow:0 12px 25px rgba(0,0,0,.12)}.emoji{font-size:2.8rem;margin-bottom:10px}.title{font-size:1.35rem;font-weight:bold}.detail{margin:9px 0 0;color:#5f6d7a}
+.back{width:max-content;margin:35px auto 0;background:#2869d8;color:#fff;padding:12px 22px;font-weight:bold}
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>Vocabulary</h1>
-  <p class="subtitle">Unit 1 — Who are you?</p>
-  <section class="card" aria-label="Future Vocabulary activities">
-    <div class="category">Vocabulary</div>
-    <p>Activities coming soon.</p>
-  </section>
-  <div class="actions"><a class="button" href="../index.html">Back to Unit</a></div>
+  <h1>📚 Wider World 1 • Unit 1</h1>
+  <p class="subtitle">Vocabulary</p>
+  <main class="grid" aria-label="Vocabulary exercises">
+    <a class="card" href="exercise1.html">
+      <div class="emoji" aria-hidden="true">🧩</div>
+      <div class="title">Exercise 1 — Match photos A–J with words 1–10</div>
+      <p class="detail">Match the classroom objects.</p>
+    </a>
+  </main>
+  <a class="back" href="../index.html">← Back to Unit 1</a>
 </div>
 </body>
 </html>

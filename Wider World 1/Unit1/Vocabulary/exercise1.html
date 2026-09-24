@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 1 — Vocabulary — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1180px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.panel{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:22px}
+h2{font-size:1.35rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:46px;counter-reset:words}
+.word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 14px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}
+.word{counter-increment:words}.word::before{content:counter(words) ". ";color:#4775a6}
+.word:hover{background:#dceeff}.word.selected{outline:3px solid #2869d8;background:#dceeff}.word:focus-visible,.target:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}
+.target{background:#fff;border:2px solid #d9e5f1;border-radius:18px;padding:12px;min-width:0;text-align:center;transition:border-color .15s,background .15s}
+.target.drag-over{border-color:#2869d8;background:#f1f7ff}.picture{height:132px;border-radius:13px;background:#f1f7fc;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.picture svg{width:100%;height:100%;max-width:190px}.label{font-weight:bold;font-size:1.1rem;margin:10px 0 6px}.answer{height:40px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#f4f7fa;color:#738196;font-size:.95rem;font-weight:bold;padding:4px;overflow-wrap:anywhere}
+.target.has-word .answer{background:#eaf3ff;color:#1f3552}.target.correct{border-color:#219653;background:#f0fff5}.target.incorrect{border-color:#d84343;background:#fff4f4}.target .result{min-height:21px;font-size:.9rem;font-weight:bold;margin-top:7px}.target.correct .result{color:#168344}.target.incorrect .result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin:22px 0 0}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:31px;margin-top:16px;font-size:1.15rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:900px){.board{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:540px){.container{padding:25px 14px 36px}.panel{padding:16px}.board{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.picture{height:112px}.word{padding:9px 11px;font-size:.95rem}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 1: Match photos A–J with words 1–10.</h1>
+  <p class="subtitle">Match photos A–J with words 1–10.</p>
+
+  <section class="panel" aria-labelledby="bank-title">
+    <h2 id="bank-title">Word bank</h2>
+    <div class="word-bank" id="wordBank" aria-label="Word bank"></div>
+  </section>
+
+  <section class="board" id="board" aria-label="Picture cards A to J">
+    <article class="target" data-letter="A" data-answer="ruler" tabindex="0" role="button" aria-label="Picture A: ruler">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Yellow ruler with measurement marks"><rect x="18" y="45" width="144" height="42" rx="7" fill="#ffd45c" stroke="#bd8b16" stroke-width="4"/><path d="M34 46v18m16-18v12m16-12v18m16-18v12m16-12v18m16-18v12m16-12v18m16-18v12" stroke="#785b18" stroke-width="3"/><text x="90" y="80" text-anchor="middle" font-size="12" fill="#785b18">cm</text></svg></div>
+      <div class="label">A</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="B" data-answer="poster" tabindex="0" role="button" aria-label="Picture B: poster">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Colorful poster in a frame"><rect x="40" y="10" width="100" height="110" rx="4" fill="#fff" stroke="#77533d" stroke-width="7"/><rect x="49" y="19" width="82" height="92" fill="#c9efff"/><circle cx="90" cy="53" r="18" fill="#ffd45c"/><path d="M55 100l25-27 14 15 14-19 18 31" fill="#43a879"/><text x="90" y="105" text-anchor="middle" font-size="10" font-weight="bold" fill="#244b72">EXPLORE!</text></svg></div>
+      <div class="label">B</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="C" data-answer="rubber" tabindex="0" role="button" aria-label="Picture C: rubber eraser">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Pink and blue rubber eraser"><g transform="rotate(-12 90 65)"><rect x="39" y="43" width="102" height="48" rx="10" fill="#f28ca1" stroke="#bd5268" stroke-width="4"/><path d="M90 44v46" stroke="#fff2f4" stroke-width="5"/><path d="M95 45h35a9 9 0 0 1 9 9v30a9 9 0 0 1-9 9H95z" fill="#79c9e8"/></g></svg></div>
+      <div class="label">C</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="D" data-answer="notebook" tabindex="0" role="button" aria-label="Picture D: notebook">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Blue spiral notebook with lined pages"><rect x="48" y="16" width="88" height="100" rx="7" fill="#4e8fe0" stroke="#285c9f" stroke-width="4"/><rect x="61" y="25" width="66" height="82" rx="3" fill="#fffdf6"/><path d="M70 42h48M70 55h48M70 68h48M70 81h48M70 94h37" stroke="#9db9d2" stroke-width="3"/><path d="M50 27h10m-10 15h10m-10 15h10m-10 15h10m-10 15h10m-10 15h10" stroke="#e8f1fc" stroke-width="4"/></svg></div>
+      <div class="label">D</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="E" data-answer="scissors" tabindex="0" role="button" aria-label="Picture E: scissors">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Red handled scissors"><circle cx="48" cy="85" r="20" fill="none" stroke="#e65151" stroke-width="10"/><circle cx="81" cy="85" r="20" fill="none" stroke="#e65151" stroke-width="10"/><circle cx="64" cy="68" r="7" fill="#465a70"/><path d="M68 63L137 20Q147 14 143 26L72 72M60 63L39 20Q34 12 30 22L58 74" fill="#c7d5e3" stroke="#657a8f" stroke-width="3"/></svg></div>
+      <div class="label">E</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="F" data-answer="pencil case" tabindex="0" role="button" aria-label="Picture F: pencil case">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Green zippered pencil case"><path d="M34 49Q37 37 52 37h76q15 0 18 14l6 31q2 14-13 14H42q-15 0-13-14z" fill="#71c89b" stroke="#33855b" stroke-width="4"/><path d="M39 51h103" stroke="#f7d35f" stroke-width="7"/><path d="M48 44v-8m16 8V24m16 20V18m16 26V23" stroke="#f06d56" stroke-width="6" stroke-linecap="round"/><circle cx="140" cy="50" r="5" fill="#fff" stroke="#33855b" stroke-width="2"/></svg></div>
+      <div class="label">F</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="G" data-answer="stapler" tabindex="0" role="button" aria-label="Picture G: stapler">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Blue desktop stapler"><path d="M39 83Q42 46 75 38l49-9q16-3 19 12l4 18-14 3-7-15-46 9Q62 62 59 86z" fill="#4e8fe0" stroke="#285c9f" stroke-width="4"/><path d="M39 82h112v18H40q-12 0-12-9t11-9z" fill="#d4e3f3" stroke="#657a8f" stroke-width="4"/><path d="M52 68l79-14" stroke="#eaf3fc" stroke-width="4"/><circle cx="143" cy="84" r="5" fill="#f6c94a"/></svg></div>
+      <div class="label">G</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="H" data-answer="calculator" tabindex="0" role="button" aria-label="Picture H: calculator">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Calculator with display and number keys"><rect x="50" y="9" width="80" height="112" rx="12" fill="#43566b" stroke="#293c50" stroke-width="4"/><rect x="62" y="20" width="56" height="23" rx="3" fill="#c9edce"/><text x="112" y="37" text-anchor="end" font-size="16" fill="#315d3d">123</text><g fill="#e8edf2"><rect x="62" y="52" width="16" height="14" rx="3"/><rect x="84" y="52" width="16" height="14" rx="3"/><rect x="106" y="52" width="12" height="14" rx="3"/><rect x="62" y="72" width="16" height="14" rx="3"/><rect x="84" y="72" width="16" height="14" rx="3"/><rect x="106" y="72" width="12" height="14" rx="3"/><rect x="62" y="92" width="16" height="14" rx="3"/><rect x="84" y="92" width="16" height="14" rx="3"/><rect x="106" y="92" width="12" height="14" rx="3"/></g></svg></div>
+      <div class="label">H</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="I" data-answer="sticky notes" tabindex="0" role="button" aria-label="Picture I: sticky notes">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Stack of colorful sticky notes"><path d="M44 38h79v67H44z" fill="#ffd95e" stroke="#c19a27" stroke-width="3"/><path d="M56 27h79v67H56z" fill="#ff9da9" stroke="#c96c7a" stroke-width="3"/><path d="M66 17h79v67H66z" fill="#8bd8b3" stroke="#4caa7d" stroke-width="3"/><path d="M78 32h48M78 43h36M56 49h48M56 60h36M53 59h48M53 70h36" stroke="#fff" stroke-width="3" opacity=".8"/></svg></div>
+      <div class="label">I</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+    <article class="target" data-letter="J" data-answer="sports bag" tabindex="0" role="button" aria-label="Picture J: sports bag">
+      <div class="picture"><svg viewBox="0 0 180 130" role="img" aria-label="Red and blue sports duffel bag"><path d="M37 54Q40 42 54 42h72q14 0 17 13l7 39q2 12-12 12H43q-13 0-11-13z" fill="#e96d5d" stroke="#a8433b" stroke-width="4"/><path d="M68 43q2-25 23-25t23 25" fill="none" stroke="#344e6d" stroke-width="9"/><path d="M43 70h99v13H43z" fill="#4e8fe0"/><path d="M56 97h68" stroke="#fff0d1" stroke-width="4"/><circle cx="50" cy="58" r="4" fill="#ffd45c"/><circle cx="136" cy="58" r="4" fill="#ffd45c"/></svg></div>
+      <div class="label">J</div><div class="answer" aria-live="polite">Drop a word here</div><div class="result" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0/10</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const words = ['ruler','poster','sticky notes','scissors','pencil case','stapler','rubber','notebook','sports bag','calculator'];
+  const bank = document.getElementById('wordBank');
+  const targets = [...document.querySelectorAll('.target')];
+  const score = document.getElementById('score');
+  const feedback = document.getElementById('feedback');
+  let selectedWord = null;
+  let checked = false;
+
+  function clearSelection(){
+    selectedWord = null;
+    document.querySelectorAll('.word.selected').forEach(word => word.classList.remove('selected'));
+  }
+  function makeWord(word){
+    const chip = document.createElement('div');
+    chip.className = 'word'; chip.textContent = word; chip.draggable = true;
+    chip.tabIndex = 0; chip.setAttribute('role','button'); chip.setAttribute('aria-label',`Select ${word}`);
+    chip.addEventListener('dragstart', event => {
+      event.dataTransfer.setData('text/plain', word);
+      event.dataTransfer.effectAllowed = 'move';
+      selectChip(chip);
+    });
+    chip.addEventListener('click', () => selectChip(chip));
+    chip.addEventListener('keydown', event => {
+      if(event.key === 'Enter' || event.key === ' '){event.preventDefault();selectChip(chip);}
+    });
+    return chip;
+  }
+  function selectChip(chip){
+    document.querySelectorAll('.word.selected').forEach(item => item.classList.remove('selected'));
+    chip.classList.add('selected'); selectedWord = chip;
+  }
+  function placeWord(target, word){
+    if(!words.includes(word)) return;
+    const existing = target.dataset.word;
+    if(existing && existing !== word) bank.appendChild(makeWord(existing));
+    const source = [...bank.querySelectorAll('.word')].find(chip => chip.textContent === word);
+    if(source) source.remove();
+    target.dataset.word = word;
+    target.querySelector('.answer').textContent = word;
+    target.classList.add('has-word');
+    target.classList.remove('correct','incorrect');
+    target.querySelector('.result').textContent = '';
+    clearSelection();
+    if(checked) checkAnswers();
+  }
+  function targetClick(target){
+    if(selectedWord){placeWord(target, selectedWord.textContent);return;}
+    if(target.dataset.word){bank.appendChild(makeWord(target.dataset.word));delete target.dataset.word;target.querySelector('.answer').textContent='Drop a word here';target.classList.remove('has-word','correct','incorrect');target.querySelector('.result').textContent='';if(checked)checkAnswers();}
+  }
+  targets.forEach(target => {
+    target.addEventListener('dragover', event => {event.preventDefault();target.classList.add('drag-over');});
+    target.addEventListener('dragleave', () => target.classList.remove('drag-over'));
+    target.addEventListener('drop', event => {event.preventDefault();target.classList.remove('drag-over');placeWord(target,event.dataTransfer.getData('text/plain'));});
+    target.addEventListener('click', () => targetClick(target));
+    target.addEventListener('keydown', event => {if(event.key==='Enter'||event.key===' '){event.preventDefault();targetClick(target);}});
+  });
+  function checkAnswers(){
+    checked = true;
+    let points = 0;
+    targets.forEach(target => {
+      const answer = target.dataset.answer;
+      const given = target.dataset.word;
+      const result = target.querySelector('.result');
+      target.classList.remove('correct','incorrect');
+      if(given === answer){points++;target.classList.add('correct');result.textContent='✅ Correct!';}
+      else{target.classList.add('incorrect');result.textContent=`❌ Try again. Correct answer: ${answer}.`;}
+    });
+    score.textContent = `Score: ${points}/10`;
+    feedback.textContent = points === 10 ? 'Excellent work! All matches are correct.' : 'Check the feedback on each picture and try again.';
+    feedback.className = `feedback ${points === 10 ? 'good' : 'try'}`;
+  }
+  function reset(){
+    bank.replaceChildren(...words.map(makeWord));
+    targets.forEach(target => {delete target.dataset.word;target.querySelector('.answer').textContent='Drop a word here';target.querySelector('.result').textContent='';target.classList.remove('has-word','correct','incorrect','drag-over');});
+    clearSelection();checked=false;score.textContent='Score: 0/10';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
