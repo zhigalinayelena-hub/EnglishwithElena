@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 2 — Grammar — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+.sentences{display:grid;gap:12px}.sentence{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:12px;background:#fff;border:2px solid #e1eaf3;border-radius:15px;padding:15px;font-size:1.08rem;line-height:1.65;transition:border-color .15s,background .15s}.sentence.example{background:#f1f7fc;border-color:#d9e5f1}.number{font-weight:bold;font-size:1.05rem;align-self:start;padding-top:3px}.sentence-body{min-width:0}.example-label{display:block;color:#4775a6;font-size:.88rem;font-weight:bold;line-height:1.3;margin-top:4px}
+.answer-input{display:inline-block;width:190px;max-width:100%;min-height:36px;border:0;border-bottom:3px dashed #89a5c1;border-radius:0;background:transparent;color:#1f3552;font:inherit;font-weight:bold;padding:1px 7px;line-height:1.3}.answer-input:focus{outline:2px solid #9ec9f4;background:#f3f9ff;border-radius:6px}.answer-input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.sentence.correct{border-color:#219653;background:#f0fff5}.sentence.incorrect{border-color:#d84343;background:#fff4f4}.result{display:block;min-height:21px;margin-top:4px;font-size:.9rem;font-weight:bold;line-height:1.4}.sentence.correct .result{color:#168344}.sentence.incorrect .result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:600px){.container{padding:25px 14px 36px}.card{padding:16px}.sentence{font-size:1rem;padding:12px 10px;gap:8px}.answer-input{width:150px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 2 — Write the short forms</h1>
+  <p class="subtitle">Write the short forms.</p>
+
+  <section class="card sentences" aria-label="Write the short forms">
+    <div class="sentence example">
+      <span class="number">1.</span>
+      <div class="sentence-body">They are = They're<span class="example-label">Example — already complete</span></div>
+    </div>
+    <div class="sentence" data-answer="you're" data-correct-answer="You're">
+      <span class="number">2.</span><div class="sentence-body">You are = <input class="answer-input" type="text" aria-label="Type the short form for You are" autocomplete="off" autocapitalize="none" spellcheck="false"><span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="he's" data-correct-answer="He's">
+      <span class="number">3.</span><div class="sentence-body">He is = <input class="answer-input" type="text" aria-label="Type the short form for He is" autocomplete="off" autocapitalize="none" spellcheck="false"><span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="we're" data-correct-answer="We're">
+      <span class="number">4.</span><div class="sentence-body">We are = <input class="answer-input" type="text" aria-label="Type the short form for We are" autocomplete="off" autocapitalize="none" spellcheck="false"><span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="it's" data-correct-answer="It's">
+      <span class="number">5.</span><div class="sentence-body">It is = <input class="answer-input" type="text" aria-label="Type the short form for It is" autocomplete="off" autocapitalize="none" spellcheck="false"><span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="she's" data-correct-answer="She's">
+      <span class="number">6.</span><div class="sentence-body">She is = <input class="answer-input" type="text" aria-label="Type the short form for She is" autocomplete="off" autocapitalize="none" spellcheck="false"><span class="result" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 5</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const sentences=[...document.querySelectorAll('.sentence[data-answer]')];
+  const inputs=[...document.querySelectorAll('.answer-input')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  let checked=false;
+  function checkAnswers(){
+    checked=true;let points=0;
+    sentences.forEach(sentence=>{
+      const input=sentence.querySelector('.answer-input');
+      const correct=input.value.trim().toLowerCase()===sentence.dataset.answer.toLowerCase();
+      sentence.classList.remove('correct','incorrect');sentence.classList.add(correct?'correct':'incorrect');
+      sentence.querySelector('.result').textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${sentence.dataset.correctAnswer}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 5`;
+    feedback.textContent=points===5?'Excellent work! All answers are correct.':'Check the feedback on each question and try again.';
+    feedback.className=`feedback ${points===5?'good':'try'}`;
+  }
+  function reset(){
+    inputs.forEach(input=>{input.value='';});
+    sentences.forEach(sentence=>{sentence.classList.remove('correct','incorrect');sentence.querySelector('.result').textContent='';});
+    checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';
+  }
+  inputs.forEach(input=>input.addEventListener('input',()=>{if(checked)checkAnswers();}));
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
