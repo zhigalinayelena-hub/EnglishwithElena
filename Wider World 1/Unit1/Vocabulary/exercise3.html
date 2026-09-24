@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 3 — Vocabulary — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+h2{font-size:1.3rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:45px}
+.word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 16px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}
+.word:hover{background:#dceeff}.word.selected{outline:3px solid #2869d8;background:#dceeff}.word:focus-visible,.item:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.sentences{display:grid;gap:13px}.sentence{display:flex;align-items:flex-start;gap:11px;background:#fff;border:2px solid #e1eaf3;border-radius:13px;padding:15px;font-size:1.08rem;line-height:1.65}.number{font-weight:bold;flex:0 0 26px}.sentence-text{flex:1}.example{background:#f1f7fc;border-color:#d9e5f1}.example-label{display:block;color:#4775a6;font-size:.88rem;font-weight:bold;line-height:1.3;margin-top:4px}
+.item{display:inline-flex;vertical-align:baseline;align-items:center;justify-content:center;min-width:112px;min-height:33px;padding:1px 7px;border-bottom:3px dashed #89a5c1;color:#2869d8;font-weight:bold;cursor:pointer;line-height:1.3}.item.has-word{border-bottom-style:solid;background:#edf6ff;border-radius:7px 7px 0 0}.item.drag-over{background:#e3f0ff;border-bottom-color:#2869d8}.item.correct{border-bottom-color:#219653;background:#f0fff5}.item.incorrect{border-bottom-color:#d84343;background:#fff4f4}.result{display:block;min-height:21px;margin-top:5px;font-size:.9rem;font-weight:bold;line-height:1.4}.result.good{color:#168344}.result.try{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:600px){.container{padding:25px 14px 36px}.card{padding:16px}.sentence{font-size:1rem;padding:12px 10px;gap:7px}.item{min-width:90px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 3: Complete the sentences with words from Exercises 1 and 2.</h1>
+  <p class="subtitle">Complete the sentences with words from Exercises 1 and 2.</p>
+
+  <section class="card" aria-labelledby="word-bank-title">
+    <h2 id="word-bank-title">Word bank</h2>
+    <div class="word-bank" id="wordBank" aria-label="Word bank"></div>
+  </section>
+
+  <section class="card sentences" aria-label="Complete the sentences">
+    <div class="sentence example">
+      <span class="number">1.</span>
+      <div class="sentence-text">Can we use a calculator in our Maths test?<span class="example-label">Example — already complete</span></div>
+    </div>
+    <div class="sentence">
+      <span class="number">2.</span>
+      <div class="sentence-text">Write in pencil. Then you can use a <span class="item" data-answer="rubber" data-result="result-2" tabindex="0" role="button" aria-label="Blank for sentence 2">______</span> if you want to change something.<span class="result" id="result-2" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence">
+      <span class="number">3.</span>
+      <div class="sentence-text">I've got a T-shirt and trainers in my <span class="item" data-answer="sports bag" data-result="result-3" tabindex="0" role="button" aria-label="Blank for sentence 3">______</span>.<span class="result" id="result-3" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence">
+      <span class="number">4.</span>
+      <div class="sentence-text">Don't write in the <span class="item" data-answer="textbook" data-result="result-4a" tabindex="0" role="button" aria-label="First blank for sentence 4">______</span>!<span class="result" id="result-4a" aria-live="polite"></span> Copy the questions into your <span class="item" data-answer="notebook" data-result="result-4b" tabindex="0" role="button" aria-label="Second blank for sentence 4">______</span>.<span class="result" id="result-4b" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0/4</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const words = ['rubber','sports bag','textbook','notebook'];
+  const bank = document.getElementById('wordBank');
+  const blanks = [...document.querySelectorAll('.item')];
+  const score = document.getElementById('score');
+  const feedback = document.getElementById('feedback');
+  let selectedWord = null;
+  let checked = false;
+
+  function clearSelection(){selectedWord=null;document.querySelectorAll('.word.selected').forEach(word=>word.classList.remove('selected'));}
+  function makeWord(word){
+    const chip=document.createElement('div');chip.className='word';chip.textContent=word;chip.draggable=true;chip.tabIndex=0;chip.setAttribute('role','button');chip.setAttribute('aria-label',`Select ${word}`);
+    chip.addEventListener('dragstart',event=>{event.dataTransfer.setData('text/plain',word);event.dataTransfer.effectAllowed='move';selectChip(chip);});
+    chip.addEventListener('click',()=>selectChip(chip));
+    chip.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();selectChip(chip);}});
+    return chip;
+  }
+  function selectChip(chip){document.querySelectorAll('.word.selected').forEach(item=>item.classList.remove('selected'));chip.classList.add('selected');selectedWord=chip;}
+  function clearBlank(blank){
+    const word=blank.dataset.word;if(!word)return;
+    bank.appendChild(makeWord(word));delete blank.dataset.word;blank.textContent='______';blank.classList.remove('has-word','drag-over');
+    const result=document.getElementById(blank.dataset.result);result.textContent='';result.className='result';blank.classList.remove('correct','incorrect');
+  }
+  function placeWord(blank,word){
+    if(!words.includes(word))return;
+    if(blank.dataset.word===word)return;
+    if(blank.dataset.word)clearBlank(blank);
+    const source=[...bank.querySelectorAll('.word')].find(chip=>chip.textContent===word);if(!source)return;
+    source.remove();blank.dataset.word=word;blank.textContent=word;blank.classList.add('has-word');clearSelection();
+    if(checked)checkAnswers();
+  }
+  blanks.forEach(blank=>{
+    blank.addEventListener('dragover',event=>{event.preventDefault();blank.classList.add('drag-over');});
+    blank.addEventListener('dragleave',()=>blank.classList.remove('drag-over'));
+    blank.addEventListener('drop',event=>{event.preventDefault();blank.classList.remove('drag-over');placeWord(blank,event.dataTransfer.getData('text/plain'));});
+    blank.addEventListener('click',()=>{if(selectedWord)placeWord(blank,selectedWord.textContent);else if(blank.dataset.word){clearBlank(blank);if(checked)checkAnswers();}});
+    blank.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();if(selectedWord)placeWord(blank,selectedWord.textContent);else if(blank.dataset.word){clearBlank(blank);if(checked)checkAnswers();}}});
+  });
+  function checkAnswers(){
+    checked=true;let points=0;
+    blanks.forEach(blank=>{
+      const correct=blank.dataset.word===blank.dataset.answer;const result=document.getElementById(blank.dataset.result);
+      blank.classList.remove('correct','incorrect');blank.classList.add(correct?'correct':'incorrect');
+      result.className=`result ${correct?'good':'try'}`;
+      result.textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${blank.dataset.answer}.`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points}/4`;
+    feedback.textContent=points===4?'Excellent work! All answers are correct.':'Check the feedback on each sentence and try again.';
+    feedback.className=`feedback ${points===4?'good':'try'}`;
+  }
+  function reset(){
+    bank.replaceChildren(...words.map(makeWord));
+    blanks.forEach(blank=>{delete blank.dataset.word;blank.textContent='______';blank.classList.remove('has-word','drag-over');});
+    blanks.forEach(blank=>{const result=document.getElementById(blank.dataset.result);result.textContent='';result.className='result';blank.classList.remove('correct','incorrect');});
+    clearSelection();checked=false;score.textContent='Score: 0/4';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
