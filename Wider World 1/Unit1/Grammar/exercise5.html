@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 5 — Grammar — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+h2{font-size:1.3rem;margin:0 0 15px}.answer-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:48px}.answer-option{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 14px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none;text-align:left}.answer-option:hover{background:#dceeff}.answer-option.selected{outline:3px solid #2869d8;background:#dceeff}.answer-option:focus-visible,.match-slot:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.questions{display:grid;gap:13px}.question{background:#fff;border:2px solid #e1eaf3;border-radius:15px;padding:15px;transition:border-color .15s,background .15s}.question.correct{border-color:#219653;background:#f0fff5}.question.incorrect{border-color:#d84343;background:#fff4f4}.question-row{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start}.number{font-weight:bold;font-size:1.05rem}.prompt{font-size:1.08rem;font-weight:bold;line-height:1.55}.match-slot{min-height:48px;margin:12px 0 0 42px;padding:8px 10px;border:2px dashed #b9cde0;border-radius:12px;background:#fbfdff;display:flex;align-items:center;flex-wrap:wrap;gap:8px;cursor:pointer;color:#738196}.match-slot.has-answer{border-style:solid;color:#1f3552;background:#f4f9ff}.match-slot.drag-over{background:#eaf4ff;border-color:#2869d8}.match-slot .answer-option{cursor:pointer}.slot-hint{font-size:.92rem}.result{min-height:21px;margin:7px 0 0 42px;font-size:.92rem;font-weight:bold;line-height:1.4}.question.correct .result{color:#168344}.question.incorrect .result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:600px){.container{padding:25px 14px 36px}.card{padding:16px}.question{padding:12px}.answer-option{padding:8px 10px;font-size:.95rem}.match-slot{margin-left:0}.result{margin-left:0}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 5 — Match the questions in Exercise 4 with answers a–e.</h1>
+  <p class="subtitle">Match the questions in Exercise 4 with answers a–e.</p>
+
+  <section class="card" aria-labelledby="answer-bank-title">
+    <h2 id="answer-bank-title">Answers</h2>
+    <div class="answer-bank" id="answerBank" aria-label="Answer choices"></div>
+  </section>
+
+  <section class="card questions" aria-label="Match each question with an answer">
+    <article class="question" data-answer="b">
+      <div class="question-row"><span class="number">1.</span><div class="prompt">Is it raining?</div></div>
+      <div class="match-slot" tabindex="0" role="button" aria-label="Choose an answer for question 1"><span class="slot-hint">Click an answer above, or drop it here</span></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+    <article class="question" data-answer="a">
+      <div class="question-row"><span class="number">2.</span><div class="prompt">Why is Hannah running?</div></div>
+      <div class="match-slot" tabindex="0" role="button" aria-label="Choose an answer for question 2"><span class="slot-hint">Click an answer above, or drop it here</span></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+    <article class="question" data-answer="e">
+      <div class="question-row"><span class="number">3.</span><div class="prompt">Is your dad working today?</div></div>
+      <div class="match-slot" tabindex="0" role="button" aria-label="Choose an answer for question 3"><span class="slot-hint">Click an answer above, or drop it here</span></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+    <article class="question" data-answer="c">
+      <div class="question-row"><span class="number">4.</span><div class="prompt">Are the students doing a test?</div></div>
+      <div class="match-slot" tabindex="0" role="button" aria-label="Choose an answer for question 4"><span class="slot-hint">Click an answer above, or drop it here</span></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+    <article class="question" data-answer="d">
+      <div class="question-row"><span class="number">5.</span><div class="prompt">What are you watching on TV?</div></div>
+      <div class="match-slot" tabindex="0" role="button" aria-label="Choose an answer for question 5"><span class="slot-hint">Click an answer above, or drop it here</span></div>
+      <div class="result" aria-live="polite"></div>
+    </article>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 5</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const answers=[
+    {id:'a',text:"Because she's late."},
+    {id:'b',text:"No, it isn't."},
+    {id:'c',text:'Yes, they are.'},
+    {id:'d',text:'A new film.'},
+    {id:'e',text:'Yes, he is.'}
+  ];
+  const bank=document.getElementById('answerBank');
+  const questions=[...document.querySelectorAll('.question[data-answer]')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  let selected=null;
+  let dragged=null;
+  let checked=false;
+
+  function clearSelection(){selected=null;document.querySelectorAll('.answer-option.selected').forEach(option=>option.classList.remove('selected'));}
+  function makeOption(answer){
+    const option=document.createElement('div');option.className='answer-option';option.textContent=`${answer.id}. ${answer.text}`;option.dataset.id=answer.id;option.draggable=true;option.tabIndex=0;option.setAttribute('role','button');option.setAttribute('aria-label',`Answer ${answer.id}: ${answer.text}`);
+    option.addEventListener('click',event=>{
+      event.stopPropagation();
+      if(option.parentElement.classList.contains('match-slot')){returnToBank(option);return;}
+      clearSelection();selected=option;option.classList.add('selected');
+    });
+    option.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();option.click();}});
+    option.addEventListener('dragstart',event=>{dragged=option;event.dataTransfer.setData('text/plain',answer.id);event.dataTransfer.effectAllowed='move';});
+    option.addEventListener('dragend',()=>{dragged=null;});
+    return option;
+  }
+  function returnToBank(option){
+    const question=option.closest('.question');
+    if(question){
+      const slot=question.querySelector('.match-slot');
+      let hint=slot.querySelector('.slot-hint');
+      if(!hint){hint=document.createElement('span');hint.className='slot-hint';slot.appendChild(hint);}
+      hint.textContent='Click an answer above, or drop it here';
+      slot.classList.remove('has-answer');question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';
+    }
+    bank.appendChild(option);clearSelection();if(checked)checkAnswers();
+  }
+  function assign(question,option){
+    if(!question||!option)return;
+    const slot=question.querySelector('.match-slot');
+    if(option.parentElement===slot)return;
+    const sourceQuestion=option.closest('.question');
+    if(sourceQuestion){
+      const sourceSlot=sourceQuestion.querySelector('.match-slot');
+      let sourceHint=sourceSlot.querySelector('.slot-hint');
+      if(!sourceHint){sourceHint=document.createElement('span');sourceHint.className='slot-hint';sourceSlot.appendChild(sourceHint);}
+      sourceHint.textContent='Click an answer above, or drop it here';
+      sourceSlot.classList.remove('has-answer');sourceQuestion.classList.remove('correct','incorrect');sourceQuestion.querySelector('.result').textContent='';
+    }
+    const previous=slot.querySelector('.answer-option');
+    if(previous)bank.appendChild(previous);
+    slot.querySelector('.slot-hint')?.remove();slot.appendChild(option);slot.classList.add('has-answer');
+    question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';clearSelection();
+    if(checked)checkAnswers();
+  }
+  bank.replaceChildren(...answers.map(makeOption));
+  questions.forEach(question=>{
+    const slot=question.querySelector('.match-slot');
+    slot.addEventListener('click',()=>{if(selected)assign(question,selected);});
+    slot.addEventListener('keydown',event=>{if((event.key==='Enter'||event.key===' ')&&selected){event.preventDefault();assign(question,selected);}});
+    slot.addEventListener('dragover',event=>{event.preventDefault();slot.classList.add('drag-over');});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('drag-over'));
+    slot.addEventListener('drop',event=>{
+      event.preventDefault();slot.classList.remove('drag-over');
+      const id=event.dataTransfer.getData('text/plain');
+      const option=dragged||[...document.querySelectorAll('.answer-option')].find(item=>item.dataset.id===id);
+      assign(question,option);
+    });
+  });
+  bank.addEventListener('dragover',event=>event.preventDefault());
+  bank.addEventListener('drop',event=>{
+    event.preventDefault();
+    const id=event.dataTransfer.getData('text/plain');
+    const option=dragged||[...document.querySelectorAll('.answer-option')].find(item=>item.dataset.id===id);
+    if(option&&option.parentElement.classList.contains('match-slot'))returnToBank(option);
+  });
+  function checkAnswers(){
+    checked=true;let points=0;
+    questions.forEach(question=>{
+      const option=question.querySelector('.match-slot .answer-option');
+      const correct=option?.dataset.id===question.dataset.answer;
+      question.classList.remove('correct','incorrect');question.classList.add(correct?'correct':'incorrect');
+      const answer=answers.find(item=>item.id===question.dataset.answer);
+      question.querySelector('.result').textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${answer.id}. ${answer.text}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 5`;
+    feedback.textContent=points===5?'Excellent work! All matches are correct.':'Check the feedback for each question and try again.';
+    feedback.className=`feedback ${points===5?'good':'try'}`;
+  }
+  function reset(){
+    questions.forEach(question=>{
+      const slot=question.querySelector('.match-slot');slot.replaceChildren();slot.classList.remove('has-answer','drag-over');
+      const hint=document.createElement('span');hint.className='slot-hint';hint.textContent='Click an answer above, or drop it here';slot.appendChild(hint);
+      question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';
+    });
+    bank.replaceChildren(...answers.map(makeOption));clearSelection();checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';
+    dragged=null;
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
