@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 1 — Grammar — Wider World 1 Unit 1</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1100px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+h2{font-size:1.3rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:45px}
+.word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 16px;font-weight:bold;font-size:1rem;cursor:default;touch-action:manipulation;user-select:none}
+.word:hover{background:#dceeff}.word.selected{outline:3px solid #2869d8;background:#dceeff}.answer-input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.sentences{display:grid;gap:12px}.sentence{display:grid;grid-template-columns:128px 30px 1fr;align-items:center;gap:12px;background:#fff;border:2px solid #e1eaf3;border-radius:15px;padding:11px 14px;transition:border-color .15s,background .15s}.sentence.example{background:#f1f7fc;border-color:#d9e5f1}
+.illustration{height:88px;border-radius:11px;background:#f1f7fc;display:flex;align-items:center;justify-content:center;overflow:hidden}.illustration svg{width:100%;height:100%}.number{font-weight:bold;font-size:1.05rem;align-self:start;padding-top:9px}.sentence-body{font-size:1.08rem;line-height:1.6;min-width:0}.example-label{display:block;color:#4775a6;font-size:.88rem;font-weight:bold;line-height:1.3;margin-top:4px}
+.answer-input{display:inline-block;width:210px;max-width:100%;min-height:34px;border:0;border-bottom:3px dashed #89a5c1;border-radius:0;background:transparent;color:#1f3552;font:inherit;font-weight:bold;padding:1px 7px;line-height:1.3}.answer-input:focus{outline:2px solid #9ec9f4;background:#f3f9ff;border-radius:6px}.sentence.correct{border-color:#219653;background:#f0fff5}.sentence.incorrect{border-color:#d84343;background:#fff4f4}.result{display:block;min-height:21px;margin-top:4px;font-size:.9rem;font-weight:bold;line-height:1.4}.sentence.correct .result{color:#168344}.sentence.incorrect .result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:16px}.sentence{grid-template-columns:96px 26px 1fr;gap:8px;padding:10px}.illustration{height:74px}.sentence-body{font-size:1rem}.answer-input{width:180px}}
+@media(max-width:430px){.sentence{grid-template-columns:75px 22px 1fr;gap:6px;padding:8px}.illustration{height:64px}.answer-input{width:145px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 1: Look at the pictures and complete the sentences.</h1>
+  <p class="subtitle">Look at the pictures and complete the sentences with the Present Continuous of these verbs. Use full forms.</p>
+
+  <section class="card" aria-labelledby="word-bank-title">
+    <h2 id="word-bank-title">Word bank</h2>
+    <div class="word-bank" id="wordBank" aria-label="Word bank"><div class="word">cry</div><div class="word">laugh</div><div class="word">listen to music</div><div class="word">walk</div><div class="word">write</div></div>
+  </section>
+
+  <section class="card sentences" aria-label="Present Continuous sentences">
+    <div class="sentence example">
+      <div class="illustration"><svg viewBox="0 0 150 96" role="img" aria-label="A group of students reading books together"><rect x="12" y="66" width="126" height="8" rx="3" fill="#a57445"/><circle cx="43" cy="28" r="12" fill="#edbd94"/><circle cx="76" cy="25" r="12" fill="#f1c9a4"/><circle cx="108" cy="29" r="12" fill="#d99e78"/><path d="M29 45q14-12 28 0l5 22H24zm33-4q14-12 28 0l5 26H58zm33 4q14-12 28 0l5 22H91z" fill="#65a6df"/><path d="M38 49h23v16H38zm34-2h24v17H72zm32 2h22v16h-22z" fill="#fff3c9" stroke="#c28d48" stroke-width="2"/><path d="M49 51v12m35-12v13m33-12v12" stroke="#d59a51" stroke-width="2"/></svg></div>
+      <span class="number">1.</span><div class="sentence-body">They are reading.<span class="example-label">Example — already complete</span></div>
+    </div>
+    <div class="sentence" data-answer="am crying" data-correct-sentence="I am crying.">
+      <div class="illustration"><svg viewBox="0 0 150 96" role="img" aria-label="A girl crying"><circle cx="75" cy="35" r="23" fill="#edc19f"/><path d="M52 33q0-27 25-27 22 1 24 25l-10-8-8 4-13-6-10 8z" fill="#6b4635"/><path d="M62 35l7 3m19-3-7 3" stroke="#354b61" stroke-width="3" stroke-linecap="round"/><path d="M69 50q7-7 14 0" fill="none" stroke="#a34e55" stroke-width="3"/><path d="M59 39q-6 8 0 13m32-13q6 8 0 13" fill="none" stroke="#66bce5" stroke-width="4" stroke-linecap="round"/><path d="M45 67q30-19 60 0l8 23H37z" fill="#ec7b86"/><path d="M66 68v14m18-14v14" stroke="#d84e60" stroke-width="3"/></svg></div>
+      <span class="number">2.</span><div class="sentence-body">I <input class="answer-input" type="text" aria-label="Type the complete Present Continuous answer for sentence 2" autocomplete="off" autocapitalize="none" spellcheck="false">.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="are laughing" data-correct-sentence="We are laughing.">
+      <div class="illustration"><svg viewBox="0 0 150 96" role="img" aria-label="Two children laughing together with open smiling mouths">
+  <path d="M18 25q-10-8-8-17m130 17q10-8 8-17" fill="none" stroke="#f3bd45" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="35" r="23" fill="#efc39e"/><circle cx="102" cy="35" r="23" fill="#dba17b"/>
+  <path d="M25 29q0-25 23-25 21 1 24 23L60 18l-12 6-13-5zM78 27q2-23 24-23 21 2 23 24L111 17l-12 7-12-4z" fill="#624538"/>
+  <path d="M37 32q5 5 10 0m12 0q5 5 10 0m19-1q5 5 10 0m12 0q5 5 10 0" fill="none" stroke="#354b61" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M39 43q9 17 19 0zM92 43q9 17 19 0z" fill="#8f3545" stroke="#a34e55" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M42 45q6 4 12 0m43 0q6 4 12 0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M25 70q23-17 46 0l5 24H20zm53 0q23-17 46 0l5 24H73z" fill="#65a6df"/>
+  <path d="M48 65v7m54-7v7" stroke="#f5d35f" stroke-width="4" stroke-linecap="round"/>
+</svg></div>
+      <span class="number">3.</span><div class="sentence-body">We <input class="answer-input" type="text" aria-label="Type the complete Present Continuous answer for sentence 3" autocomplete="off" autocapitalize="none" spellcheck="false">.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="is walking" data-correct-sentence="He is walking.">
+      <div class="illustration"><svg viewBox="0 0 150 96" role="img" aria-label="A boy walking"><path d="M12 82h126" stroke="#8ab278" stroke-width="5"/><circle cx="76" cy="18" r="12" fill="#edbd94"/><path d="M64 16q2-14 15-13 10 0 12 13l-9-5-8 3-8-3z" fill="#513d32"/><path d="M66 34q10-8 20 0l7 27H59z" fill="#5b9fda"/><path d="M63 39l-14 17m35-17 17 11" stroke="#edbd94" stroke-width="7" stroke-linecap="round"/><path d="M69 61l-12 18-14 2m41-20 10 15 17 5" fill="none" stroke="#304965" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 84h18m59 0h16" stroke="#e7e9ed" stroke-width="5" stroke-linecap="round"/></svg></div>
+      <span class="number">4.</span><div class="sentence-body">He <input class="answer-input" type="text" aria-label="Type the complete Present Continuous answer for sentence 4" autocomplete="off" autocapitalize="none" spellcheck="false">.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="is writing" data-correct-sentence="She is writing.">
+      <div class="illustration"><svg viewBox="0 0 150 96" role="img" aria-label="A teacher writing on a board"><rect x="12" y="9" width="126" height="55" rx="3" fill="#6f9c76" stroke="#456d50" stroke-width="4"/><path d="M28 25h38m-38 12h64m-64 12h45" stroke="#fffde9" stroke-width="3" stroke-linecap="round"/><circle cx="102" cy="28" r="10" fill="#edbd94"/><path d="M92 26q1-13 12-13 10 1 10 13l-7-6-7 4z" fill="#74513d"/><path d="M98 40q8-6 16 0l8 36H91z" fill="#b96d9b"/><path d="M98 46L79 36" stroke="#edbd94" stroke-width="6" stroke-linecap="round"/><path d="M77 36l-10-8" stroke="#f5d35f" stroke-width="4" stroke-linecap="round"/><path d="M100 76l-4 14m17-14 4 14" stroke="#304965" stroke-width="6"/></svg></div>
+      <span class="number">5.</span><div class="sentence-body">She <input class="answer-input" type="text" aria-label="Type the complete Present Continuous answer for sentence 5" autocomplete="off" autocapitalize="none" spellcheck="false">.<span class="result" aria-live="polite"></span></div>
+    </div>
+    <div class="sentence" data-answer="are listening to music" data-correct-sentence="You are listening to music.">
+      <div class="illustration"><svg viewBox="0 0 150 96" role="img" aria-label="A boy listening to music with headphones"><circle cx="73" cy="39" r="23" fill="#edbd94"/><path d="M51 35q0-25 23-26 20 1 22 26l-10-9-10 3-10-4-9 9z" fill="#513d32"/><path d="M48 42v-8q1-24 25-25 24 1 25 25v10" fill="none" stroke="#344e6d" stroke-width="6"/><rect x="44" y="38" width="10" height="20" rx="4" fill="#4e8fe0"/><rect x="95" y="38" width="10" height="20" rx="4" fill="#4e8fe0"/><path d="M65 44h5m13 0h5" stroke="#354b61" stroke-width="2.5" stroke-linecap="round"/><path d="M68 55q6 5 12 0" fill="none" stroke="#a34e55" stroke-width="2.5"/><path d="M43 77q30-20 60 0l7 15H36z" fill="#70bd9c"/><path d="M115 22q12 8 0 16m8-23q19 14 0 29" fill="none" stroke="#4e8fe0" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <span class="number">6.</span><div class="sentence-body">You <input class="answer-input" type="text" aria-label="Type the complete Present Continuous answer for sentence 6" autocomplete="off" autocapitalize="none" spellcheck="false">.<span class="result" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 5</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const inputs=[...document.querySelectorAll('.answer-input')];
+  const sentences=[...document.querySelectorAll('.sentence[data-answer]')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  let checked=false;
+
+  function checkAnswers(){
+    checked=true;let points=0;
+    sentences.forEach(sentence=>{
+      const input=sentence.querySelector('.answer-input');
+      const correct=input.value.trim().toLowerCase()===sentence.dataset.answer.toLowerCase();
+      sentence.classList.remove('correct','incorrect');
+      sentence.classList.add(correct?'correct':'incorrect');
+      sentence.querySelector('.result').textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${sentence.dataset.correctSentence}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 5`;
+    feedback.textContent=points===5?'Excellent work! All answers are correct.':'Check the feedback on each sentence and try again.';
+    feedback.className=`feedback ${points===5?'good':'try'}`;
+  }
+  function reset(){
+    inputs.forEach(input=>{input.value='';});
+    sentences.forEach(sentence=>{sentence.classList.remove('correct','incorrect');sentence.querySelector('.result').textContent='';});
+    checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';
+  }
+  inputs.forEach(input=>input.addEventListener('input',()=>{if(checked)checkAnswers();}));
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
