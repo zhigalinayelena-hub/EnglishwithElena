@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 9 — Vocabulary — Wider World 1 Unit 4</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:25px 30px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}.bank-title{font-size:1.2rem;margin:0 0 14px;color:#285887}.word-bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;min-height:46px}.word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 15px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}.word:hover,.word.selected{background:#dceeff}.word.selected{outline:3px solid #2869d8}.email{max-width:760px;margin:auto;font-size:1.08rem;line-height:1.9}.greeting,.signoff{margin:0 0 16px}.paragraph{margin:0 0 19px}.example{display:inline-block;color:#168344;background:#f0fff5;border:1px solid #bde5cb;border-radius:7px;padding:0 7px;font-weight:bold;white-space:nowrap}.blank-wrap{display:inline-flex;align-items:center;gap:4px;vertical-align:baseline;white-space:nowrap}.blank-number{font-size:.88em;font-weight:bold;color:#5f6d7a}.drop-gap{width:clamp(100px,18vw,180px);min-height:34px;border:2px dashed #89a5c1;border-radius:8px;padding:4px 8px;font:inherit;font-size:.95rem;line-height:1.2;color:#2869d8;background:#f8fbff;cursor:pointer;text-align:center}.drop-gap:empty::after{content:'______';color:#89a5c1}.drop-gap.filled{border-style:solid;background:#edf6ff}.drop-gap.drag-over{border-color:#2869d8;background:#dceeff}.drop-gap.correct{border-color:#219653;background:#f0fff5;color:#168344}.drop-gap.incorrect{border-color:#d84343;background:#fff4f4;color:#c33333}.word:focus-visible,.drop-gap:focus-visible,.button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}.button:focus-visible,a:focus-visible,.answer:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+@media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:18px 15px}.email{font-size:1rem;line-height:1.85}.drop-gap{width:clamp(94px,38vw,155px);padding:6px}.paragraph{margin-bottom:17px}.word-bank{gap:7px}.word{padding:8px 11px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 9 — Complete the email with the words.</h1>
+  <p class="subtitle">Complete the email with the words.</p>
+
+  <section class="card" aria-label="Word bank">
+    <h2 class="bank-title">Word bank</h2>
+    <div class="word-bank" id="wordBank" aria-label="Drag words into the numbered gaps"></div>
+  </section>
+
+  <section class="card" aria-label="Steph's email">
+    <div class="email">
+      <p class="greeting">Hi Mia,</p>
+      <p class="paragraph">My new school is great and this term’s<br>
+      <span class="example">1 timetable</span><br>
+      isn’t bad. <span class="blank-wrap"><span class="blank-number">2</span><button class="drop-gap" type="button" data-gap="2" aria-label="Drop answer for gap 2"></button></span> start at 9.00<br>
+      and the first lesson on a Monday is <span class="blank-wrap"><span class="blank-number">3</span><button class="drop-gap" type="button" data-gap="3" aria-label="Drop answer for gap 3"></button></span>.<br>
+      Fantastic! You know I love painting. We’ve got<br>
+      <span class="blank-wrap"><span class="blank-number">4</span><button class="drop-gap" type="button" data-gap="4" aria-label="Drop answer for gap 4"></button></span> on Tuesday morning and we learn<br>
+      to play the guitar – amazing! Wednesday isn’t<br>
+      very good – we’ve got <span class="blank-wrap"><span class="blank-number">5</span><button class="drop-gap" type="button" data-gap="5" aria-label="Drop answer for gap 5"></button></span> all afternoon.<br>
+      I hate sports and it always rains on Wednesdays!</p>
+
+      <p class="paragraph">We have three breaks every day – not two like at<br>
+      my old school. It’s good to chat to friends then.</p>
+
+      <p class="paragraph">Thanks for my present. It’s a really colourful<br>
+      <span class="blank-wrap"><span class="blank-number">6</span><button class="drop-gap" type="button" data-gap="6" aria-label="Drop answer for gap 6"></button></span> and I keep all my pens and rubbers<br>
+      <span class="blank-wrap"><span class="blank-number">7</span><button class="drop-gap" type="button" data-gap="7" aria-label="Drop answer for gap 7"></button></span> it. I’ve got a new <span class="blank-wrap"><span class="blank-number">8</span><button class="drop-gap" type="button" data-gap="8" aria-label="Drop answer for gap 8"></button></span> too to<br>
+      help with my Maths – not my favourite <span class="blank-wrap"><span class="blank-number">9</span><button class="drop-gap" type="button" data-gap="9" aria-label="Drop answer for gap 9"></button></span>!</p>
+
+      <p class="signoff">Write soon,<br>Steph</p>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0/8</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const words=['subject','PE','lessons','calculator','Music','in','Art','pencil case'];
+  const answers={'2':'lessons','3':'Art','4':'Music','5':'PE','6':'pencil case','7':'in','8':'calculator','9':'subject'};
+  const bank=document.getElementById('wordBank');
+  const gaps=[...document.querySelectorAll('.drop-gap')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  let selected=null;
+  function clearSelected(){bank.querySelectorAll('.word.selected').forEach(word=>word.classList.remove('selected'));selected=null;}
+  function createWord(word){
+    const chip=document.createElement('button');chip.type='button';chip.className='word';chip.textContent=word;chip.draggable=true;chip.dataset.word=word;
+    chip.setAttribute('aria-label',`Word ${word}`);
+    chip.addEventListener('dragstart',event=>{event.dataTransfer.setData('text/plain',word);event.dataTransfer.effectAllowed='move';selectWord(chip);});
+    chip.addEventListener('click',()=>selectWord(chip));
+    chip.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();selectWord(chip);}});
+    return chip;
+  }
+  function selectWord(chip){clearSelected();selected=chip;chip.classList.add('selected');}
+  function returnToBank(word){if(word)bank.appendChild(createWord(word));}
+  function placeWord(gap,word){
+    const source=[...bank.querySelectorAll('.word')].find(chip=>chip.dataset.word===word);
+    if(!source)return;
+    const old=gap.dataset.word;source.remove();gap.textContent=word;gap.dataset.word=word;gap.classList.add('filled');gap.classList.remove('correct','incorrect');
+    if(old)returnToBank(old);
+    clearSelected();
+  }
+  gaps.forEach(gap=>{
+    gap.addEventListener('dragover',event=>{event.preventDefault();gap.classList.add('drag-over');});
+    gap.addEventListener('dragleave',()=>gap.classList.remove('drag-over'));
+    gap.addEventListener('drop',event=>{event.preventDefault();gap.classList.remove('drag-over');placeWord(gap,event.dataTransfer.getData('text/plain'));});
+    gap.addEventListener('click',()=>{
+      if(selected){placeWord(gap,selected.dataset.word);return;}
+      if(gap.dataset.word){returnToBank(gap.dataset.word);delete gap.dataset.word;gap.textContent='';gap.classList.remove('filled','correct','incorrect');}
+    });
+    gap.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();gap.click();}});
+  });
+  function check(){
+    let points=0;const misses=[];
+    gaps.forEach(gap=>{
+      const expected=answers[gap.dataset.gap];
+      const correct=(gap.dataset.word||'').toLocaleLowerCase()===expected.toLocaleLowerCase();
+      gap.classList.remove('correct','incorrect');gap.classList.add(correct?'correct':'incorrect');
+      gap.setAttribute('aria-label',correct?`Gap ${gap.dataset.gap}: ${expected}, correct`:`Gap ${gap.dataset.gap}: ${gap.dataset.word||'empty'}, correct answer ${expected}`);
+      if(correct)points++;else misses.push(`${gap.dataset.gap}: ${expected}`);
+    });
+    score.textContent=`Score: ${points}/8`;
+    feedback.textContent=points===8?'✅ Correct! All answers are correct.':`❌ Try again. Correct answers for the gaps to fix: ${misses.join(', ')}.`;
+    feedback.className=`feedback ${points===8?'good':'try'}`;
+  }
+  function reset(){
+    bank.replaceChildren(...words.map(createWord));
+    gaps.forEach(gap=>{
+      gap.textContent='';delete gap.dataset.word;gap.classList.remove('filled','correct','incorrect','drag-over');
+      gap.setAttribute('aria-label',`Drop answer for gap ${gap.dataset.gap}`);
+    });
+    clearSelected();
+    score.textContent='Score: 0/8';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  reset();
+})();
+</script>
+</body>
+</html>
