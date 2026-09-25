@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 6 — Vocabulary — Wider World 1 Unit 4</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:13px}.item{display:flex;align-items:center;gap:12px;min-height:76px;background:#f7faff;border:2px solid #e1eaf3;border-radius:14px;padding:13px 15px}.item.example{background:#f0fff5;border-color:#bde5cb}
+.number{font-weight:bold;font-size:1.05rem;flex:0 0 28px}.pattern{font-size:1.1rem;font-weight:bold;letter-spacing:.045em;white-space:pre-wrap;flex:1;min-width:0}.answer{width:min(100%,220px);min-width:120px;border:2px solid #b9cce0;border-radius:9px;padding:10px 11px;font:inherit;font-size:1rem;color:#1f3552;background:#fff}.answer:focus{outline:3px solid #bfddff;border-color:#2869d8}.item.correct{border-color:#219653;background:#f0fff5}.item.incorrect{border-color:#d84343;background:#fff4f4}.result{flex-basis:100%;font-size:.9rem;font-weight:bold;min-height:20px;margin-left:40px}.item.correct .result{color:#168344}.item.incorrect .result{color:#c33333}.item{flex-wrap:wrap}.item .number{align-self:flex-start;padding-top:4px}.item .pattern{align-self:center}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}.button:focus-visible,a:focus-visible,.answer:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+@media(max-width:680px){.container{padding:25px 14px 36px}.card{padding:16px}.items{grid-template-columns:1fr}.item{gap:8px;padding:11px}.pattern{font-size:1rem}.answer{min-width:105px;width:42%}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 6 — Complete the school subjects</h1>
+  <p class="subtitle">Complete the school subjects.</p>
+
+  <section class="card" aria-label="Complete the school subjects">
+    <div class="items">
+      <div class="item example"><span class="number">1.</span><span class="pattern">Geography</span><span class="result">Example</span></div>
+      <label class="item" data-answer="Physics"><span class="number">2.</span><span class="pattern">P _ y s _ c _</span><input class="answer" type="text" autocomplete="off" aria-label="Question 2 answer"><span class="result" aria-live="polite"></span></label>
+      <label class="item" data-answer="Information Technology"><span class="number">3.</span><span class="pattern">I _ f _ r m a t i _ n  T _ c h n _ l _ g y</span><input class="answer" type="text" autocomplete="off" aria-label="Question 3 answer"><span class="result" aria-live="polite"></span></label>
+      <label class="item" data-answer="History"><span class="number">4.</span><span class="pattern">_ i s t _ r y</span><input class="answer" type="text" autocomplete="off" aria-label="Question 4 answer"><span class="result" aria-live="polite"></span></label>
+      <label class="item" data-answer="Maths"><span class="number">5.</span><span class="pattern">M _ _ _ s</span><input class="answer" type="text" autocomplete="off" aria-label="Question 5 answer"><span class="result" aria-live="polite"></span></label>
+      <label class="item" data-answer="Chemistry"><span class="number">6.</span><span class="pattern">C _ _ _ _ _ _ r _</span><input class="answer" type="text" autocomplete="off" aria-label="Question 6 answer"><span class="result" aria-live="polite"></span></label>
+      <label class="item" data-answer="Art"><span class="number">7.</span><span class="pattern">A _ _</span><input class="answer" type="text" autocomplete="off" aria-label="Question 7 answer"><span class="result" aria-live="polite"></span></label>
+      <label class="item" data-answer="Music"><span class="number">8.</span><span class="pattern">_ u _ i c</span><input class="answer" type="text" autocomplete="off" aria-label="Question 8 answer"><span class="result" aria-live="polite"></span></label>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0/7</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const items=[...document.querySelectorAll('.item[data-answer]')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  function check(){
+    let points=0;
+    items.forEach(item=>{
+      const answer=item.querySelector('input').value.trim().toLocaleLowerCase();
+      const expected=item.dataset.answer.toLocaleLowerCase();
+      const correct=answer===expected;
+      item.classList.remove('correct','incorrect');item.classList.add(correct?'correct':'incorrect');
+      item.querySelector('.result').textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${item.dataset.answer}.`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points}/7`;
+    feedback.textContent=points===7?'Excellent work! All answers are correct.':'Check the feedback on each item and try again.';
+    feedback.className=`feedback ${points===7?'good':'try'}`;
+  }
+  function reset(){
+    items.forEach(item=>{item.querySelector('input').value='';item.querySelector('.result').textContent='';item.classList.remove('correct','incorrect');});
+    score.textContent='Score: 0/7';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+})();
+</script>
+</body>
+</html>
