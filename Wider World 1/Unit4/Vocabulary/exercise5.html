@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 5 — Vocabulary — Wider World 1 Unit 4</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1040px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}
+.activity{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:24px;align-items:start}.grid-wrap{min-width:0}.word-grid{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px;width:min(100%,510px);margin:auto;user-select:none;touch-action:none}.cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;min-width:0;border:1px solid #d5e1ee;border-radius:7px;background:#f5f9fd;color:#1f3552;font-size:clamp(.88rem,2.2vw,1.22rem);font-weight:bold;padding:0;cursor:pointer;touch-action:none;user-select:none}.cell:hover{background:#eaf4ff}.cell.selecting{background:#bfddff;border-color:#2869d8}.cell.found{background:#c9f1d7;border-color:#3b9d63;color:#155f35}.cell.found.selecting{background:#a8dfbd}
+.word-list{display:grid;gap:8px;list-style:none;padding:0;margin:0}.word-list li{display:flex;align-items:center;justify-content:space-between;gap:8px;border:2px solid #e1eaf3;border-radius:12px;background:#fbfdff;padding:10px 12px;font-weight:bold}.word-list li.found{border-color:#52ad73;background:#f0fff5;color:#17683a}.direction{color:#69839e;font-size:.9rem}.found-mark{color:#168344;min-width:18px;text-align:right}.hint{text-align:center;color:#5f6d7a;font-size:.92rem;margin:12px 0 0}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}.button:focus-visible,a:focus-visible,.cell:focus-visible{outline:3px solid #ffbf47;outline-offset:2px}
+@media(max-width:750px){.activity{grid-template-columns:1fr}.word-list{grid-template-columns:repeat(3,minmax(0,1fr))}.word-list li{padding:8px;font-size:.95rem}.word-grid{gap:3px}}
+@media(max-width:430px){.container{padding:25px 12px 36px}.card{padding:13px}.word-list{gap:5px}.word-list li{font-size:.82rem;padding:7px 6px}.direction{font-size:.78rem}.word-grid{gap:2px}.cell{border-radius:4px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 5 — Find nine school subjects in the wordsearch</h1>
+  <p class="subtitle">Find nine school subjects in the wordsearch. Look →, ↓, ↗ and ↘.</p>
+
+  <section class="card activity" aria-label="Interactive school subject wordsearch">
+    <div class="grid-wrap">
+      <div class="word-grid" id="wordGrid" role="grid" aria-label="11 by 11 wordsearch"></div>
+      <p class="hint">Drag from the first to the last letter, or tap the first and last letters.</p>
+    </div>
+    <aside>
+      <h2>Find these subjects</h2>
+      <ol class="word-list" id="wordList"></ol>
+    </aside>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 9</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const rows=[
+    'OCHEMISTRYO',
+    'AHENMERLSRL',
+    'FHDMOLSQEED',
+    'FMRBUCHYRNM',
+    'NAAMISRIZGN',
+    'DORSHOITMLQ',
+    'UZYTTBLCSID',
+    'XHASHANOISN',
+    'PMIMIKIOGHN',
+    'IHNDAENDSYE',
+    'GEOGRAPHYTZ'
+  ];
+  const words=[
+    {name:'ART',direction:'↘',dr:1,dc:1},
+    {name:'CHEMISTRY',direction:'→',dr:0,dc:1},
+    {name:'ENGLISH',direction:'↓',dr:1,dc:0},
+    {name:'GEOGRAPHY',direction:'→',dr:0,dc:1},
+    {name:'HISTORY',direction:'↗',dr:-1,dc:1},
+    {name:'MATHS',direction:'↗',dr:-1,dc:1},
+    {name:'MUSIC',direction:'↘',dr:1,dc:1},
+    {name:'PHYSICS',direction:'↗',dr:-1,dc:1},
+    {name:'BIOLOGY',direction:'↘',dr:1,dc:1}
+  ];
+  const grid=document.getElementById('wordGrid');
+  const wordList=document.getElementById('wordList');
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  const found=new Set();
+  const targetPaths=new Map();
+  let anchor=null;
+  let gesture=null;
+  let preview=[];
+
+  function findPath(word,dr,dc){
+    for(let row=0;row<rows.length;row++)for(let col=0;col<rows[row].length;col++){
+      const endRow=row+dr*(word.length-1),endCol=col+dc*(word.length-1);
+      if(endRow<0||endRow>=rows.length||endCol<0||endCol>=rows[0].length)continue;
+      const path=Array.from({length:word.length},(_,i)=>(row+dr*i)*11+(col+dc*i));
+      if(path.map(index=>rows[Math.floor(index/11)][index%11]).join('')===word)return path;
+    }
+    throw new Error(`The subject ${word} was not found in the grid in direction ${dr},${dc}.`);
+  }
+  words.forEach((word,index)=>{
+    targetPaths.set(word.name,findPath(word.name,word.dr,word.dc));
+    const item=document.createElement('li');item.dataset.word=word.name;
+    item.innerHTML=`<span>${index+1}. ${word.name}</span><span class="direction">${word.direction}</span><span class="found-mark" aria-hidden="true"></span>`;
+    wordList.appendChild(item);
+  });
+  rows.forEach((row,r)=>[...row].forEach((letter,c)=>{
+    const cell=document.createElement('button');cell.type='button';cell.className='cell';cell.textContent=letter;cell.dataset.index=String(r*11+c);cell.setAttribute('role','gridcell');cell.setAttribute('aria-label',`Row ${r+1}, column ${c+1}, ${letter}`);grid.appendChild(cell);
+  }));
+
+  function linePath(start,end){
+    const sr=Math.floor(start/11),sc=start%11,er=Math.floor(end/11),ec=end%11;
+    const dr=er-sr,dc=ec-sc;let stepR,stepC,count;
+    if(dr===0&&dc>0){stepR=0;stepC=1;count=dc;}
+    else if(dc===0&&dr>0){stepR=1;stepC=0;count=dr;}
+    else if(dr<0&&dc>0&&-dr===dc){stepR=-1;stepC=1;count=dc;}
+    else if(dr>0&&dc>0&&dr===dc){stepR=1;stepC=1;count=dc;}
+    else return [];
+    return Array.from({length:count+1},(_,i)=>(sr+stepR*i)*11+(sc+stepC*i));
+  }
+  function paintPreview(path){
+    preview=path;
+    grid.querySelectorAll('.cell.selecting').forEach(cell=>cell.classList.remove('selecting'));
+    path.forEach(index=>grid.querySelector(`.cell[data-index="${index}"]`)?.classList.add('selecting'));
+  }
+  function clearPreview(){paintPreview([]);}
+  function updateFound(path){
+    const match=words.find(word=>{
+      const expected=targetPaths.get(word.name);
+      return expected.length===path.length&&expected.every((index,i)=>index===path[i]);
+    });
+    if(!match){feedback.textContent='That selection is not one of the hidden subjects in the instructed direction. Try again.';feedback.className='feedback try';return;}
+    if(found.has(match.name)){feedback.textContent=`${match.name} has already been found.`;feedback.className='feedback';return;}
+    found.add(match.name);
+    path.forEach(index=>grid.querySelector(`.cell[data-index="${index}"]`)?.classList.add('found'));
+    const item=wordList.querySelector(`li[data-word="${match.name}"]`);item.classList.add('found');item.querySelector('.found-mark').textContent='✓';
+    score.textContent=`Score: ${found.size} / 9`;
+    feedback.textContent=found.size===9?'Excellent! You found all nine school subjects.':`${match.name} found!`;
+    feedback.className=`feedback ${found.size===9?'good':''}`;
+  }
+  function cellAtPoint(x,y){const element=document.elementFromPoint(x,y);return element?.closest('.cell')||null;}
+  grid.addEventListener('pointerdown',event=>{
+    const cell=event.target.closest('.cell');if(!cell)return;
+    event.preventDefault();grid.setPointerCapture(event.pointerId);
+    const index=Number(cell.dataset.index);gesture={pointerId:event.pointerId,start:index,end:index,moved:false};paintPreview([index]);
+  });
+  grid.addEventListener('pointermove',event=>{
+    if(!gesture||gesture.pointerId!==event.pointerId)return;
+    const cell=cellAtPoint(event.clientX,event.clientY);if(!cell||!grid.contains(cell))return;
+    const index=Number(cell.dataset.index);gesture.end=index;
+    if(index!==gesture.start)gesture.moved=true;
+    const path=linePath(gesture.start,index);paintPreview(path.length?path:[gesture.start,index]);
+  });
+  grid.addEventListener('pointerup',event=>{
+    if(!gesture||gesture.pointerId!==event.pointerId)return;
+    const cell=cellAtPoint(event.clientX,event.clientY);const end=cell&&grid.contains(cell)?Number(cell.dataset.index):gesture.end;
+    const {start,moved}=gesture;gesture=null;
+    if(moved){
+      const path=linePath(start,end);clearPreview();anchor=null;
+      if(path.length>1)updateFound(path);else{feedback.textContent='Select letters in one of the instructed directions.';feedback.className='feedback try';}
+      return;
+    }
+    if(anchor===null){anchor=start;paintPreview([start]);feedback.textContent='Now tap the last letter of the subject.';feedback.className='feedback';return;}
+    const path=linePath(anchor,start);anchor=null;clearPreview();
+    if(path.length>1)updateFound(path);else{feedback.textContent='Select letters in one of the instructed directions.';feedback.className='feedback try';}
+  });
+  grid.addEventListener('pointercancel',()=>{gesture=null;anchor=null;clearPreview();});
+  function check(){
+    score.textContent=`Score: ${found.size} / 9`;
+    if(found.size===9){feedback.textContent='Excellent! You found all nine school subjects.';feedback.className='feedback good';}
+    else{feedback.textContent=`You have found ${found.size} of 9 subjects. Keep looking!`;feedback.className='feedback try';}
+  }
+  function reset(){
+    found.clear();anchor=null;gesture=null;clearPreview();
+    grid.querySelectorAll('.cell.found').forEach(cell=>cell.classList.remove('found'));
+    wordList.querySelectorAll('li').forEach(item=>{item.classList.remove('found');item.querySelector('.found-mark').textContent='';});
+    score.textContent='Score: 0 / 9';feedback.textContent='';feedback.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+})();
+</script>
+</body>
+</html>
