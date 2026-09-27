@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 12 — Grammar — Wider World 1 Unit 4</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1050px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}.instructions{font-size:1.15rem;font-weight:bold;text-align:center;margin:0 0 18px}.word-bank{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;background:#f3f7fc;border:1px solid #dce5ef;border-radius:14px;padding:15px;margin:0 0 22px}.word{border:2px solid #9bb0c5;border-radius:10px;background:#fff;color:#1f3552;padding:9px 15px;font:inherit;font-weight:bold;cursor:grab;touch-action:manipulation}.word:hover,.word:focus-visible{border-color:#2869d8;background:#f2f7ff}.word:active{cursor:grabbing}.word.used{display:none}.word.chosen{border-color:#2869d8;background:#2869d8;color:#fff}.word:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.dialogue{padding:24px 28px}.line{font-size:1.08rem;line-height:2.1;margin:0 0 12px}.line:last-child{margin-bottom:0}.speaker{font-weight:bold;color:#285887}.continuation{padding-left:54px}.example-number,.q-number{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#dceeff;color:#285887;font-size:.82rem;font-weight:bold;line-height:1;margin-right:5px;vertical-align:middle}.example-number{background:#219653;color:#fff}.drop{display:inline-flex;align-items:center;justify-content:center;min-width:82px;min-height:36px;padding:2px 8px;border:0;border-bottom:3px dashed #89a5c1;border-radius:6px;background:#f7faff;color:#1f3552;font:inherit;font-weight:bold;vertical-align:middle;cursor:pointer}.drop:hover,.drop:focus-visible,.drop.drag-over{outline:2px solid #9ec9f4;background:#f3f9ff}.drop.filled{border-bottom-style:solid;border-bottom-color:#2869d8}.drop.correct{border-bottom-color:#219653;background:#f0fff5}.drop.incorrect{border-bottom-color:#d84343;background:#fff4f4}.result{display:block;font-size:.84rem;font-weight:bold;line-height:1.35;margin:0 0 6px 30px}.result:empty{display:none}.result.correct{color:#168344}.result.incorrect{color:#c33333}.example-line{background:#f0fff5;border:1px solid #a7d9b8;border-radius:12px;padding:12px 14px;margin-bottom:15px}.hint{color:#5f6d7a;text-align:center;font-size:.92rem;margin:-10px 0 18px}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:16px}.dialogue{padding:17px 13px}.line{font-size:1rem;line-height:2}.continuation{padding-left:30px}.drop{min-width:72px}.word-bank{gap:7px;padding:11px}.word{padding:8px 11px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 12 — Complete the dialogue with these words.</h1>
+  <p class="subtitle">Complete the dialogue with these words.</p>
+
+  <section class="card" aria-label="Complete the dialogue using the word bank">
+    <p class="instructions">Complete the dialogue with these words.</p>
+    <p class="hint">Drag a word into each gap, or tap a word and then tap a gap. Each word can be used once.</p>
+    <div class="word-bank" id="wordBank" aria-label="Word bank">
+      <button class="word" type="button" draggable="true" data-word="are">are</button>
+      <button class="word" type="button" draggable="true" data-word="does">does</button>
+      <button class="word" type="button" draggable="true" data-word="go">go</button>
+      <button class="word" type="button" draggable="true" data-word="isn't">isn't</button>
+      <button class="word" type="button" draggable="true" data-word="says">says</button>
+      <button class="word" type="button" draggable="true" data-word="usually">usually</button>
+      <button class="word" type="button" draggable="true" data-word="working">working</button>
+      <button class="word" type="button" draggable="true" data-word="works">works</button>
+    </div>
+    <div class="dialogue">
+      <p class="line example-line"><span class="speaker">Sam:</span> Hi, Liz. <span class="example-number">1</span><strong>Are</strong> you coming shopping with us?<br>We want to buy some T-shirts.</p>
+
+      <p class="line"><span class="speaker">Liz:</span> Oh yes! I don’t often <span class="q-number">2</span><button class="drop" type="button" data-number="2" aria-label="Question 2, empty word gap" aria-pressed="false"></button> clothes<br><span class="continuation">shopping. And I haven’t got many T-shirts.</span></p>
+      <span class="result" data-result="2" aria-live="polite"></span>
+
+      <p class="line"><span class="speaker">Sam:</span> We <span class="q-number">3</span><button class="drop" type="button" data-number="3" aria-label="Question 3, empty word gap" aria-pressed="false"></button> go to the shops on the<br><span class="continuation">High Street.</span></p>
+      <span class="result" data-result="3" aria-live="polite"></span>
+
+      <p class="line"><span class="speaker">Liz:</span> Cool! My sister <span class="q-number">4</span><button class="drop" type="button" data-number="4" aria-label="Question 4, empty word gap" aria-pressed="false"></button> in a clothes<br><span class="continuation">shop there every Saturday. She <span class="q-number">5</span><button class="drop" type="button" data-number="5" aria-label="Question 5, empty word gap" aria-pressed="false"></button><br>that it’s really good. We can go there.</span></p>
+      <span class="result" data-result="4" aria-live="polite"></span><span class="result" data-result="5" aria-live="polite"></span>
+
+      <p class="line"><span class="speaker">Sam:</span> <span class="q-number">6</span><button class="drop" type="button" data-number="6" aria-label="Question 6, empty word gap" aria-pressed="false"></button> she work many hours?</p>
+      <span class="result" data-result="6" aria-live="polite"></span>
+
+      <p class="line"><span class="speaker">Liz:</span> No, only mornings.</p>
+
+      <p class="line"><span class="speaker">Sam:</span> Is she <span class="q-number">7</span><button class="drop" type="button" data-number="7" aria-label="Question 7, empty word gap" aria-pressed="false"></button> today?</p>
+      <span class="result" data-result="7" aria-live="polite"></span>
+
+      <p class="line"><span class="speaker">Liz:</span> No. Today’s Friday, so she <span class="q-number">8</span><button class="drop" type="button" data-number="8" aria-label="Question 8, empty word gap" aria-pressed="false"></button><br><span class="continuation">working now.</span></p>
+      <span class="result" data-result="8" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 7</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const answers={2:'go',3:'usually',4:'works',5:'says',6:'does',7:'working',8:"isn't"};
+  const words=[...document.querySelectorAll('.word')];
+  const gaps=[...document.querySelectorAll('.drop')];
+  const bank=document.getElementById('wordBank');
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  const placed={};
+  let draggedWord=null,selectedWord=null,checked=false;
+  function shuffleBank(){
+    for(let i=words.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[words[i],words[j]]=[words[j],words[i]];}
+    words.forEach(word=>bank.appendChild(word));
+  }
+  function showWord(gap,word){
+    const number=gap.dataset.number;
+    if(placed[number]){const old=words.find(item=>item.dataset.word===placed[number]);old.classList.remove('used','chosen');old.hidden=false;}
+    for(const [key,value] of Object.entries(placed))if(value===word.dataset.word)delete placed[key];
+    placed[number]=word.dataset.word;
+    word.classList.add('used');word.classList.remove('chosen');word.hidden=true;
+    gap.textContent=number==='6'&&word.dataset.word==='does'?'Does':word.dataset.word;
+    gap.classList.add('filled');gap.setAttribute('aria-label',`Question ${number}, ${gap.textContent}`);gap.setAttribute('aria-pressed','false');
+    selectedWord=null;
+    gaps.forEach(item=>item.classList.remove('correct','incorrect'));
+    document.querySelectorAll('.result').forEach(result=>{result.textContent='';result.className='result';});
+    if(checked)checkAnswers();
+  }
+  words.forEach(word=>{
+    word.addEventListener('dragstart',event=>{if(word.classList.contains('used')){event.preventDefault();return;}draggedWord=word;event.dataTransfer.setData('text/plain',word.dataset.word);event.dataTransfer.effectAllowed='move';});
+    word.addEventListener('dragend',()=>{draggedWord=null;gaps.forEach(gap=>gap.classList.remove('drag-over'));});
+    word.addEventListener('click',()=>{
+      if(word.classList.contains('used'))return;
+      words.forEach(item=>item.classList.remove('chosen'));
+      selectedWord=word;word.classList.add('chosen');
+    });
+  });
+  gaps.forEach(gap=>{
+    gap.addEventListener('dragover',event=>{event.preventDefault();gap.classList.add('drag-over');event.dataTransfer.dropEffect='move';});
+    gap.addEventListener('dragleave',()=>gap.classList.remove('drag-over'));
+    gap.addEventListener('drop',event=>{event.preventDefault();gap.classList.remove('drag-over');const value=event.dataTransfer.getData('text/plain');const word=words.find(item=>item.dataset.word===value);if(word&&!word.classList.contains('used'))showWord(gap,word);else if(draggedWord&&!draggedWord.classList.contains('used'))showWord(gap,draggedWord);});
+    gap.addEventListener('click',()=>{if(selectedWord)showWord(gap,selectedWord);else if(placed[gap.dataset.number]){const word=words.find(item=>item.dataset.word===placed[gap.dataset.number]);word.hidden=false;word.classList.remove('used','chosen');delete placed[gap.dataset.number];gap.textContent='';gap.classList.remove('filled','correct','incorrect');gap.setAttribute('aria-label',`Question ${gap.dataset.number}, empty word gap`);if(checked)checkAnswers();}});
+  });
+  function checkAnswers(){
+    checked=true;let points=0;
+    gaps.forEach(gap=>{
+      const number=gap.dataset.number,correct=placed[number]===answers[number];
+      gap.classList.remove('correct','incorrect');gap.classList.add(correct?'correct':'incorrect');
+      const result=document.querySelector(`[data-result="${number}"]`);
+      result.className=`result ${correct?'correct':'incorrect'}`;
+      result.textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${number==='6'?'Does':answers[number]}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 7`;
+    feedback.textContent=points===7?'Excellent work! All answers are correct.':'Check the feedback for each answer and try again.';
+    feedback.className=`feedback ${points===7?'good':'try'}`;
+  }
+  function reset(){
+    Object.keys(placed).forEach(key=>delete placed[key]);
+    words.forEach(word=>{word.hidden=false;word.classList.remove('used','chosen');});
+    gaps.forEach(gap=>{gap.textContent='';gap.classList.remove('filled','correct','incorrect','drag-over');gap.setAttribute('aria-label',`Question ${gap.dataset.number}, empty word gap`);gap.setAttribute('aria-pressed','false');});
+    document.querySelectorAll('.result').forEach(result=>{result.textContent='';result.className='result';});
+    selectedWord=null;draggedWord=null;checked=false;score.textContent='Score: 0 / 7';feedback.textContent='';feedback.className='feedback';shuffleBank();
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  shuffleBank();
+})();
+</script>
+</body>
+</html>
