@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 8 — Grammar — Wider World 1 Unit 4</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1050px;margin:auto;padding:34px 22px 48px}
+h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}.instructions{font-size:1.15rem;font-weight:bold;text-align:center;margin:0 0 8px}.hint{text-align:center;color:#5f6d7a;margin:0 0 20px}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}.column{min-width:0}.column h2{text-align:center;font-size:1.15rem;margin:0 0 12px;color:#285887}.match-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}.match-row{display:flex;align-items:center;gap:10px;min-height:60px;padding:11px 12px;border:1px solid #dce5ef;border-radius:13px;background:#f8fafc;cursor:pointer;text-align:left;color:inherit;font:inherit;width:100%}.match-row:hover,.match-row:focus-visible{border-color:#2869d8;background:#f2f7ff}.match-row.example{background:#f0fff5;border-color:#a7d9b8;cursor:default}.match-row.selected{border:2px solid #2869d8;background:#edf5ff}.match-row.correct{border-color:#219653;background:#f0fff5}.match-row.incorrect{border-color:#d84343;background:#fff4f4}.q-number{display:inline-flex;flex:0 0 28px;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#dceeff;color:#285887;font-size:.88rem;font-weight:bold}.half-text{font-size:1.03rem;line-height:1.4;flex:1}.match-value{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:32px;padding:3px 8px;border-radius:9px;background:#e7f1ff;color:#205ba8;font-weight:bold}.match-row.example .match-value{background:#219653;color:#fff}.letter{display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#fff4df;border:2px solid #edc36d;color:#8c5a00;font-weight:bold}.right-option{cursor:pointer}.right-option.used{opacity:.52;cursor:default;background:#f4f7fa}.right-option.selected{border:2px solid #2869d8;background:#edf5ff}.result{font-size:.84rem;font-weight:bold;margin:3px 0 0 39px;line-height:1.35}.result:empty{display:none}.result.correct{color:#168344}.result.incorrect{color:#c33333}
+button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:16px}.columns{grid-template-columns:1fr;gap:22px}.column h2{margin-bottom:9px}.match-list{gap:8px}.match-row{min-height:54px;padding:9px 10px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <h1>Exercise 8 — Match the sentence halves.</h1>
+  <p class="subtitle">Match the sentence halves.</p>
+
+  <section class="card" aria-label="Match sentence halves">
+    <p class="instructions">Match the sentence halves.</p>
+    <p class="hint">Choose a sentence on the left, then choose its ending on the right.</p>
+    <div class="columns">
+      <section class="column" aria-label="Sentence beginnings">
+        <h2>Sentence beginnings</h2>
+        <ol class="match-list">
+          <li><div class="match-row example"><span class="q-number">1</span><span class="half-text">They aren't</span><span class="match-value" aria-label="Matched with d">d</span></div></li>
+          <li><button class="match-row left-row" type="button" data-number="2" aria-pressed="false"><span class="q-number">2</span><span class="half-text">We don't</span><span class="match-value">Choose</span></button><span class="result" aria-live="polite"></span></li>
+          <li><button class="match-row left-row" type="button" data-number="3" aria-pressed="false"><span class="q-number">3</span><span class="half-text">He always</span><span class="match-value">Choose</span></button><span class="result" aria-live="polite"></span></li>
+          <li><button class="match-row left-row" type="button" data-number="4" aria-pressed="false"><span class="q-number">4</span><span class="half-text">Today we</span><span class="match-value">Choose</span></button><span class="result" aria-live="polite"></span></li>
+          <li><button class="match-row left-row" type="button" data-number="5" aria-pressed="false"><span class="q-number">5</span><span class="half-text">Does</span><span class="match-value">Choose</span></button><span class="result" aria-live="polite"></span></li>
+          <li><button class="match-row left-row" type="button" data-number="6" aria-pressed="false"><span class="q-number">6</span><span class="half-text">Are you</span><span class="match-value">Choose</span></button><span class="result" aria-live="polite"></span></li>
+        </ol>
+      </section>
+      <section class="column" aria-label="Sentence endings">
+        <h2>Sentence endings</h2>
+        <ul class="match-list">
+          <li><button class="match-row right-option" type="button" data-letter="a" aria-pressed="false"><span class="letter">a.</span><span class="half-text">do homework at school.</span></button></li>
+          <li><button class="match-row right-option" type="button" data-letter="b" aria-pressed="false"><span class="letter">b.</span><span class="half-text">are having a salad for lunch.</span></button></li>
+          <li><button class="match-row right-option" type="button" data-letter="c" aria-pressed="false"><span class="letter">c.</span><span class="half-text">she work on Saturdays?</span></button></li>
+          <li><button class="match-row right-option" type="button" data-letter="d" aria-pressed="false" disabled><span class="letter">d.</span><span class="half-text">doing a Chemistry test.</span></button></li>
+          <li><button class="match-row right-option" type="button" data-letter="e" aria-pressed="false"><span class="letter">e.</span><span class="half-text">feeling sad?</span></button></li>
+          <li><button class="match-row right-option" type="button" data-letter="f" aria-pressed="false"><span class="letter">f.</span><span class="half-text">has fish for dinner.</span></button></li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0 / 5</div>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const answers={2:'a',3:'f',4:'b',5:'c',6:'e'};
+  const leftRows=[...document.querySelectorAll('.left-row')];
+  const rightOptions=[...document.querySelectorAll('.right-option')];
+  const matches={1:'d'};
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  let selectedRow=null,checked=false;
+  function refreshOptions(){
+    rightOptions.forEach(option=>{
+      const assigned=Object.values(matches).includes(option.dataset.letter);
+      option.disabled=assigned;
+      option.classList.toggle('used',assigned);
+      option.classList.toggle('selected',selectedRow!==null&&!assigned);
+    });
+  }
+  leftRows.forEach(row=>row.addEventListener('click',()=>{
+    selectedRow=row.dataset.number;
+    leftRows.forEach(item=>{item.classList.toggle('selected',item===row);item.setAttribute('aria-pressed',item===row?'true':'false');});
+    refreshOptions();
+  }));
+  rightOptions.forEach(option=>option.addEventListener('click',()=>{
+    if(selectedRow===null||option.disabled)return;
+    matches[selectedRow]=option.dataset.letter;
+    const row=leftRows.find(item=>item.dataset.number===selectedRow);
+    row.querySelector('.match-value').textContent=option.dataset.letter;
+    row.querySelector('.result').textContent='';row.querySelector('.result').className='result';
+    selectedRow=null;
+    leftRows.forEach(item=>{item.classList.remove('selected');item.setAttribute('aria-pressed','false');});
+    refreshOptions();
+    if(checked)checkAnswers();
+  }));
+  function checkAnswers(){
+    checked=true;let points=0;
+    leftRows.forEach(row=>{
+      const number=row.dataset.number,correct=matches[number]===answers[number];
+      row.classList.remove('correct','incorrect');row.classList.add(correct?'correct':'incorrect');
+      const result=row.nextElementSibling;
+      result.className=`result ${correct?'correct':'incorrect'}`;
+      result.textContent=correct?'✅ Correct!':`❌ Try again. Correct answer: ${answers[number]}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points} / 5`;
+    feedback.textContent=points===5?'Excellent work! All answers are correct.':'Check the feedback for each answer and try again.';
+    feedback.className=`feedback ${points===5?'good':'try'}`;
+  }
+  function reset(){
+    Object.keys(matches).forEach(key=>{if(key!=='1')delete matches[key];});
+    leftRows.forEach(row=>{row.querySelector('.match-value').textContent='Choose';row.classList.remove('selected','correct','incorrect');row.setAttribute('aria-pressed','false');const result=row.nextElementSibling;result.textContent='';result.className='result';});
+    selectedRow=null;checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';refreshOptions();
+  }
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  refreshOptions();
+})();
+</script>
+</body>
+</html>
