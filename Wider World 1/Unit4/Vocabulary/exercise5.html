@@ -21,6 +21,7 @@ h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle
 <main class="container">
   <h1>Exercise 5 — Find nine school subjects in the wordsearch</h1>
   <p class="subtitle">Find nine school subjects in the wordsearch. Look →, ↓, ↗ and ↘.</p>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name" style="font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px"></div>
 
   <section class="card activity" aria-label="Interactive school subject wordsearch">
     <div class="grid-wrap">
@@ -37,8 +38,10 @@ h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle
     <button class="button" id="checkButton" type="button">Check</button>
     <button class="button secondary" id="retryButton" type="button">Try again</button>
     <div class="score" id="score" aria-live="polite">Score: 0 / 9</div>
+    <button class="button secondary" id="submitButton" type="button" hidden>Submit results</button>
   </div>
   <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
   <a class="back" href="index.html">← Back to Vocabulary</a>
 </main>
 <script>
@@ -166,6 +169,31 @@ h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle
   }
   document.getElementById('checkButton').addEventListener('click',check);
   document.getElementById('retryButton').addEventListener('click',reset);
+})();
+</script>
+<script>
+(() => {
+  const submitButton = document.getElementById('submitButton');
+  const studentName = document.getElementById('studentName');
+  const submissionStatus = document.getElementById('submissionStatus');
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  document.getElementById('checkButton').addEventListener('click', () => { submitButton.hidden = false; });
+  document.getElementById('retryButton').addEventListener('click', () => { submitButton.hidden = true; submissionStatus.textContent = ''; submissionStatus.className = 'feedback'; submitButton.disabled = false; });
+  submitButton.addEventListener('click', async () => {
+    const name = studentName.value.trim();
+    if (!name) { studentName.focus(); submissionStatus.textContent = 'Please enter your name.'; submissionStatus.className = 'feedback try'; return; }
+    const answers = [...document.querySelectorAll('#wordList li')].filter(item=>item.classList.contains('found')).map(item=>item.dataset.word).join('; ') || 'No subjects found';
+    const score = document.getElementById('score').textContent.replace(/^Score:\s*/, '').trim();
+    const data = new URLSearchParams({student:name,unit:'Unit 4',section:'Vocabulary',exercise:'Exercise 5',answers,score});
+    submitButton.disabled = true;
+    submissionStatus.textContent = '';
+    try {
+      await fetch(webAppUrl, {method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});
+      submissionStatus.textContent = 'Results submitted successfully!'; submissionStatus.className = 'feedback good';
+    } catch (error) {
+      submissionStatus.textContent = 'Sorry, the results could not be submitted. Please try again.'; submissionStatus.className = 'feedback try'; submitButton.disabled = false;
+    }
+  });
 })();
 </script>
 </body>
