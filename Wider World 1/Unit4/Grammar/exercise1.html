@@ -19,12 +19,14 @@ h2{font-size:1.3rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:1
 .feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
 @media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:16px}.sentence{grid-template-columns:96px 26px 1fr;gap:8px;padding:10px}.illustration{height:74px}.sentence-body{font-size:1rem}.answer-input{width:180px}}
 @media(max-width:430px){.sentence{grid-template-columns:75px 22px 1fr;gap:6px;padding:8px}.illustration{height:64px}.answer-input{width:145px}}
+.student-entry{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}
 </style>
 </head>
 <body>
 <main class="container">
   <h1>Exercise 1: Look at the pictures and complete the sentences.</h1>
   <p class="subtitle">Look at the pictures and complete the sentences with the Present Continuous of these verbs. Use full forms.</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
 
   <section class="card" aria-labelledby="word-bank-title">
     <h2 id="word-bank-title">Word bank</h2>
@@ -71,12 +73,18 @@ h2{font-size:1.3rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:1
     <button class="button" id="checkButton" type="button">Check</button>
     <button class="button secondary" id="retryButton" type="button">Try again</button>
     <div class="score" id="score" aria-live="polite">Score: 0 / 5</div>
+    <button class="button secondary" id="submitButton" type="button" hidden>Submit results</button>
   </div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
   <div class="feedback" id="feedback" aria-live="polite"></div>
   <a class="back" href="index.html">← Back to Grammar</a>
 </main>
 <script>
 (() => {
+  const submitButton=document.getElementById('submitButton');
+  const submissionStatus=document.getElementById('submissionStatus');
+  const studentName=document.getElementById('studentName');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
   const inputs=[...document.querySelectorAll('.answer-input')];
   const sentences=[...document.querySelectorAll('.sentence[data-answer]')];
   const score=document.getElementById('score');
@@ -94,15 +102,29 @@ h2{font-size:1.3rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:1
       if(correct)points++;
     });
     score.textContent=`Score: ${points} / 5`;
+    submitButton.hidden=false;
     feedback.textContent=points===5?'Excellent work! All answers are correct.':'Check the feedback on each sentence and try again.';
     feedback.className=`feedback ${points===5?'good':'try'}`;
   }
   function reset(){
     inputs.forEach(input=>{input.value='';});
     sentences.forEach(sentence=>{sentence.classList.remove('correct','incorrect');sentence.querySelector('.result').textContent='';});
-    checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';
+    checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';submitButton.hidden=true;submitButton.disabled=false;submissionStatus.textContent='';submissionStatus.className='feedback';
   }
   inputs.forEach(input=>input.addEventListener('input',()=>{if(checked)checkAnswers();}));
+  function collectAnswers(){return inputs.map((input,index)=>`Answer ${index+1} (${input.getAttribute('aria-label') || 'response'}): ${input.value.trim() || 'No answer'}`).join('; ');}
+  submitButton.addEventListener('click',async()=>{
+    const name=studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='feedback try';return;}
+    const data=new URLSearchParams({student:name,unit:'Unit 4',section:'Grammar',exercise:'Exercise 1',answers:collectAnswers(),score:score.textContent.replace(/^Score:\s*/, '')});
+    submitButton.disabled=true;submissionStatus.textContent='';
+    try{
+      await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});
+      submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='feedback good';
+    }catch(error){
+      submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='feedback try';submitButton.disabled=false;
+    }
+  });
   document.getElementById('checkButton').addEventListener('click',checkAnswers);
   document.getElementById('retryButton').addEventListener('click',reset);
   reset();
