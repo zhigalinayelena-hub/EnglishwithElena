@@ -8,7 +8,7 @@
 :root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
 *{box-sizing:border-box}body{margin:0}.container{max-width:1180px;margin:auto;padding:34px 22px 48px}
 h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 24px}
-.panel{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:22px}
+.student-entry{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}.panel{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:22px}
 h2{font-size:1.35rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:46px;counter-reset:words}
 .word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 14px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}
 .word{counter-increment:words}.word::before{content:counter(words) ". ";color:#4775a6}
@@ -27,6 +27,7 @@ h2{font-size:1.35rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:
 <main class="container">
   <h1>Exercise 1: Match photos A–J with words 1–10.</h1>
   <p class="subtitle">Match photos A–J with words 1–10.</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
 
   <section class="panel" aria-labelledby="bank-title">
     <h2 id="bank-title">Word bank</h2>
@@ -80,8 +81,10 @@ h2{font-size:1.35rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:
     <button class="button" id="checkButton" type="button">Check</button>
     <button class="button secondary" id="retryButton" type="button">Try again</button>
     <div class="score" id="score" aria-live="polite">Score: 0/10</div>
+    <button class="button secondary" id="submitButton" type="button" hidden>Submit results</button>
   </div>
   <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
   <a class="back" href="index.html">← Back to Vocabulary</a>
 </main>
 <script>
@@ -91,6 +94,10 @@ h2{font-size:1.35rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:
   const targets = [...document.querySelectorAll('.target')];
   const score = document.getElementById('score');
   const feedback = document.getElementById('feedback');
+  const submitButton = document.getElementById('submitButton');
+  const submissionStatus = document.getElementById('submissionStatus');
+  const studentName = document.getElementById('studentName');
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
   let selectedWord = null;
   let checked = false;
 
@@ -154,14 +161,30 @@ h2{font-size:1.35rem;margin:0 0 15px}.word-bank{display:flex;flex-wrap:wrap;gap:
       else{target.classList.add('incorrect');result.textContent=`❌ Try again. Correct answer: ${answer}.`;}
     });
     score.textContent = `Score: ${points}/10`;
+    submitButton.hidden = false;
     feedback.textContent = points === 10 ? 'Excellent work! All matches are correct.' : 'Check the feedback on each picture and try again.';
     feedback.className = `feedback ${points === 10 ? 'good' : 'try'}`;
   }
   function reset(){
     bank.replaceChildren(...words.map(makeWord));
     targets.forEach(target => {delete target.dataset.word;target.querySelector('.answer').textContent='Drop a word here';target.querySelector('.result').textContent='';target.classList.remove('has-word','correct','incorrect','drag-over');});
-    clearSelection();checked=false;score.textContent='Score: 0/10';feedback.textContent='';feedback.className='feedback';
+    clearSelection();checked=false;score.textContent='Score: 0/10';feedback.textContent='';feedback.className='feedback';submitButton.hidden=true;submissionStatus.textContent='';submissionStatus.className='feedback';
   }
+  submitButton.addEventListener('click', async () => {
+    const name = studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='feedback try';return;}
+    const answers = targets.map(target => `${target.dataset.letter}: ${target.dataset.word || 'No answer'}`).join('; ');
+    const points = targets.filter(target => target.dataset.word === target.dataset.answer).length;
+    const data = new URLSearchParams({student:name,unit:'Unit 4',section:'Vocabulary',exercise:'Exercise 1',answers,score:`${points}/10`});
+    submitButton.disabled = true;
+    submissionStatus.textContent = '';
+    try{
+      await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});
+      submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='feedback good';
+    }catch(error){
+      submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='feedback try';submitButton.disabled=false;
+    }
+  });
   document.getElementById('checkButton').addEventListener('click',checkAnswers);
   document.getElementById('retryButton').addEventListener('click',reset);
   reset();
