@@ -12,12 +12,14 @@ h1{text-align:center;font-size:clamp(1.9rem,4vw,2.8rem);margin:0 0 9px}.subtitle
 .columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}.column{min-width:0}.column h2{text-align:center;font-size:1.15rem;margin:0 0 12px;color:#285887}.match-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}.match-row{display:flex;align-items:center;gap:10px;min-height:60px;padding:11px 12px;border:1px solid #dce5ef;border-radius:13px;background:#f8fafc;cursor:pointer;text-align:left;color:inherit;font:inherit;width:100%}.match-row:hover,.match-row:focus-visible{border-color:#2869d8;background:#f2f7ff}.match-row.example{background:#f0fff5;border-color:#a7d9b8;cursor:default}.match-row.selected{border:2px solid #2869d8;background:#edf5ff}.match-row.correct{border-color:#219653;background:#f0fff5}.match-row.incorrect{border-color:#d84343;background:#fff4f4}.q-number{display:inline-flex;flex:0 0 28px;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#dceeff;color:#285887;font-size:.88rem;font-weight:bold}.half-text{font-size:1.03rem;line-height:1.4;flex:1}.match-value{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:32px;padding:3px 8px;border-radius:9px;background:#e7f1ff;color:#205ba8;font-weight:bold}.match-row.example .match-value{background:#219653;color:#fff}.letter{display:inline-flex;align-items:center;justify-content:center;flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#fff4df;border:2px solid #edc36d;color:#8c5a00;font-weight:bold}.right-option{cursor:pointer}.right-option.used{opacity:.52;cursor:default;background:#f4f7fa}.right-option.selected{border:2px solid #2869d8;background:#edf5ff}.result{font-size:.84rem;font-weight:bold;margin:3px 0 0 39px;line-height:1.35}.result:empty{display:none}.result.correct{color:#168344}.result.incorrect{color:#c33333}
 button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
 @media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:16px}.columns{grid-template-columns:1fr;gap:22px}.column h2{margin-bottom:9px}.match-list{gap:8px}.match-row{min-height:54px;padding:9px 10px}}
+.student-entry{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}
 </style>
 </head>
 <body>
 <main class="container">
   <h1>Exercise 8 — Match the sentence halves.</h1>
   <p class="subtitle">Match the sentence halves.</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
 
   <section class="card" aria-label="Match sentence halves">
     <p class="instructions">Match the sentence halves.</p>
@@ -52,12 +54,18 @@ button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3p
     <button class="button" id="checkButton" type="button">Check</button>
     <button class="button secondary" id="retryButton" type="button">Try again</button>
     <div class="score" id="score" aria-live="polite">Score: 0 / 5</div>
+    <button class="button secondary" id="submitButton" type="button" hidden>Submit results</button>
   </div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
   <div class="feedback" id="feedback" aria-live="polite"></div>
   <a class="back" href="index.html">← Back to Grammar</a>
 </main>
 <script>
 (() => {
+  const submitButton=document.getElementById('submitButton');
+  const submissionStatus=document.getElementById('submissionStatus');
+  const studentName=document.getElementById('studentName');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
   const answers={2:'a',3:'f',4:'b',5:'c',6:'e'};
   const leftRows=[...document.querySelectorAll('.left-row')];
   const rightOptions=[...document.querySelectorAll('.right-option')];
@@ -100,6 +108,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3p
       if(correct)points++;
     });
     score.textContent=`Score: ${points} / 5`;
+    submitButton.hidden=false;
     feedback.textContent=points===5?'Excellent work! All answers are correct.':'Check the feedback for each answer and try again.';
     feedback.className=`feedback ${points===5?'good':'try'}`;
   }
@@ -108,8 +117,22 @@ button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3p
     leftRows.forEach(row=>{row.querySelector('.match-value').textContent='Choose';row.classList.remove('selected','correct','incorrect');row.setAttribute('aria-pressed','false');const result=row.nextElementSibling;result.textContent='';result.className='result';});
     selectedRow=null;checked=false;score.textContent='Score: 0 / 5';feedback.textContent='';feedback.className='feedback';refreshOptions();
   }
+  function collectAnswers(){return leftRows.map(row=>`Question ${row.dataset.number}: ${matches[row.dataset.number] || 'No answer'}`).join('; ');}
+  submitButton.addEventListener('click',async()=>{
+    const name=studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='feedback try';return;}
+    const data=new URLSearchParams({student:name,unit:'Unit 4',section:'Grammar',exercise:'Exercise 8',answers:collectAnswers(),score:score.textContent.replace(/^Score:\s*/, '')});
+    submitButton.disabled=true;submissionStatus.textContent='';
+    try{
+      await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});
+      submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='feedback good';
+    }catch(error){
+      submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='feedback try';submitButton.disabled=false;
+    }
+  });
   document.getElementById('checkButton').addEventListener('click',checkAnswers);
   document.getElementById('retryButton').addEventListener('click',reset);
+  document.getElementById('retryButton').addEventListener('click',()=>{submitButton.hidden=true;submitButton.disabled=false;submissionStatus.textContent='';submissionStatus.className='feedback';});
   refreshOptions();
 })();
 </script>
