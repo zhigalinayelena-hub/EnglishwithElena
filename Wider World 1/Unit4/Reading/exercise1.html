@@ -11,6 +11,7 @@
 .card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}.questions{display:grid;gap:13px}.question{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start;gap:10px;background:#f7faff;border:2px solid #e1eaf3;border-radius:14px;padding:14px 16px}.number{font-weight:bold;font-size:1.05rem;padding-top:5px}.content{min-width:0}.sentence{font-size:1.08rem;line-height:1.65}.option{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:9px;padding:5px 10px;font:inherit;font-weight:bold;cursor:pointer;white-space:nowrap}.option:hover{background:#dceeff}.option[aria-pressed="true"]{background:#2869d8;border-color:#2869d8;color:#fff}.option:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.question.correct{border-color:#219653;background:#f0fff5}.question.incorrect{border-color:#d84343;background:#fff4f4}.result{font-size:.9rem;font-weight:bold;min-height:20px;margin-top:9px}.question.correct .result{color:#168344}.question.incorrect .result{color:#c33333}
 .controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}
 .feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.12rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+.student-entry{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}
 @media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:15px}.question{padding:12px 10px;gap:7px}.sentence{font-size:1rem;line-height:2}.option{padding:4px 7px;font-size:.95rem}.number{font-size:1rem}}
 </style>
 </head>
@@ -19,6 +20,7 @@
   <p class="label">WORD FRIENDS</p>
   <h1>Exercise 1 — Word Friends — Choose the correct option.</h1>
   <p class="subtitle">Choose the correct option.</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
 
   <section class="card questions" aria-label="Word Friends: choose the correct option">
     <div class="question" data-answer="best">
@@ -48,7 +50,9 @@
     <button class="button" id="checkButton" type="button">Check</button>
     <button class="button secondary" id="retryButton" type="button">Try again</button>
     <div class="score" id="score" aria-live="polite">Score: 0/7</div>
+    <button class="button secondary" id="submitButton" type="button" hidden>Submit results</button>
   </div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
   <div class="feedback" id="feedback" aria-live="polite"></div>
   <a class="back" href="index.html">← Back to Reading</a>
 </main>
@@ -57,6 +61,11 @@
   const questions=[...document.querySelectorAll('.question')];
   const score=document.getElementById('score');
   const feedback=document.getElementById('feedback');
+  const submitButton=document.getElementById('submitButton');
+  const submissionStatus=document.getElementById('submissionStatus');
+  const studentName=document.getElementById('studentName');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let submissionInProgress=false;
   questions.forEach(question=>question.querySelectorAll('.option').forEach(option=>option.addEventListener('click',()=>{
     question.querySelectorAll('.option').forEach(button=>button.setAttribute('aria-pressed','false'));
     option.setAttribute('aria-pressed','true');
@@ -72,6 +81,7 @@
       if(correct)points++;
     });
     score.textContent=`Score: ${points}/7`;
+    submitButton.hidden=false;
     feedback.textContent=points===7?'Excellent work! All answers are correct.':'Check the feedback on each item and try again.';
     feedback.className=`feedback ${points===7?'good':'try'}`;
   }
@@ -80,8 +90,29 @@
       question.querySelectorAll('.option').forEach(option=>option.setAttribute('aria-pressed','false'));
       question.querySelector('.result').textContent='';question.classList.remove('correct','incorrect');
     });
-    score.textContent='Score: 0/7';feedback.textContent='';feedback.className='feedback';
+    score.textContent='Score: 0/7';feedback.textContent='';feedback.className='feedback';submitButton.hidden=true;submitButton.disabled=false;submitButton.textContent='Submit results';submissionStatus.textContent='';submissionStatus.className='feedback';
   }
+  submitButton.addEventListener('click',async()=>{
+    if(submissionInProgress||submitButton.disabled)return;
+    const name=studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='feedback try';return;}
+    const answers=questions.map((question,index)=>{
+      const selected=question.querySelector('.option[aria-pressed="true"]');
+      return `${index+1}: ${selected?selected.textContent.trim():'No answer'}`;
+    }).join('; ');
+    const data=new URLSearchParams({student:name,unit:'Unit 4',section:'Reading',exercise:'Exercise 1',answers,score:score.textContent.replace(/^Score:\s*/,'')});
+    submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';
+    try{
+      const response=await fetch(webAppUrl,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});
+      if(!response.ok)throw new Error(`Submission failed with status ${response.status}`);
+      submitButton.textContent='✓ Results submitted';submitButton.disabled=true;
+      submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='feedback good';
+    }catch(error){
+      submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='feedback try';submitButton.disabled=false;
+    }finally{
+      submissionInProgress=false;
+    }
+  });
   document.getElementById('checkButton').addEventListener('click',check);
   document.getElementById('retryButton').addEventListener('click',reset);
 })();
