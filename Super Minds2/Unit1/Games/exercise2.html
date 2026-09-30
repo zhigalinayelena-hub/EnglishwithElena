@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 2 — Think back 1</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef7ff;color:#17365d}
+.game{max-width:1100px;margin:auto;padding:32px 20px 44px}
+.header,.exercise,.result{background:#fff;border-radius:28px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.header{padding:24px;text-align:center;margin-bottom:20px}
+.header h1{font-size:clamp(1.9rem,4vw,2.7rem);margin:0 0 8px}
+.header p{font-size:22px;font-weight:bold;margin:0;color:#2869d8}
+.scorebar{position:sticky;top:8px;z-index:2;width:max-content;max-width:100%;margin:0 auto 18px;padding:10px 18px;background:white;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.12);font-size:20px;font-weight:bold}
+.exercise{padding:25px}
+.questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.question-card{border:2px solid #c9dff2;border-radius:20px;padding:17px 18px;background:#fff}
+.question-heading{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.illustration{display:grid;place-items:center;flex:0 0 48px;height:48px;border-radius:15px;background:#e7f4ff;font-size:28px}
+.question-text{font-size:20px;line-height:1.35;font-weight:bold}
+.options{display:grid;gap:8px}
+.option{display:flex;align-items:center;gap:10px;width:100%;border:2px solid transparent;border-radius:12px;padding:9px 12px;text-align:left;font:inherit;font-size:17px;color:#17365d;background:#edf6ff;cursor:pointer;transition:background .15s,border-color .15s}
+.option:hover,.option:focus-visible{background:#dff0ff;border-color:#87b9e8;outline:none}
+.option-letter{display:grid;place-items:center;flex:0 0 32px;height:27px;border-radius:14px;background:#fff;font-weight:bold}
+.option.selected{background:#fff3cf;border-color:#e4b43b}
+.option.correct{background:#d9f5e2;border-color:#55ae72}
+.option.incorrect{background:#ffe2dc;border-color:#db7666}
+.question-feedback{min-height:23px;margin:8px 0 0;font-size:15px;font-weight:bold}
+.question-feedback.correct{color:#168447}.question-feedback.incorrect{color:#bf3e32}.question-feedback.unanswered{color:#8a5b00}
+.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:22px auto 0}
+.action{border:0;border-radius:14px;background:#2869d8;color:#fff;padding:13px 25px;font:inherit;font-size:18px;font-weight:bold;cursor:pointer}
+.action:hover{background:#1e57b9}.action:focus-visible,.back:focus-visible{outline:3px solid #f5bd38;outline-offset:3px}
+.action.reset{background:#f2a900;color:#253653}.action.reset:hover{background:#df9700}
+.result{display:none;margin:18px auto 0;padding:18px 22px;width:max-content;max-width:100%;text-align:center;font-size:21px;font-weight:bold}
+.result.show{display:block}.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px auto 12px;font-size:18px;font-weight:bold}
+.student-entry.visible{display:flex}.student-entry input{min-width:220px;max-width:100%;padding:10px 12px;border:2px solid #c9d8eb;border-radius:12px;font:inherit;font-weight:normal;color:#17365d}
+.submit-results{display:none;margin:8px;border:0;border-radius:18px;padding:14px 27px;font-size:19px;font-weight:bold;cursor:pointer;background:#2869d8;color:#fff}
+.submit-results.visible{display:inline-block}.submit-results:disabled{opacity:.75;cursor:default}
+.submission-status{display:none;margin:12px auto 0;font-size:19px;font-weight:bold}.submission-status.visible{display:block}.submission-status.success{color:#168447}.submission-status.error{color:#c33a3a}
+.back{display:block;width:max-content;margin:24px auto 0;padding:12px 22px;border-radius:16px;background:#2869d8;color:white;text-decoration:none;font-weight:bold}
+@media(max-width:720px){.questions{grid-template-columns:1fr}.exercise{padding:16px}.question-card{padding:14px}.question-text{font-size:19px}}
+</style>
+</head>
+<body>
+<main class="game">
+  <header class="header">
+    <h1>Exercise 2 — Think back 1</h1>
+    <p>Read and circle.</p>
+  </header>
+  <div class="scorebar" aria-live="polite">Score: <span id="scoreValue">—</span> / 7</div>
+  <section class="exercise" aria-label="Exercise 2 — Think back 1">
+    <div class="questions" id="questions">
+      <article class="question-card" data-question="1">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">🌅</span><div class="question-text">1. I ... at seven o’clock in the morning.</div></div>
+        <div class="options" role="group" aria-label="Question 1 answers">
+          <button class="option" type="button" data-value="get dressed" aria-pressed="false"><span class="option-letter">a)</span>get dressed</button>
+          <button class="option" type="button" data-value="get up" aria-pressed="false"><span class="option-letter">b)</span>get up</button>
+          <button class="option" type="button" data-value="have breakfast" aria-pressed="false"><span class="option-letter">c)</span>have breakfast</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+      <article class="question-card" data-question="2">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">🍽️</span><div class="question-text">2. I ... at eight o’clock in the evening.</div></div>
+        <div class="options" role="group" aria-label="Question 2 answers">
+          <button class="option" type="button" data-value="go to school" aria-pressed="false"><span class="option-letter">a)</span>go to school</button>
+          <button class="option" type="button" data-value="brush my teeth" aria-pressed="false"><span class="option-letter">b)</span>brush my teeth</button>
+          <button class="option" type="button" data-value="have dinner" aria-pressed="false"><span class="option-letter">c)</span>have dinner</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+      <article class="question-card" data-question="3">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">🪥</span><div class="question-text">3. When ... you brush your teeth?</div></div>
+        <div class="options" role="group" aria-label="Question 3 answers">
+          <button class="option" type="button" data-value="do" aria-pressed="false"><span class="option-letter">a)</span>do</button>
+          <button class="option" type="button" data-value="doing" aria-pressed="false"><span class="option-letter">b)</span>doing</button>
+          <button class="option" type="button" data-value="does" aria-pressed="false"><span class="option-letter">c)</span>does</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+      <article class="question-card" data-question="4">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">🕒</span><div class="question-text">4. ... the time?</div></div>
+        <div class="options" role="group" aria-label="Question 4 answers">
+          <button class="option" type="button" data-value="When’s" aria-pressed="false"><span class="option-letter">a)</span>When’s</button>
+          <button class="option" type="button" data-value="What's" aria-pressed="false"><span class="option-letter">b)</span>What’s</button>
+          <button class="option" type="button" data-value="Is" aria-pressed="false"><span class="option-letter">c)</span>Is</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+      <article class="question-card" data-question="5">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">🌙</span><div class="question-text">5. He ... to bed at ten o’clock.</div></div>
+        <div class="options" role="group" aria-label="Question 5 answers">
+          <button class="option" type="button" data-value="going" aria-pressed="false"><span class="option-letter">a)</span>going</button>
+          <button class="option" type="button" data-value="go" aria-pressed="false"><span class="option-letter">b)</span>go</button>
+          <button class="option" type="button" data-value="goes" aria-pressed="false"><span class="option-letter">c)</span>goes</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+      <article class="question-card" data-question="6">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">⚽</span><div class="question-text">6. She ... in the park at five o’clock.</div></div>
+        <div class="options" role="group" aria-label="Question 6 answers">
+          <button class="option" type="button" data-value="plays" aria-pressed="false"><span class="option-letter">a)</span>plays</button>
+          <button class="option" type="button" data-value="playing" aria-pressed="false"><span class="option-letter">b)</span>playing</button>
+          <button class="option" type="button" data-value="play" aria-pressed="false"><span class="option-letter">c)</span>play</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+      <article class="question-card" data-question="7">
+        <div class="question-heading"><span class="illustration" aria-hidden="true">🔑</span><div class="question-text">7. In the story, ... helps get Mum’s keys from under the car.</div></div>
+        <div class="options" role="group" aria-label="Question 7 answers">
+          <button class="option" type="button" data-value="Misty" aria-pressed="false"><span class="option-letter">a)</span>Misty</button>
+          <button class="option" type="button" data-value="Whisper" aria-pressed="false"><span class="option-letter">b)</span>Whisper</button>
+          <button class="option" type="button" data-value="Thunder" aria-pressed="false"><span class="option-letter">c)</span>Thunder</button>
+        </div><p class="question-feedback" aria-live="polite"></p>
+      </article>
+    </div>
+    <div class="actions">
+      <button class="action" id="checkAnswers" type="button">Check</button>
+      <button class="action reset" id="resetExercise" type="button">Try again / Reset</button>
+    </div>
+    <div class="result" id="result" aria-live="polite">Your score: <span id="resultScore"></span> / 7</div>
+    <div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name" disabled></div>
+    <div class="actions"><button class="submit-results" id="submitResults" type="button" disabled>Submit results</button></div>
+    <div class="submission-status" id="submissionStatus" aria-live="polite"></div>
+  </section>
+  <a class="back" href="index.html">← Back to Games</a>
+</main>
+<script>
+const answerKey=[1,2,0,1,2,0,2];
+const cards=[...document.querySelectorAll('.question-card')];
+const selectedAnswers=Array(7).fill(null);
+const scoreValue=document.getElementById('scoreValue');
+const result=document.getElementById('result');
+const resultScore=document.getElementById('resultScore');
+const studentEntry=document.getElementById('studentEntry');
+const studentName=document.getElementById('studentName');
+const submitButton=document.getElementById('submitResults');
+const submissionStatus=document.getElementById('submissionStatus');
+const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+let currentScore=0;
+let checked=false;
+let submissionInProgress=false;
+let submittedPayload=null;
+
+function clearCheckState(){
+  checked=false;
+  scoreValue.textContent='—';
+  result.classList.remove('show');
+  studentEntry.classList.remove('visible');
+  studentName.disabled=true;
+  submitButton.classList.remove('visible');
+  submitButton.disabled=true;
+  submitButton.textContent='Submit results';
+  submissionStatus.textContent='';
+  submissionStatus.className='submission-status';
+  cards.forEach(card=>{
+    card.querySelectorAll('.option').forEach(option=>option.classList.remove('correct','incorrect'));
+    const feedback=card.querySelector('.question-feedback');
+    feedback.textContent='';
+    feedback.className='question-feedback';
+  });
+}
+
+cards.forEach((card,index)=>{
+  const options=[...card.querySelectorAll('.option')];
+  options.forEach((option,optionIndex)=>{
+    option.addEventListener('click',()=>{
+      clearCheckState();
+      selectedAnswers[index]=option.dataset.value;
+      options.forEach(item=>{
+        const selected=item===option;
+        item.classList.toggle('selected',selected);
+        item.setAttribute('aria-pressed',String(selected));
+      });
+    });
+  });
+});
+
+document.getElementById('checkAnswers').addEventListener('click',()=>{
+  currentScore=0;
+  cards.forEach((card,index)=>{
+    const options=[...card.querySelectorAll('.option')];
+    const feedback=card.querySelector('.question-feedback');
+    options.forEach((option,optionIndex)=>{
+      option.classList.remove('correct','incorrect');
+      if(optionIndex===answerKey[index]) option.classList.add('correct');
+    });
+    feedback.className='question-feedback';
+    if(selectedAnswers[index]===null){
+      feedback.textContent='Choose one answer.';
+      feedback.classList.add('unanswered');
+    }else if(options[answerKey[index]].dataset.value===selectedAnswers[index]){
+      currentScore++;
+      feedback.textContent='✓ Correct!';
+      feedback.classList.add('correct');
+    }else{
+      const chosen=options.find(option=>option.dataset.value===selectedAnswers[index]);
+      chosen.classList.add('incorrect');
+      feedback.textContent='✗ Incorrect. The correct answer is '+options[answerKey[index]].dataset.value+'.';
+      feedback.classList.add('incorrect');
+    }
+  });
+  checked=true;
+  scoreValue.textContent=String(currentScore);
+  resultScore.textContent=String(currentScore);
+  result.classList.add('show');
+  studentEntry.classList.add('visible');
+  studentName.disabled=false;
+  submitButton.classList.add('visible');
+  submitButton.disabled=false;
+  submissionStatus.textContent='';
+  submissionStatus.className='submission-status';
+});
+
+document.getElementById('resetExercise').addEventListener('click',()=>{
+  selectedAnswers.fill(null);
+  studentName.value='';
+  cards.forEach(card=>card.querySelectorAll('.option').forEach(option=>{
+    option.classList.remove('selected');
+    option.setAttribute('aria-pressed','false');
+  }));
+  clearCheckState();
+});
+
+submitButton.addEventListener('click',async()=>{
+  if(!checked||submissionInProgress||submitButton.disabled)return;
+  const name=studentName.value.trim();
+  if(!name){
+    studentName.focus();
+    submissionStatus.textContent='Please enter your name.';
+    submissionStatus.className='submission-status visible error';
+    return;
+  }
+  const answers=selectedAnswers.map((answer,index)=>`${index+1}: ${answer||'No selection'}`).join('; ');
+  const data=new URLSearchParams({student:name,unit:'Unit 1',section:'Games',exercise:'Exercise 2',answers,score:`${currentScore}/7`});
+  const payload=data.toString();
+  if(payload===submittedPayload){
+    submitButton.textContent='✓ Results submitted';
+    submitButton.disabled=true;
+    submissionStatus.textContent='Results submitted successfully!';
+    submissionStatus.className='submission-status visible success';
+    return;
+  }
+  submissionInProgress=true;
+  submitButton.disabled=true;
+  submissionStatus.textContent='';
+  try{
+    const response=await fetch(webAppUrl,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});
+    if(!response.ok)throw new Error(`Submission failed with status ${response.status}`);
+    submittedPayload=payload;
+    submitButton.textContent='✓ Results submitted';
+    submissionStatus.textContent='Results submitted successfully!';
+    submissionStatus.className='submission-status visible success';
+  }catch(error){
+    submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';
+    submissionStatus.className='submission-status visible error';
+    submitButton.disabled=false;
+  }finally{
+    submissionInProgress=false;
+  }
+});
+</script>
+</body>
+</html>
