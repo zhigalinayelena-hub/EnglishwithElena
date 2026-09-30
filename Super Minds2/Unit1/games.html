@@ -150,6 +150,45 @@ body{
   color:white;
 }
 
+.student-entry{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:20px auto 12px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.student-entry input{
+  min-width:220px;
+  max-width:100%;
+  padding:10px 12px;
+  border:2px solid #c9d8eb;
+  border-radius:12px;
+  font:inherit;
+  font-weight:normal;
+  color:#17365d;
+}
+
+.submit-results{
+  margin:10px 8px;
+  border:none;
+  border-radius:18px;
+  padding:16px 30px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#2869d8;
+  color:white;
+}
+
+.submit-results:disabled{opacity:.75;cursor:default}
+.submission-status{margin:10px auto;font-size:20px;font-weight:bold}
+.submission-status.success{color:#168447}
+.submission-status.error{color:#c33a3a}
+
 @media(max-width:700px){
   .answers{
     grid-template-columns:1fr;
@@ -201,6 +240,9 @@ body{
   <div class="result" id="result">
     <h2>⭐ Great job!</h2>
     <p id="scoreText"></p>
+    <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+    <button class="submit-results" id="submitResults" type="button">Submit results</button>
+    <div class="submission-status" id="submissionStatus" aria-live="polite"></div>
     <button class="restart" onclick="restartGame()">Play again</button>
   </div>
 
@@ -269,6 +311,13 @@ const questions = [
 let current = 0;
 let score = 0;
 let answered = false;
+const studentName = document.getElementById("studentName");
+const submitButton = document.getElementById("submitResults");
+const submissionStatus = document.getElementById("submissionStatus");
+const webAppUrl = "https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec";
+let submittedAnswers = [];
+let submissionInProgress = false;
+let submittedPayload = null;
 
 function loadQuestion(){
 
@@ -316,6 +365,7 @@ function checkAnswer(index,button){
   answered = true;
 
   const q = questions[current];
+  submittedAnswers[current] = q.answers[index];
 
   const buttons = document.querySelectorAll(".answer");
 
@@ -374,6 +424,11 @@ function restartGame(){
 
   current = 0;
   score = 0;
+  submittedAnswers = [];
+  submitButton.disabled = false;
+  submitButton.textContent = "Submit results";
+  submissionStatus.textContent = "";
+  submissionStatus.className = "submission-status";
 
   document.getElementById("result").style.display = "none";
   document.getElementById("questionCard").style.display = "block";
@@ -381,6 +436,57 @@ function restartGame(){
   loadQuestion();
 
 }
+
+submitButton.addEventListener("click", async () => {
+
+  if(submissionInProgress || submitButton.disabled) return;
+
+  const name = studentName.value.trim();
+  if(!name){
+    studentName.focus();
+    submissionStatus.textContent = "Please enter your name.";
+    submissionStatus.className = "submission-status error";
+    return;
+  }
+
+  const answers = questions.map((question,index) => `${index + 1}: ${submittedAnswers[index] || "No selection"}`).join("; ");
+  const data = new URLSearchParams({
+    student:name,
+    unit:"Unit 1",
+    section:"Games",
+    exercise:"Exercise 1",
+    answers,
+    score:`${score}/${questions.length}`
+  });
+  const payload = data.toString();
+
+  if(payload === submittedPayload){
+    submitButton.textContent = "✓ Results submitted";
+    submitButton.disabled = true;
+    submissionStatus.textContent = "Results submitted successfully!";
+    submissionStatus.className = "submission-status success";
+    return;
+  }
+
+  submissionInProgress = true;
+  submitButton.disabled = true;
+  submissionStatus.textContent = "";
+
+  try{
+    const response = await fetch(webAppUrl,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:payload});
+    if(!response.ok) throw new Error(`Submission failed with status ${response.status}`);
+    submittedPayload = payload;
+    submitButton.textContent = "✓ Results submitted";
+    submissionStatus.textContent = "Results submitted successfully!";
+    submissionStatus.className = "submission-status success";
+  }catch(error){
+    submissionStatus.textContent = "Sorry, the results could not be submitted. Please try again.";
+    submissionStatus.className = "submission-status error";
+    submitButton.disabled = false;
+  }finally{
+    submissionInProgress = false;
+  }
+});
 
 loadQuestion();
 
