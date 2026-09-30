@@ -11,10 +11,127 @@ body{margin:0;font-family:Arial,sans-serif;background:#eef3f8;color:#1f3552}
 h1{margin:0;font-size:clamp(1.1rem,3vw,1.5rem)}
 .back{display:inline-block;flex:none;background:#2869d8;color:#fff;padding:11px 17px;border-radius:14px;text-decoration:none;font-weight:bold}
 .game{display:block;width:100%;height:calc(100vh - 68px);min-height:480px;border:0;background:#bfe9ff}
+.student-entry{display:flex;align-items:center;justify-content:center;gap:8px;flex:none;font-weight:bold;color:#1f3552}
+.student-entry input{width:190px;max-width:25vw;padding:8px 10px;border:2px solid #c9d8eb;border-radius:10px;font:inherit;font-weight:normal;color:#1f3552}
+.results-panel{display:none;position:fixed;z-index:10;left:50%;bottom:16px;transform:translateX(-50%);align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;width:max-content;max-width:calc(100vw - 24px);padding:14px 18px;border-radius:18px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.2);text-align:center}
+.results-panel.visible{display:flex}
+button{border:0;border-radius:14px;background:#2869d8;color:#fff;padding:11px 20px;font:inherit;font-weight:bold;cursor:pointer}
+button:hover{background:#1d55b7}button:focus-visible,.back:focus-visible{outline:3px solid #f5bd38;outline-offset:3px}
+button:disabled{opacity:.75;cursor:default}
+.score-result{display:none;font-weight:bold;color:#1f3552}.score-result.visible{display:inline-block}
+.submit-results{display:none}.submit-results.visible{display:inline-block}
+.submission-status{display:none;width:100%;font-weight:bold;color:#168447}.submission-status.visible{display:block}.submission-status.error{color:#c33a3a}
+@media(max-width:760px){.bar{height:auto;min-height:68px;flex-wrap:wrap;padding:10px 14px}.bar h1{flex:1}.student-entry{order:3;width:100%}.student-entry input{max-width:none;width:min(260px,60vw)}.game{height:calc(100vh - 116px)}}
 </style>
 </head>
 <body>
-<header class="bar"><h1>🎒 Exercise 1 — Let's Pack the Bag</h1><a class="back" href="index.html">← Back to Games</a></header>
-<iframe class="game" src="../Lets_Pack_the_Bag_v2.html" title="Let's Pack the Bag game"></iframe>
+<header class="bar"><h1>🎒 Exercise 1 — Let's Pack the Bag</h1><div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div><a class="back" href="index.html">← Back to Games</a></header>
+<iframe class="game" id="gameFrame" src="../Lets_Pack_the_Bag_v2.html" title="Let's Pack the Bag game"></iframe>
+<section class="results-panel" id="resultsPanel" aria-live="polite">
+  <button id="checkResults" type="button">Check</button>
+  <span class="score-result" id="scoreResult"></span>
+  <button class="submit-results" id="submitResults" type="button" disabled>Submit results</button>
+  <div class="submission-status" id="submissionStatus" aria-live="polite"></div>
+</section>
+<script>
+const gameFrame=document.getElementById('gameFrame');
+const resultsPanel=document.getElementById('resultsPanel');
+const checkButton=document.getElementById('checkResults');
+const scoreResult=document.getElementById('scoreResult');
+const studentName=document.getElementById('studentName');
+const submitButton=document.getElementById('submitResults');
+const submissionStatus=document.getElementById('submissionStatus');
+const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+let gameDocument=null;
+let gameItems=[];
+let selectedItems=[];
+let currentScore=0;
+let submissionInProgress=false;
+let submittedPayload=null;
+let monitorAttached=false;
+
+function rememberPackedItems(){
+  if(!gameDocument)return;
+  gameDocument.querySelectorAll('.item[data-done="1"]').forEach(item=>{
+    if(!selectedItems.includes(item.dataset.word))selectedItems.push(item.dataset.word);
+  });
+}
+
+function showCheckWhenComplete(){
+  if(!gameDocument)return;
+  rememberPackedItems();
+  const count=Number(gameDocument.getElementById('count')?.textContent||0);
+  const done=gameDocument.querySelectorAll('.item[data-done="1"]').length===7;
+  if(done&&count===7)resultsPanel.classList.add('visible');
+}
+
+function attachGameMonitor(){
+  if(monitorAttached)return;
+  try{gameDocument=gameFrame.contentDocument;}catch(error){return;}
+  if(!gameDocument||!gameDocument.getElementById('scene'))return;
+  monitorAttached=true;
+  gameItems=[...gameDocument.querySelectorAll('.item')];
+  const observer=new MutationObserver(()=>showCheckWhenComplete());
+  gameItems.forEach(item=>observer.observe(item,{attributes:true,attributeFilter:['data-done']}));
+  showCheckWhenComplete();
+}
+
+gameFrame.addEventListener('load',attachGameMonitor);
+if(gameFrame.contentDocument?.readyState==='complete')attachGameMonitor();
+setInterval(()=>{attachGameMonitor();showCheckWhenComplete();},250);
+
+checkButton.addEventListener('click',()=>{
+  showCheckWhenComplete();
+  if(!gameDocument)return;
+  const packedCount=Number(gameDocument.getElementById('count')?.textContent||0);
+  const packedItems=[...gameDocument.querySelectorAll('.item[data-done="1"]')];
+  packedItems.forEach(item=>{
+    if(!selectedItems.includes(item.dataset.word))selectedItems.push(item.dataset.word);
+  });
+  currentScore=packedCount;
+  scoreResult.textContent=`Your score: ${currentScore} / 7`;
+  scoreResult.classList.add('visible');
+  checkButton.disabled=true;
+  submitButton.classList.add('visible');
+  submitButton.disabled=false;
+});
+
+submitButton.addEventListener('click',async()=>{
+  if(submissionInProgress||submitButton.disabled)return;
+  const name=studentName.value.trim();
+  if(!name){
+    studentName.focus();
+    submissionStatus.textContent='Please enter your name.';
+    submissionStatus.className='submission-status visible error';
+    return;
+  }
+  const answers=selectedItems.slice(0,currentScore).map((item,index)=>`${index+1}: ${item}`).join('; ');
+  const data=new URLSearchParams({student:name,unit:'Unit 1',section:'Games',exercise:'Exercise 1',answers,score:`${currentScore}/7`});
+  const payload=data.toString();
+  if(payload===submittedPayload){
+    submitButton.textContent='✓ Results submitted';
+    submitButton.disabled=true;
+    submissionStatus.textContent='Results submitted successfully!';
+    submissionStatus.className='submission-status visible';
+    return;
+  }
+  submissionInProgress=true;
+  submitButton.disabled=true;
+  try{
+    const response=await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});
+    if(response.type!=='opaque'&&!response.ok)throw new Error(`Submission failed with status ${response.status}`);
+    submittedPayload=payload;
+    submitButton.textContent='✓ Results submitted';
+    submissionStatus.textContent='Results submitted successfully!';
+    submissionStatus.className='submission-status visible';
+  }catch(error){
+    submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';
+    submissionStatus.className='submission-status visible error';
+    submitButton.disabled=false;
+  }finally{
+    submissionInProgress=false;
+  }
+});
+</script>
 </body>
 </html>
