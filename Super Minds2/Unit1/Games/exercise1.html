@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Going, Getting, Arriving and Leaving</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef7ff;
+  color:#17365d;
+}
+
+.game{
+  max-width:1000px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.header{
+  background:#ffffff;
+  border-radius:28px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  margin-bottom:25px;
+}
+
+.header h1{
+  margin:0 0 8px;
+  font-size:38px;
+}
+
+.header p{
+  margin:0;
+  font-size:20px;
+  color:#666;
+}
+
+.progress{
+  margin-top:18px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.card{
+  background:#ffffff;
+  border-radius:28px;
+  padding:35px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.picture{
+  font-size:80px;
+  margin-bottom:15px;
+}
+
+.context{
+  font-size:20px;
+  color:#666;
+  margin-bottom:25px;
+}
+
+.question{
+  font-size:32px;
+  font-weight:bold;
+  margin-bottom:30px;
+}
+
+.answers{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.answer{
+  border:none;
+  border-radius:18px;
+  padding:18px 12px;
+  font-size:22px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#dff0ff;
+  color:#17365d;
+  transition:.2s;
+}
+
+.answer:hover{
+  transform:translateY(-3px);
+}
+
+.answer.correct{
+  background:#c9f7d5;
+}
+
+.answer.wrong{
+  background:#ffd0d0;
+}
+
+.feedback{
+  min-height:70px;
+  margin-top:25px;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.next{
+  display:none;
+  margin:10px auto 0;
+  border:none;
+  border-radius:18px;
+  padding:16px 30px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#2869d8;
+  color:white;
+}
+
+.result{
+  display:none;
+  background:white;
+  border-radius:28px;
+  padding:45px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.result h2{
+  font-size:40px;
+  margin-top:0;
+}
+
+.restart{
+  border:none;
+  border-radius:18px;
+  padding:16px 30px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#2869d8;
+  color:white;
+}
+
+.student-entry{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:20px auto 12px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.student-entry input{
+  min-width:220px;
+  max-width:100%;
+  padding:10px 12px;
+  border:2px solid #c9d8eb;
+  border-radius:12px;
+  font:inherit;
+  font-weight:normal;
+  color:#17365d;
+}
+
+.student-entry.visible{display:flex}
+
+.submit-results{
+  display:none;
+  margin:10px 8px;
+  border:none;
+  border-radius:18px;
+  padding:16px 30px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#2869d8;
+  color:white;
+}
+
+.submit-results.visible{display:inline-block}
+.submit-results:disabled{opacity:.75;cursor:default}
+.submission-status{display:none;margin:10px auto;font-size:20px;font-weight:bold}
+.submission-status.visible{display:block}
+.submission-status.success{color:#168447}
+.submission-status.error{color:#c33a3a}
+
+@media(max-width:700px){
+  .answers{
+    grid-template-columns:1fr;
+  }
+
+  .question{
+    font-size:26px;
+  }
+
+  .header h1{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="game">
+
+  <div class="header">
+    <h1>🎒 Going, Getting, Arriving and Leaving</h1>
+    <p>Choose the correct word.</p>
+    <div class="progress" id="progress">Question 1 of 6</div>
+  </div>
+
+  <div class="card" id="questionCard">
+
+    <div class="picture" id="picture">🏫</div>
+
+    <div class="context" id="context">
+      He is walking towards the school.
+    </div>
+
+    <div class="question" id="question">
+      He ___ to school every morning.
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <button class="next" id="nextButton" onclick="nextQuestion()">
+      Next →
+    </button>
+
+  </div>
+
+  <div class="result" id="result">
+    <h2>⭐ Great job!</h2>
+    <p id="scoreText"></p>
+    <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+    <button class="submit-results" id="submitResults" type="button" disabled>Submit results</button>
+    <div class="submission-status" id="submissionStatus" aria-live="polite"></div>
+    <button class="restart" onclick="restartGame()">Play again</button>
+  </div>
+
+</div>
+
+<script>
+
+const questions = [
+
+  {
+    picture:"🏫",
+    context:"He is walking towards the school.",
+    question:"He ___ to school every morning.",
+    answers:["goes","gets","arrives"],
+    correct:0,
+    explanation:"GO TO = move to a place."
+  },
+
+  {
+    picture:"🚌",
+    context:"He has just finished a 20-minute bus journey.",
+    question:"He ___ to school after the bus journey.",
+    answers:["goes","gets","arrives"],
+    correct:1,
+    explanation:"GET TO = reach a place, especially after a journey."
+  },
+
+  {
+    picture:"🏫",
+    context:"He reaches school at 9:00.",
+    question:"He ___ at school at 9:00.",
+    answers:["arrives","gets","goes"],
+    correct:0,
+    explanation:"ARRIVE AT = reach a small or specific place."
+  },
+
+  {
+    picture:"🚶‍♂️🏫",
+    context:"He goes away from school at 4:00.",
+    question:"He ___ school at 4:00.",
+    answers:["leaves","gets","arrives"],
+    correct:0,
+    explanation:"LEAVE = go away from a place."
+  },
+
+  {
+    picture:"🇬🇧🌍",
+    context:"He reaches London at 10:00.",
+    question:"He ___ in London at 10:00.",
+    answers:["arrives","gets","leaves"],
+    correct:0,
+    explanation:"ARRIVE IN = reach a big place, such as a city or country."
+  },
+
+  {
+    picture:"🏠",
+    context:"He returns home at 6:00.",
+    question:"He ___ home at 6:00.",
+    answers:["gets to","gets","arrives at"],
+    correct:1,
+    explanation:"GET HOME = reach home. We do not use TO."
+  }
+
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+const studentName = document.getElementById("studentName");
+const studentEntry = document.querySelector(".student-entry");
+const submitButton = document.getElementById("submitResults");
+const submissionStatus = document.getElementById("submissionStatus");
+const webAppUrl = "https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec";
+let submittedAnswers = [];
+let submissionInProgress = false;
+let submittedPayload = null;
+
+function loadQuestion(){
+
+  answered = false;
+
+  const q = questions[current];
+
+  document.getElementById("progress").textContent =
+    `Question ${current + 1} of ${questions.length}`;
+
+  document.getElementById("picture").textContent = q.picture;
+
+  document.getElementById("context").textContent = q.context;
+
+  document.getElementById("question").textContent = q.question;
+
+  document.getElementById("feedback").textContent = "";
+
+  document.getElementById("nextButton").style.display = "none";
+
+  const answers = document.getElementById("answers");
+
+  answers.innerHTML = "";
+
+  q.answers.forEach((answer,index)=>{
+
+    const button = document.createElement("button");
+
+    button.className = "answer";
+
+    button.textContent = answer;
+
+    button.onclick = () => checkAnswer(index,button);
+
+    answers.appendChild(button);
+
+  });
+
+}
+
+function checkAnswer(index,button){
+
+  if(answered) return;
+
+  answered = true;
+
+  const q = questions[current];
+  submittedAnswers[current] = q.answers[index];
+
+  const buttons = document.querySelectorAll(".answer");
+
+  buttons.forEach(b => b.disabled = true);
+
+  if(index === q.correct){
+
+    score++;
+
+    button.classList.add("correct");
+
+    document.getElementById("feedback").innerHTML =
+      "✅ Correct!<br><span style='font-size:18px'>" +
+      q.explanation +
+      "</span>";
+
+  }else{
+
+    button.classList.add("wrong");
+
+    buttons[q.correct].classList.add("correct");
+
+    document.getElementById("feedback").innerHTML =
+      "❌ Not quite.<br><span style='font-size:18px'>" +
+      q.explanation +
+      "</span>";
+
+  }
+
+  document.getElementById("nextButton").style.display = "inline-block";
+
+}
+
+function nextQuestion(){
+
+  current++;
+
+  if(current < questions.length){
+
+    loadQuestion();
+
+  }else{
+
+    document.getElementById("questionCard").style.display = "none";
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("scoreText").textContent =
+      `You got ${score} out of ${questions.length} correct.`;
+
+    studentEntry.classList.add("visible");
+    submitButton.classList.add("visible");
+    submitButton.disabled = false;
+
+  }
+
+}
+
+function restartGame(){
+
+  current = 0;
+  score = 0;
+  submittedAnswers = [];
+  submitButton.disabled = true;
+  submitButton.textContent = "Submit results";
+  studentEntry.classList.remove("visible");
+  submitButton.classList.remove("visible");
+  submissionStatus.textContent = "";
+  submissionStatus.className = "submission-status";
+
+  document.getElementById("result").style.display = "none";
+  document.getElementById("questionCard").style.display = "block";
+
+  loadQuestion();
+
+}
+
+submitButton.addEventListener("click", async () => {
+
+  if(submissionInProgress || submitButton.disabled) return;
+
+  const name = studentName.value.trim();
+  if(!name){
+    studentName.focus();
+    submissionStatus.classList.add("visible");
+    submissionStatus.textContent = "Please enter your name.";
+    submissionStatus.className = "submission-status visible error";
+    return;
+  }
+
+  const answers = questions.map((question,index) => `${index + 1}: ${submittedAnswers[index] || "No selection"}`).join("; ");
+  const data = new URLSearchParams({
+    student:name,
+    unit:"Unit 1",
+    section:"Games",
+    exercise:"Exercise 1",
+    answers,
+    score:`${score}/${questions.length}`
+  });
+  const payload = data.toString();
+
+  if(payload === submittedPayload){
+    submitButton.textContent = "✓ Results submitted";
+    submitButton.disabled = true;
+    submissionStatus.textContent = "Results submitted successfully!";
+    submissionStatus.className = "submission-status visible success";
+    return;
+  }
+
+  submissionInProgress = true;
+  submitButton.disabled = true;
+  submissionStatus.classList.add("visible");
+  submissionStatus.textContent = "";
+
+  try{
+    const response = await fetch(webAppUrl,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:payload});
+    if(!response.ok) throw new Error(`Submission failed with status ${response.status}`);
+    submittedPayload = payload;
+    submitButton.textContent = "✓ Results submitted";
+    submissionStatus.textContent = "Results submitted successfully!";
+    submissionStatus.className = "submission-status visible success";
+  }catch(error){
+    submissionStatus.textContent = "Sorry, the results could not be submitted. Please try again.";
+    submissionStatus.className = "submission-status visible error";
+    submitButton.disabled = false;
+  }finally{
+    submissionInProgress = false;
+  }
+});
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
