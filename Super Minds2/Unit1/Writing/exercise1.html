@@ -35,6 +35,10 @@ button:hover{background:#1d55b7}button:focus-visible,.back:focus-visible{outline
 .score{text-align:center;font-size:1.18rem;font-weight:bold;margin:19px 0 0}
 .final{display:none;text-align:center;margin:15px auto 0;padding:15px;background:#f2f8ff;border-radius:16px;font-size:1.15rem;font-weight:bold}
 .final.show{display:block}.final button{margin-left:10px}
+.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px auto 10px;font-weight:bold}
+.student-entry.visible{display:flex}.student-entry input{min-width:220px;max-width:100%;padding:9px 12px;border:2px solid #c9d8eb;border-radius:10px;font:inherit;font-weight:normal;color:#1f3552}
+.submit-results{display:none;margin:10px 8px}.submit-results.visible{display:inline-block}.submit-results:disabled{opacity:.75;cursor:default}
+.submission-status{display:none;margin:12px auto 0;font-size:1rem;font-weight:bold}.submission-status.visible{display:block}.submission-status.success{color:#168447}.submission-status.error{color:#c33a3a}
 .back{display:block;width:max-content;margin:26px auto 0;background:#2869d8;color:#fff;padding:12px 22px;border-radius:16px;text-decoration:none;font-weight:bold}
 @media(max-width:760px){.content{grid-template-columns:1fr}.illustration{grid-row:1;width:170px}.main-card{padding:20px}.sentences{font-size:1.02rem;line-height:1.8}}
 @media(max-width:420px){.container{padding:24px 12px 34px}.main-card{padding:15px}.sentences{padding-left:1.8rem}.blank{min-width:80px}.word{padding:7px 11px}}
@@ -87,7 +91,7 @@ button:hover{background:#1d55b7}button:focus-visible,.back:focus-visible{outline
     </div>
     <div class="actions"><button id="check" type="button">Check</button></div>
     <p class="score" aria-live="polite">Score: <span id="score">0</span> / 6</p>
-    <div class="final" id="final" aria-live="polite"><span id="final-text"></span><button class="try-again" id="try-again" type="button">Try again</button></div>
+    <div class="final" id="final" aria-live="polite"><span id="final-text"></span><div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name" disabled></div><button class="submit-results" id="submitResults" type="button" disabled>Submit results</button><div class="submission-status" id="submissionStatus" aria-live="polite"></div><button class="try-again" id="try-again" type="button">Try again</button></div>
   </section>
   <a class="back" href="index.html">← Back to Writing</a>
 </main>
@@ -98,6 +102,13 @@ const blanks = [...document.querySelectorAll('.blank')];
 const score = document.getElementById('score');
 const final = document.getElementById('final');
 const finalText = document.getElementById('final-text');
+const studentEntry = document.getElementById('studentEntry');
+const studentName = document.getElementById('studentName');
+const submitButton = document.getElementById('submitResults');
+const submissionStatus = document.getElementById('submissionStatus');
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+let submissionInProgress = false;
+let submittedPayload = null;
 let dragged = null;
 let selected = null;
 const wordOrder = ['has','leaves','arrives','gets','starts','works'];
@@ -111,6 +122,13 @@ function clearResults() {
   score.textContent = '0';
   final.classList.remove('show');
   finalText.textContent = '';
+  studentEntry.classList.remove('visible');
+  studentName.disabled = true;
+  submitButton.classList.remove('visible');
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submit results';
+  submissionStatus.textContent = '';
+  submissionStatus.className = 'submission-status';
 }
 function placeWord(word, blank) {
   if (!word || !blank) return;
@@ -190,6 +208,50 @@ document.getElementById('check').addEventListener('click', () => {
   score.textContent = total;
   finalText.textContent = `Your score: ${total} / 6`;
   final.classList.add('show');
+  studentEntry.classList.add('visible');
+  studentName.disabled = false;
+  submitButton.classList.add('visible');
+  submitButton.disabled = false;
+});
+submitButton.addEventListener('click', async () => {
+  if (submissionInProgress || submitButton.disabled) return;
+  const name = studentName.value.trim();
+  if (!name) {
+    studentName.focus();
+    submissionStatus.textContent = 'Please enter your name.';
+    submissionStatus.className = 'submission-status visible error';
+    return;
+  }
+  const answers = blanks.map((blank,index) => {
+    const answer = blank.querySelector('.word')?.dataset.word;
+    return `${index + 1}: ${answer || '(blank)'}`;
+  }).join('; ');
+  const data = new URLSearchParams({student:name,unit:'Unit 1',section:'Writing',exercise:'Exercise 1',answers,score:`${score.textContent}/6`});
+  const payload = data.toString();
+  if (payload === submittedPayload) {
+    submitButton.textContent = '✓ Results submitted';
+    submitButton.disabled = true;
+    submissionStatus.textContent = 'Results submitted successfully!';
+    submissionStatus.className = 'submission-status visible success';
+    return;
+  }
+  submissionInProgress = true;
+  submitButton.disabled = true;
+  submissionStatus.textContent = '';
+  try {
+    const response = await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});
+    if (response.type !== 'opaque' && !response.ok) throw new Error(`Submission failed with status ${response.status}`);
+    submittedPayload = payload;
+    submitButton.textContent = '✓ Results submitted';
+    submissionStatus.textContent = 'Results submitted successfully!';
+    submissionStatus.className = 'submission-status visible success';
+  } catch (error) {
+    submissionStatus.textContent = 'Sorry, the results could not be submitted. Please try again.';
+    submissionStatus.className = 'submission-status visible error';
+    submitButton.disabled = false;
+  } finally {
+    submissionInProgress = false;
+  }
 });
 document.getElementById('try-again').addEventListener('click', () => {
   words.sort((a,b) => wordOrder.indexOf(a.dataset.word) - wordOrder.indexOf(b.dataset.word)).forEach(word => {
