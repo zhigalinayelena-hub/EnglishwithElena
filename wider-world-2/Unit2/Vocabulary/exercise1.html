@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 1 — Clothes and accessories — Wider World 2 Unit 2</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1050px;margin:auto;padding:30px 22px 46px}
+.label{text-align:center;color:#2869d8;font-size:.92rem;font-weight:bold;letter-spacing:.14em;margin:0 0 9px}h1{text-align:center;font-size:clamp(1.8rem,4vw,2.7rem);margin:0 0 8px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 23px}
+.student-entry{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:19px}.bank-title{font-size:1.15rem;color:#285887;margin:0 0 14px}.word-bank{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;min-height:48px}.word{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:12px;padding:10px 14px;font-weight:bold;font-size:1rem;cursor:grab;touch-action:manipulation;user-select:none}.word:hover,.word.selected{background:#dceeff}.word.selected{outline:3px solid #2869d8}.word:focus-visible,.drop-zone:focus-visible,.button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+.table-wrap{overflow-x:auto}.sorting-table{width:100%;border-collapse:separate;border-spacing:14px 0;table-layout:fixed}.sorting-table th{padding:14px;border-radius:15px 15px 0 0;color:white;font-size:1.25rem;letter-spacing:.06em}.sorting-table th:first-child{background:#ff8b4c}.sorting-table th:last-child{background:#8e69d5}.sorting-table td{vertical-align:top;width:50%;padding:14px;background:#fff8f0;border:3px solid #ffd3b4;border-top:0;border-radius:0 0 17px 17px}.sorting-table td:last-child{background:#f8f3ff;border-color:#d9c9f5}.drop-zone{display:flex;align-content:flex-start;align-items:flex-start;flex-wrap:wrap;gap:9px;min-height:260px;padding:12px;border:2px dashed #f5b17f;border-radius:13px;background:rgba(255,255,255,.75);transition:background .15s,border-color .15s}.sorting-table td:last-child .drop-zone{border-color:#bda5eb}.drop-zone.drag-over{background:#fff0df;border-color:#e87932}.sorting-table td:last-child .drop-zone.drag-over{background:#efe7ff;border-color:#8054cc}.drop-zone:empty::after{content:'Drop words here';width:100%;padding:8px;color:#98735c;text-align:center;font-weight:bold}.sorting-table td:last-child .drop-zone:empty::after{color:#7d6a9c}.drop-zone .word{cursor:grab}.word.correct{border-color:#229a58;background:#eafff1;color:#167a42;cursor:default}.word.incorrect{border-color:#d74a4a;background:#fff0f0;color:#b32626;cursor:default}.word.correct::after{content:' ✓';color:#168344}.word.incorrect::after{content:' — ' attr(data-correct-category);font-size:.78rem;color:#a32929}
+.controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.feedback{text-align:center;min-height:27px;margin-top:14px;font-size:1.08rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:17px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:650px){.container{padding:24px 13px 35px}.card{padding:15px}.sorting-table{border-spacing:7px 0}.sorting-table th{font-size:1rem;padding:12px 5px}.sorting-table td{padding:7px;border-width:2px}.drop-zone{min-height:240px;padding:7px;gap:6px}.word{padding:8px 10px;font-size:.94rem}.sorting-table td:last-child .drop-zone:empty::after,.drop-zone:empty::after{font-size:.86rem}.student-entry input{min-width:0;flex:1}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="label">UNIT 2 · VOCABULARY</p>
+  <h1>Exercise 1 — Clothes and accessories</h1>
+  <p class="subtitle">Complete the table with the words below.</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+
+  <section class="card" aria-label="Word bank">
+    <h2 class="bank-title">Words</h2>
+    <div class="word-bank" id="wordBank" aria-label="Word bank. Drag a word to a category, or select a word and select a category."></div>
+  </section>
+
+  <section class="card table-wrap" aria-label="Clothes and accessories table">
+    <table class="sorting-table">
+      <thead><tr><th scope="col">CLOTHES</th><th scope="col">ACCESSORIES</th></tr></thead>
+      <tbody><tr>
+        <td><div class="drop-zone" id="clothes" data-category="CLOTHES" role="list" aria-label="Clothes. Drop words here or select this category after selecting a word."></div></td>
+        <td><div class="drop-zone" id="accessories" data-category="ACCESSORIES" role="list" aria-label="Accessories. Drop words here or select this category after selecting a word."></div></td>
+      </tr></tbody>
+    </table>
+  </section>
+
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again</button>
+    <div class="score" id="score" aria-live="polite">Score: 0/16</div>
+    <button class="button secondary" id="submitButton" type="button" hidden>Submit results</button>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const words=['baseball cap','belt','coat','glasses','gloves','handbag','hoodie','jacket','necklace','scarf','sweater','top','tracksuit','trainers','underwear','uniform'];
+  const answers={'baseball cap':'ACCESSORIES','belt':'ACCESSORIES','coat':'CLOTHES','glasses':'ACCESSORIES','gloves':'ACCESSORIES','handbag':'ACCESSORIES','hoodie':'CLOTHES','jacket':'CLOTHES','necklace':'ACCESSORIES','scarf':'ACCESSORIES','sweater':'CLOTHES','top':'CLOTHES','tracksuit':'CLOTHES','trainers':'CLOTHES','underwear':'CLOTHES','uniform':'CLOTHES'};
+  const bank=document.getElementById('wordBank');
+  const zones=[...document.querySelectorAll('.drop-zone')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  const submitButton=document.getElementById('submitButton');
+  const submissionStatus=document.getElementById('submissionStatus');
+  const studentName=document.getElementById('studentName');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let selected=null;
+  let checked=false;
+  function clearSelected(){bank.querySelectorAll('.word.selected').forEach(word=>word.classList.remove('selected'));selected=null;}
+  function createWord(text){
+    const chip=document.createElement('button');chip.type='button';chip.className='word';chip.textContent=text;chip.draggable=true;chip.dataset.word=text;
+    chip.setAttribute('role','listitem');chip.setAttribute('aria-label',`${text}. Drag to CLOTHES or ACCESSORIES, or select to choose a category.`);
+    chip.addEventListener('dragstart',event=>{event.dataTransfer.setData('text/plain',text);event.dataTransfer.effectAllowed='move';selectWord(chip);});
+    chip.addEventListener('click',event=>{event.stopPropagation();if(checked)return;selectWord(chip);});
+    chip.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();if(checked)return;selectWord(chip);}});
+    return chip;
+  }
+  function selectWord(chip){clearSelected();selected=chip;chip.classList.add('selected');}
+  function returnToBank(chip){chip.classList.remove('correct','incorrect');chip.removeAttribute('data-correct-category');bank.appendChild(chip);}
+  function placeWord(zone,chip){
+    if(!chip||checked)return;
+    const oldZone=chip.parentElement;
+    if(oldZone===zone){clearSelected();return;}
+    if(oldZone?.classList.contains('drop-zone'))oldZone.removeChild(chip);
+    zone.appendChild(chip);clearSelected();
+  }
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',event=>{event.preventDefault();zone.classList.add('drag-over');});
+    zone.addEventListener('dragleave',event=>{if(!zone.contains(event.relatedTarget))zone.classList.remove('drag-over');});
+    zone.addEventListener('drop',event=>{
+      event.preventDefault();zone.classList.remove('drag-over');
+      const word=event.dataTransfer.getData('text/plain');
+      const chip=[...document.querySelectorAll('.word')].find(item=>item.dataset.word===word);
+      placeWord(zone,chip);
+    });
+    zone.addEventListener('click',()=>{if(selected)placeWord(zone,selected);});
+  });
+  function check(){
+    let points=0;
+    const chips=[...document.querySelectorAll('.drop-zone .word')];
+    chips.forEach(chip=>{
+      const category=chip.parentElement.dataset.category;
+      const correct=answers[chip.dataset.word]===category;
+      chip.classList.remove('correct','incorrect');chip.classList.add(correct?'correct':'incorrect');
+      if(correct)points++;
+      else chip.dataset.correctCategory=answers[chip.dataset.word];
+      chip.draggable=false;
+      if(correct)chip.setAttribute('aria-label',`${chip.dataset.word}: correct, ${category}`);
+      else chip.setAttribute('aria-label',`${chip.dataset.word}: incorrect, correct category ${answers[chip.dataset.word]}`);
+    });
+    // Words left in the bank are unanswered and count as incorrect.
+    const unanswered=bank.querySelectorAll('.word').length;
+    score.textContent=`Score: ${points}/16`;
+    checked=true;submitButton.hidden=false;
+    feedback.textContent=points===16?'✅ Excellent! All 16 words are in the correct category.':`You have ${points} out of 16 correct. Green words are correct; red words show the correct category. ${unanswered?`${unanswered} word${unanswered===1?' is':'s are'} still in the word bank.`:''}`;
+    feedback.className=`feedback ${points===16?'good':'try'}`;
+  }
+  function reset(){
+    bank.replaceChildren(...words.map(createWord));
+    zones.forEach(zone=>zone.replaceChildren());
+    zones.forEach(zone=>zone.classList.remove('drag-over'));
+    clearSelected();checked=false;score.textContent='Score: 0/16';feedback.textContent='';feedback.className='feedback';
+    submitButton.hidden=true;submitButton.disabled=false;submitButton.textContent='Submit results';
+    submissionStatus.textContent='';submissionStatus.className='feedback';
+  }
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  submitButton.addEventListener('click',async()=>{
+    const name=studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='feedback try';return;}
+    const answersGiven=[...zones].flatMap(zone=>[...zone.querySelectorAll('.word')].map(chip=>`${chip.dataset.word}: ${zone.dataset.category}`));
+    const missing=[...bank.querySelectorAll('.word')].map(chip=>`${chip.dataset.word}: No answer`);
+    const data=new URLSearchParams({student:name,unit:'Unit 2',section:'Vocabulary',exercise:'Exercise 1',answers:[...answersGiven,...missing].join('; '),score:score.textContent.replace(/^Score:\s*/,'')});
+    submitButton.disabled=true;submissionStatus.textContent='';
+    try{
+      await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});
+      submitButton.textContent='✓ Results submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='feedback good';
+    }catch(error){
+      submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='feedback try';submitButton.disabled=false;
+    }
+  });
+  reset();
+})();
+</script>
+</body>
+</html>
