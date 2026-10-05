@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 3 — Match sentences 1–6 with a–f — Wider World 2 Unit 2</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1050px;margin:auto;padding:30px 22px 46px}
+.label{text-align:center;color:#2869d8;font-size:.92rem;font-weight:bold;letter-spacing:.14em;margin:0 0 9px}h1{text-align:center;font-size:clamp(1.8rem,4vw,2.7rem);margin:0 0 8px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 25px}
+.matching-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(290px,.85fr);gap:18px;align-items:start}.card{background:#fff;border-radius:19px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.08)}.card-title{margin:0 0 14px;color:#285887;font-size:1.12rem}.questions{display:grid;gap:10px}.question{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:center;padding:12px;border:2px solid #dfebf5;border-radius:13px;background:#f9fcff}.number{display:grid;place-items:center;width:31px;height:31px;border-radius:50%;background:#e6f1ff;color:#2869d8;font-weight:bold}.sentence{margin:0;font-size:1rem;line-height:1.45;font-weight:bold}.answer-area{grid-column:2;display:flex;align-items:center;gap:8px;margin-top:-3px}.answer-area label{font-weight:bold;color:#526a82}.answer{width:100%;min-height:42px;border:2px solid #b9d5f3;border-radius:10px;background:#fff;color:#1f3552;padding:8px 10px;font:600 .97rem Arial,sans-serif;cursor:pointer}.answer:focus{outline:3px solid #c6e1fb;border-color:#4386c7}.question.correct{border-color:#70c994;background:#f6fff8}.question.incorrect{border-color:#ee8e8e;background:#fff9f9}.result{grid-column:2;min-height:20px;font-size:.9rem;font-weight:bold;color:#168344}.question.incorrect .result{color:#c33333}.endings{display:grid;gap:10px}.ending{display:grid;grid-template-columns:32px minmax(0,1fr);align-items:center;gap:9px;background:#f5f1ff;border:1px solid #ddd0f3;border-radius:12px;padding:11px 12px;line-height:1.4}.letter{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#8e69d5;color:#fff;font-weight:bold}
+.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0 0;font-weight:bold}.student-entry.visible{display:flex}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}.controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.button.submit-results{display:none;margin-top:12px}.button.submit-results.visible{display:inline-block}.button.submit-results:disabled{opacity:.75;cursor:default}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.feedback{text-align:center;min-height:27px;margin-top:14px;font-size:1.08rem;font-weight:bold}.feedback.good,.submission-status.good{color:#168344}.feedback.try,.submission-status.try{color:#c33333}.submission-status{text-align:center;min-height:24px;margin:8px 0 0;font-weight:bold}.back{display:inline-block;margin-top:17px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}.answer:focus-visible,.button:focus-visible,a:focus-visible,.student-entry input:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+@media(max-width:760px){.matching-layout{grid-template-columns:1fr}.card{padding:16px}.student-entry input{min-width:0;flex:1}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="label">UNIT 2 · VOCABULARY</p>
+  <h1>Match sentences 1–6 with a–f.</h1>
+  <p class="subtitle">Choose the correct ending for each sentence.</p>
+
+  <div class="matching-layout">
+    <section class="card questions" aria-label="Sentences to match">
+      <h2 class="card-title">Sentences</h2>
+      <article class="question" data-answer="e"><span class="number">1</span><p class="sentence">This T-shirt is very baggy.</p><div class="answer-area"><label for="match1">Ending</label><select class="answer" id="match1" aria-label="Match sentence 1 with an ending"></select></div><div class="result" aria-live="polite"></div></article>
+      <article class="question" data-answer="b"><span class="number">2</span><p class="sentence">I wash these jeans a lot.</p><div class="answer-area"><label for="match2">Ending</label><select class="answer" id="match2" aria-label="Match sentence 2 with an ending"></select></div><div class="result" aria-live="polite"></div></article>
+      <article class="question" data-answer="f"><span class="number">3</span><p class="sentence">I like wearing this cotton top.</p><div class="answer-area"><label for="match3">Ending</label><select class="answer" id="match3" aria-label="Match sentence 3 with an ending"></select></div><div class="result" aria-live="polite"></div></article>
+      <article class="question" data-answer="c"><span class="number">4</span><p class="sentence">Can I borrow your woolly gloves?</p><div class="answer-area"><label for="match4">Ending</label><select class="answer" id="match4" aria-label="Match sentence 4 with an ending"></select></div><div class="result" aria-live="polite"></div></article>
+      <article class="question" data-answer="a"><span class="number">5</span><p class="sentence">I don’t want a striped jacket.</p><div class="answer-area"><label for="match5">Ending</label><select class="answer" id="match5" aria-label="Match sentence 5 with an ending"></select></div><div class="result" aria-live="polite"></div></article>
+      <article class="question" data-answer="d"><span class="number">6</span><p class="sentence">These shoes are real leather.</p><div class="answer-area"><label for="match6">Ending</label><select class="answer" id="match6" aria-label="Match sentence 6 with an ending"></select></div><div class="result" aria-live="polite"></div></article>
+    </section>
+    <section class="card" aria-label="Sentence endings">
+      <h2 class="card-title">Endings</h2>
+      <div class="endings">
+        <div class="ending"><span class="letter">a</span><span>I prefer a plain one.</span></div>
+        <div class="ending"><span class="letter">b</span><span>Now they’re really tight.</span></div>
+        <div class="ending"><span class="letter">c</span><span>It’s cold outside.</span></div>
+        <div class="ending"><span class="letter">d</span><span>That’s why they’re expensive.</span></div>
+        <div class="ending"><span class="letter">e</span><span>It’s because it’s my big sister’s.</span></div>
+        <div class="ending"><span class="letter">f</span><span>It’s cool in the summer.</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+  <div class="controls">
+    <button class="button" id="checkButton" type="button">Check</button>
+    <button class="button secondary" id="retryButton" type="button">Try again / Reset</button>
+    <div class="score" id="score" aria-live="polite">Score: 0/6</div>
+    <button class="button submit-results" id="submitButton" type="button">Submit results</button>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="submission-status" id="submissionStatus" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Vocabulary</a>
+</main>
+<script>
+(() => {
+  const endings={
+    a:'I prefer a plain one.',
+    b:'Now they’re really tight.',
+    c:'It’s cold outside.',
+    d:'That’s why they’re expensive.',
+    e:'It’s because it’s my big sister’s.',
+    f:'It’s cool in the summer.'
+  };
+  const questions=[...document.querySelectorAll('.question')];
+  const selects=[...document.querySelectorAll('.answer')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  const studentEntry=document.getElementById('studentEntry');
+  const studentName=document.getElementById('studentName');
+  const submitButton=document.getElementById('submitButton');
+  const submissionStatus=document.getElementById('submissionStatus');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let submissionInProgress=false,submittedPayload=null;
+  function populateSelects(){
+    selects.forEach(select=>{
+      select.innerHTML='<option value="">Choose an ending</option>'+Object.entries(endings).map(([letter,text])=>`<option value="${letter}">${letter}. ${text}</option>`).join('');
+      select.addEventListener('change',()=>{
+        const question=select.closest('.question');question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';
+        feedback.textContent='';feedback.className='feedback';updateChoices();
+      });
+    });
+    updateChoices();
+  }
+  function updateChoices(){
+    const chosen=selects.map(select=>select.value).filter(Boolean);
+    selects.forEach(select=>[...select.options].forEach(option=>{
+      if(option.value)option.disabled=chosen.includes(option.value)&&select.value!==option.value;
+    }));
+  }
+  function check(){
+    let points=0;
+    questions.forEach(question=>{
+      const select=question.querySelector('.answer');
+      const correct=select.value===question.dataset.answer;
+      question.classList.remove('correct','incorrect');question.classList.add(correct?'correct':'incorrect');
+      question.querySelector('.result').textContent=correct?'✓ Correct':`✗ Try again. Correct ending: ${question.dataset.answer}. ${endings[question.dataset.answer]}`;
+      if(correct)points++;
+    });
+    score.textContent=`Score: ${points}/6`;
+    feedback.textContent=points===6?'Excellent work! All matches are correct.':'Check the feedback for each sentence and try again.';
+    feedback.className=`feedback ${points===6?'good':'try'}`;
+    studentEntry.classList.add('visible');submitButton.classList.add('visible');submitButton.disabled=false;submitButton.textContent='Submit results';
+  }
+  function reset(){
+    questions.forEach(question=>{question.querySelector('.answer').value='';question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';});
+    updateChoices();score.textContent='Score: 0/6';feedback.textContent='';feedback.className='feedback';
+    studentEntry.classList.remove('visible');submitButton.classList.remove('visible');submitButton.disabled=false;submitButton.textContent='Submit results';
+    submissionStatus.textContent='';submissionStatus.className='submission-status';
+  }
+  submitButton.addEventListener('click',async()=>{
+    if(submissionInProgress||submitButton.disabled)return;
+    const name=studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='submission-status try';return;}
+    const answers=questions.map((question,index)=>`${index+1}: ${question.querySelector('.answer').value||'No answer'}`).join('; ');
+    const finalScore=score.textContent.replace(/^Score:\s*/,'');
+    const payload=new URLSearchParams({student:name,unit:'Unit 2',section:'Vocabulary',exercise:'Exercise 3',answers,score:finalScore}).toString();
+    if(payload===submittedPayload){submitButton.textContent='✓ Results submitted';submitButton.disabled=true;submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status good';return;}
+    submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';
+    try{
+      const response=await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});
+      if(response.type!=='opaque'&&!response.ok)throw new Error(`Submission failed with status ${response.status}`);
+      submittedPayload=payload;submitButton.textContent='✓ Results submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status good';
+    }catch(error){submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='submission-status try';submitButton.disabled=false;}
+    finally{submissionInProgress=false;}
+  });
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  populateSelects();
+})();
+</script>
+</body>
+</html>
