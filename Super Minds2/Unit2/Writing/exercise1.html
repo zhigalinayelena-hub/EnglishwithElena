@@ -3,121 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exercise 1 — Likes and dislikes • Super Minds 2</title>
+<title>Exercise 1 — Write the words for the definitions • Super Minds 2</title>
 <style>
-:root{font-family:Arial,sans-serif;color:#243653;background:#eaf2fb;--blue:#3278c4;--green:#338b5d;--red:#d95b53;--ink:#263850}
-*{box-sizing:border-box}
-body{margin:0}
-.page{max-width:1180px;margin:auto;padding:28px 22px 42px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.crumb{color:#35699f;text-decoration:none;font-weight:700}
-.unit{font-size:.95rem;color:#6c7e91}
-.sheet{background:#fff;border-radius:24px;padding:clamp(18px,3.4vw,34px);box-shadow:0 9px 28px #18345214}
-h1{text-align:center;color:#1f4f7e;font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.2;margin:0 0 10px}
-.instruction{text-align:center;font-size:1.08rem;font-weight:700;margin:0 0 24px;color:#465c72}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{position:relative;min-width:0;padding:16px 17px 18px;border:2px solid #d9e7f4;border-radius:19px;background:linear-gradient(145deg,#fff 48%,#f5f9ff);box-shadow:0 4px 12px #25466b0c}
-.card:nth-child(3n+1){border-top-color:#f3c95a}.card:nth-child(3n+2){border-top-color:#8fc5a0}.card:nth-child(3n){border-top-color:#90b7e6}
-.card-head{display:flex;align-items:center;gap:9px;margin-bottom:8px}
-.number{width:32px;height:32px;flex:none;border-radius:50%;display:grid;place-items:center;background:#f6d36e;color:#684e13;font-weight:800;font-size:1.05rem}
-.name{margin:0;color:#264c73;font-size:1.2rem}
-.picture{height:142px;display:flex;align-items:center;justify-content:center;gap:clamp(8px,2.5vw,25px);position:relative;margin:0 0 8px;border-radius:15px;background:#eef7ff;overflow:hidden}
-.person{font-size:clamp(4.5rem,9vw,6rem);line-height:1;filter:drop-shadow(0 3px 1px #24365318)}
-.food{font-size:clamp(3.5rem,7vw,4.8rem);line-height:1;filter:drop-shadow(0 3px 1px #24365318)}
-.reaction{position:absolute;right:12px;top:10px;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;font-size:1.35rem;background:#fff;box-shadow:0 2px 7px #233c5b20}
-.likes .reaction{color:var(--green);border:2px solid #b7dfc3}
-.dislikes .reaction{color:var(--red);border:2px solid #f2c2bd}
-.food-name{text-align:center;font-size:1rem;color:#627488;font-weight:700;margin:0 0 8px}
-.sentence{display:grid;grid-template-columns:auto minmax(120px,1fr) auto;align-items:center;gap:7px;font-size:1.08rem;font-weight:700;color:#2e4057;margin:0}
-.sentence input{width:100%;min-width:0;height:48px;border:2px solid #b5cce2;border-radius:11px;padding:9px 10px;background:#fff;color:#243653;font:600 1rem Arial,sans-serif;box-shadow:inset 0 1px 2px #263b500d}
-.sentence input::placeholder{font-size:.82rem;font-weight:400;color:#788b9c;opacity:1}
-.sentence input:focus{outline:3px solid #c6e1fb;border-color:#4386c7}
-.card.correct{border-color:#73bd87;background:#f4fbf4}
-.card.incorrect{border-color:#e99a91;background:#fff7f5}
-.feedback{min-height:1.35em;margin:8px 0 0;text-align:center;font-size:.94rem;font-weight:700}
-.feedback.correct{color:#208048}.feedback.incorrect{color:#ba4942}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px 0 0}
-button{border:0;border-radius:13px;background:#3278c4;color:#fff;padding:12px 26px;font:700 1rem Arial,sans-serif;cursor:pointer}
-button:hover{background:#245f9d}button:focus-visible,.crumb:focus-visible{outline:3px solid #f3c74e;outline-offset:3px}
-#reset{background:#f2b633;color:#3d341f}#reset:hover{background:#dda323}
-.score{text-align:center;font-size:1.18rem;font-weight:800;color:#264d74;margin:18px 0 0}
-.final{display:none;text-align:center;margin:15px auto 0;padding:16px;background:#f0f7ff;border-radius:16px}
-.final.show{display:block}.final-text{font-size:1.15rem;font-weight:800}
-.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px auto 8px;font-weight:700}
-.student-entry.visible{display:flex}.student-entry input{min-width:210px;max-width:100%;padding:10px 12px;border:2px solid #bdcfe1;border-radius:10px;font:inherit;font-weight:400;color:#243653}
-.submit-results{display:none;margin:8px;background:#3278c4}.submit-results.visible{display:inline-block}.submit-results:disabled{opacity:.75;cursor:default}
-.submission-status{display:none;margin:10px auto 0;font-weight:700}.submission-status.visible{display:block}.submission-status.success{color:#208048}.submission-status.error{color:#ba4942}
-.back{display:block;width:max-content;margin:24px auto 0;background:#3278c4;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:13px}
-@media(max-width:860px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.person{font-size:5.3rem}.food{font-size:4.3rem}}
-@media(max-width:560px){.page{padding:18px 12px 30px}.top{margin-bottom:12px}.sheet{padding:16px 12px 20px}.cards{grid-template-columns:1fr;gap:12px}.card{padding:13px 14px 14px}.picture{height:118px}.person{font-size:4.8rem}.food{font-size:4rem}.sentence{grid-template-columns:auto minmax(112px,1fr) auto}}
+:root{font-family:Arial,sans-serif;color:#243653;background:#eaf2fb;--blue:#3278c4;--green:#338b5d;--red:#d95b53}
+*{box-sizing:border-box}body{margin:0}.page{max-width:1120px;margin:auto;padding:26px 20px 40px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.crumb{color:#35699f;text-decoration:none;font-weight:700}.unit{font-size:.95rem;color:#6c7e91}.sheet{background:#fff;border-radius:24px;padding:clamp(18px,3.4vw,34px);box-shadow:0 9px 28px #18345214}h1{text-align:center;color:#1f4f7e;font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.2;margin:0 0 10px}.instruction{text-align:center;margin:0 0 23px;color:#50647a;font-size:1.05rem;font-weight:700}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.card{min-width:0;padding:15px 17px 13px;border:2px solid #d9e7f4;border-top:5px solid #f3c95a;border-radius:19px;background:linear-gradient(145deg,#fff 48%,#f5f9ff);box-shadow:0 4px 12px #25466b0c}.card:nth-child(4n+2){border-top-color:#8fc5a0}.card:nth-child(4n+3){border-top-color:#90b7e6}.card:nth-child(4n){border-top-color:#e7a7bd}.card.correct{border-color:#73bd87;background:#f4fbf4}.card.incorrect{border-color:#e99a91;background:#fff7f5}.card-head{display:flex;align-items:center;gap:10px;margin-bottom:11px}.number{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;background:#f6d36e;color:#684e13;font-weight:800;font-size:1.05rem}.definition{margin:0;color:#2e4057;font-size:1.13rem;line-height:1.45;font-weight:700}.answer-line{display:flex;align-items:center;gap:5px;margin-top:11px;min-height:48px}.first-letter{display:inline-grid;place-items:center;min-width:42px;height:45px;padding:0 10px;border:2px solid #e6c65e;border-radius:10px;background:#fff6d9;color:#684e13;font-size:1.16rem;font-weight:800}.answer{flex:1;min-width:0;width:100%;height:45px;border:2px solid #b5cce2;border-radius:10px;padding:8px 11px;background:#fff;color:#243653;font:700 1rem Arial,sans-serif}.answer::placeholder{color:#8798a8;letter-spacing:.17em;font-weight:400;opacity:1}.answer:focus{outline:3px solid #c6e1fb;border-color:#4386c7}.card.correct .answer{border-color:#73bd87;background:#f7fff8}.card.incorrect .answer{border-color:#e99a91;background:#fff9f8}.feedback{min-height:1.35em;margin:7px 0 0;text-align:center;font-size:.94rem;font-weight:700}.feedback.correct{color:#208048}.feedback.incorrect{color:#ba4942}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px 0 0}button{border:0;border-radius:13px;background:#3278c4;color:#fff;padding:12px 26px;font:700 1rem Arial,sans-serif;cursor:pointer}button:hover{background:#245f9d}button:focus-visible,.crumb:focus-visible,.back:focus-visible{outline:3px solid #f3c74e;outline-offset:3px}#reset{background:#f2b633;color:#3d341f}#reset:hover{background:#dda323}.score{text-align:center;font-size:1.18rem;font-weight:800;color:#264d74;margin:18px 0 0}.final{display:none;text-align:center;margin:15px auto 0;padding:16px;background:#f0f7ff;border-radius:16px}.final.show{display:block}.final-text{font-size:1.15rem;font-weight:800}.back{display:block;width:max-content;margin:24px auto 0;background:#3278c4;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:13px}
+.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px auto 8px;font-weight:700}.student-entry.visible{display:flex}.student-entry input{min-width:210px;max-width:100%;padding:10px 12px;border:2px solid #bdcfe1;border-radius:10px;font:inherit;font-weight:400;color:#243653}.submit-results{display:none;margin:8px;background:#3278c4}.submit-results.visible{display:inline-block}.submit-results:disabled{opacity:.75;cursor:default}.submission-status{display:none;margin:10px auto 0;font-weight:700}.submission-status.visible{display:block}.submission-status.success{color:#208048}.submission-status.error{color:#ba4942}
+@media(max-width:680px){.page{padding:17px 11px 28px}.top{margin-bottom:12px}.sheet{padding:15px 11px 19px}.cards{grid-template-columns:1fr;gap:12px}.card{padding:13px 14px 11px}.definition{font-size:1.05rem}.answer-line{margin-top:8px}}
 </style>
 </head>
 <body>
 <main class="page">
 <div class="top"><a class="crumb" href="index.html">← Writing</a><span class="unit">Super Minds 2 · Unit 2</span></div>
 <section class="sheet" aria-labelledby="title">
-<h1 id="title">2 Look and write likes or doesn’t like.</h1>
-<p class="instruction">Look at each picture. Write <strong>likes</strong> or <strong>doesn’t like</strong>.</p>
-<div class="cards" id="cards">
-<article class="card likes" data-answer="likes">
-<div class="card-head"><span class="number">1</span><h2 class="name">Tom</h2></div>
-<div class="picture" role="img" aria-label="Tom smiles and gives a thumbs-up beside bananas"><span class="person" aria-hidden="true">👦🏻</span><span class="food" aria-hidden="true">🍌</span><span class="reaction" aria-hidden="true">👍</span></div>
-<p class="food-name">bananas</p>
-<label class="sentence"><span>Tom</span><input type="text" autocomplete="off" aria-label="Tom — likes or doesn’t like bananas" placeholder="likes / doesn't like"><span>bananas.</span></label>
-<p class="feedback" aria-live="polite"></p>
-</article>
-<article class="card dislikes" data-answer="doesn't like">
-<div class="card-head"><span class="number">2</span><h2 class="name">Ben</h2></div>
-<div class="picture" role="img" aria-label="Ben turns away from bananas and gives a thumbs-down"><span class="person" aria-hidden="true">👦🏽</span><span class="food" aria-hidden="true">🍌</span><span class="reaction" aria-hidden="true">👎</span></div>
-<p class="food-name">bananas</p>
-<label class="sentence"><span>Ben</span><input type="text" autocomplete="off" aria-label="Ben — likes or doesn’t like bananas" placeholder="likes / doesn't like"><span>bananas.</span></label>
-<p class="feedback" aria-live="polite"></p>
-</article>
-<article class="card likes" data-answer="likes">
-<div class="card-head"><span class="number">3</span><h2 class="name">Anna</h2></div>
-<div class="picture" role="img" aria-label="Anna smiles and gives a thumbs-up beside apples"><span class="person" aria-hidden="true">👧🏻</span><span class="food" aria-hidden="true">🍎</span><span class="reaction" aria-hidden="true">👍</span></div>
-<p class="food-name">apples</p>
-<label class="sentence"><span>Anna</span><input type="text" autocomplete="off" aria-label="Anna — likes or doesn’t like apples" placeholder="likes / doesn't like"><span>apples.</span></label>
-<p class="feedback" aria-live="polite"></p>
-</article>
-<article class="card dislikes" data-answer="doesn't like">
-<div class="card-head"><span class="number">4</span><h2 class="name">Grace</h2></div>
-<div class="picture" role="img" aria-label="Grace turns away from apples and gives a thumbs-down"><span class="person" aria-hidden="true">👧🏼</span><span class="food" aria-hidden="true">🍎</span><span class="reaction" aria-hidden="true">👎</span></div>
-<p class="food-name">apples</p>
-<label class="sentence"><span>Grace</span><input type="text" autocomplete="off" aria-label="Grace — likes or doesn’t like apples" placeholder="likes / doesn't like"><span>apples.</span></label>
-<p class="feedback" aria-live="polite"></p>
-</article>
-<article class="card likes" data-answer="likes">
-<div class="card-head"><span class="number">5</span><h2 class="name">Jill</h2></div>
-<div class="picture" role="img" aria-label="Jill smiles and gives a thumbs-up beside a glass of milk"><span class="person" aria-hidden="true">👧🏽</span><span class="food" aria-hidden="true">🥛</span><span class="reaction" aria-hidden="true">👍</span></div>
-<p class="food-name">milk</p>
-<label class="sentence"><span>Jill</span><input type="text" autocomplete="off" aria-label="Jill — likes or doesn’t like milk" placeholder="likes / doesn't like"><span>milk.</span></label>
-<p class="feedback" aria-live="polite"></p>
-</article>
-<article class="card dislikes" data-answer="doesn't like">
-<div class="card-head"><span class="number">6</span><h2 class="name">Bill</h2></div>
-<div class="picture" role="img" aria-label="Bill turns away from a glass of milk and gives a thumbs-down"><span class="person" aria-hidden="true">👦🏼</span><span class="food" aria-hidden="true">🥛</span><span class="reaction" aria-hidden="true">👎</span></div>
-<p class="food-name">milk</p>
-<label class="sentence"><span>Bill</span><input type="text" autocomplete="off" aria-label="Bill — likes or doesn’t like milk" placeholder="likes / doesn't like"><span>milk.</span></label>
-<p class="feedback" aria-live="polite"></p>
-</article>
-</div>
-<div class="actions"><button id="check" type="button">Check</button><button id="reset" type="button">Try again / Reset</button></div>
-<p class="score" aria-live="polite">Score: <span id="score">0</span> / 6</p>
-<div class="final" id="final" aria-live="polite"><span class="final-text" id="finalText"></span><div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name" disabled></div><button class="submit-results" id="submitResults" type="button" disabled>Submit results</button><div class="submission-status" id="submissionStatus" aria-live="polite"></div></div>
+  <h1 id="title">Write the words for the definitions.</h1>
+  <p class="instruction">Read each definition. Type the rest of the word after the first letter.</p>
+  <div class="cards" id="cards">
+    <article class="card" data-answer="sweater" data-first="s"><div class="card-head"><span class="number">1</span><p class="definition">You wear this to keep warm.</p></div><label class="answer-line"><span class="first-letter" aria-hidden="true">s</span><input class="answer" type="text" maxlength="7" autocomplete="off" spellcheck="false" aria-label="Question 1. Type the rest of sweater after s." placeholder="_______"></label><p class="feedback" aria-live="polite"></p></article>
+    <article class="card" data-answer="necklace" data-first="n"><div class="card-head"><span class="number">2</span><p class="definition">You wear this round your neck.</p></div><label class="answer-line"><span class="first-letter" aria-hidden="true">n</span><input class="answer" type="text" maxlength="7" autocomplete="off" spellcheck="false" aria-label="Question 2. Type the rest of necklace after n." placeholder="_______"></label><p class="feedback" aria-live="polite"></p></article>
+    <article class="card" data-answer="underwear" data-first="u"><div class="card-head"><span class="number">3</span><p class="definition">You wear this under your clothes.</p></div><label class="answer-line"><span class="first-letter" aria-hidden="true">u</span><input class="answer" type="text" maxlength="8" autocomplete="off" spellcheck="false" aria-label="Question 3. Type the rest of underwear after u." placeholder="________"></label><p class="feedback" aria-live="polite"></p></article>
+    <article class="card" data-answer="tracksuit" data-first="t"><div class="card-head"><span class="number">4</span><p class="definition">You wear this when you play sport.</p></div><label class="answer-line"><span class="first-letter" aria-hidden="true">t</span><input class="answer" type="text" maxlength="8" autocomplete="off" spellcheck="false" aria-label="Question 4. Type the rest of tracksuit after t." placeholder="________"></label><p class="feedback" aria-live="polite"></p></article>
+    <article class="card" data-answer="trainers" data-first="t"><div class="card-head"><span class="number">5</span><p class="definition">You often wear these on your feet.</p></div><label class="answer-line"><span class="first-letter" aria-hidden="true">t</span><input class="answer" type="text" maxlength="7" autocomplete="off" spellcheck="false" aria-label="Question 5. Type the rest of trainers after t." placeholder="_______"></label><p class="feedback" aria-live="polite"></p></article>
+    <article class="card" data-answer="shorts" data-first="s"><div class="card-head"><span class="number">6</span><p class="definition">You wear these in the summer when it’s hot.</p></div><label class="answer-line"><span class="first-letter" aria-hidden="true">s</span><input class="answer" type="text" maxlength="5" autocomplete="off" spellcheck="false" aria-label="Question 6. Type the rest of shorts after s." placeholder="_____"></label><p class="feedback" aria-live="polite"></p></article>
+  </div>
+  <div class="actions"><button id="check" type="button">Check</button><button id="reset" type="button">Try again / Reset</button></div>
+  <p class="score" aria-live="polite">Score: <span id="score">0</span> / 6</p>
+  <div class="final" id="final" aria-live="polite"><span class="final-text" id="finalText"></span><div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name" disabled></div><button class="submit-results" id="submitResults" type="button" disabled>Submit results</button><div class="submission-status" id="submissionStatus" aria-live="polite"></div></div>
 </section>
 <a class="back" href="index.html">← Back to Writing</a>
 </main>
 <script>
 const cards=[...document.querySelectorAll('.card[data-answer]')];
-const score=document.getElementById('score'),final=document.getElementById('final'),finalText=document.getElementById('finalText'),studentEntry=document.getElementById('studentEntry'),studentName=document.getElementById('studentName'),submitButton=document.getElementById('submitResults'),submissionStatus=document.getElementById('submissionStatus');
+const score=document.getElementById('score');
+const final=document.getElementById('final');
+const finalText=document.getElementById('finalText');
+const studentEntry=document.getElementById('studentEntry');
+const studentName=document.getElementById('studentName');
+const submitButton=document.getElementById('submitResults');
+const submissionStatus=document.getElementById('submissionStatus');
 const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
 let submissionInProgress=false,submittedPayload=null;
-function normalized(value){let answer=value.trim().toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g,' ');if(answer==='does not like')answer="doesn't like";return answer}
-function checkAnswers(){let total=0;cards.forEach(card=>{const input=card.querySelector('input'),feedback=card.querySelector('.feedback'),correct=normalized(input.value)===card.dataset.answer;card.classList.toggle('correct',correct);card.classList.toggle('incorrect',!correct);feedback.className='feedback '+(correct?'correct':'incorrect');feedback.textContent=correct?'✓ Correct':'✗ Try again';if(correct)total++});score.textContent=total;finalText.textContent='Your score: '+total+' / 6';final.classList.add('show');studentEntry.classList.add('visible');studentName.disabled=false;submitButton.classList.add('visible');submitButton.disabled=false}
+function checkAnswers(){
+  let total=0;
+  cards.forEach(card=>{
+    const input=card.querySelector('.answer');
+    const answer=(card.dataset.first+input.value).trim().toLocaleLowerCase();
+    const correct=answer===card.dataset.answer.toLocaleLowerCase();
+    card.classList.toggle('correct',correct);
+    card.classList.toggle('incorrect',!correct);
+    const feedback=card.querySelector('.feedback');
+    feedback.className='feedback '+(correct?'correct':'incorrect');
+    feedback.textContent=correct?'✓ Correct':`✗ Try again — the word is ${card.dataset.answer}.`;
+    if(correct)total++;
+  });
+  score.textContent=String(total);
+  finalText.textContent=total===6?'Great work! You got all 6 correct.':`Your score: ${total} / 6`;
+  final.classList.add('show');
+  studentEntry.classList.add('visible');studentName.disabled=false;submitButton.classList.add('visible');submitButton.disabled=false;
+}
+function reset(){
+  cards.forEach(card=>{
+    card.querySelector('.answer').value='';
+    card.classList.remove('correct','incorrect');
+    const feedback=card.querySelector('.feedback');
+    feedback.textContent='';feedback.className='feedback';
+  });
+  score.textContent='0';finalText.textContent='';final.classList.remove('show');studentEntry.classList.remove('visible');studentName.disabled=true;submitButton.classList.remove('visible');submitButton.disabled=true;submitButton.textContent='Submit results';submissionStatus.textContent='';submissionStatus.className='submission-status';
+}
 document.getElementById('check').addEventListener('click',checkAnswers);
-document.getElementById('reset').addEventListener('click',()=>{cards.forEach(card=>{card.querySelector('input').value='';card.classList.remove('correct','incorrect');const feedback=card.querySelector('.feedback');feedback.textContent='';feedback.className='feedback'});score.textContent='0';final.classList.remove('show');finalText.textContent='';studentEntry.classList.remove('visible');studentName.disabled=true;submitButton.classList.remove('visible');submitButton.disabled=true;submitButton.textContent='Submit results';submissionStatus.textContent='';submissionStatus.className='submission-status'});
-submitButton.addEventListener('click',async()=>{if(submissionInProgress||submitButton.disabled)return;const name=studentName.value.trim();if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='submission-status visible error';return}const answers=cards.map((card,index)=>(index+1)+': '+(card.querySelector('input').value.trim()||'(blank)')).join('; '),payload=new URLSearchParams({student:name,unit:'Unit 2',section:'Writing',exercise:'Exercise 1',answers:answers,score:score.textContent+'/6'}).toString();if(payload===submittedPayload){submitButton.textContent='✓ Results submitted';submitButton.disabled=true;submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status visible success';return}submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';try{const response=await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});if(response.type!=='opaque'&&!response.ok)throw new Error('Submission failed with status '+response.status);submittedPayload=payload;submitButton.textContent='✓ Results submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status visible success'}catch(error){submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='submission-status visible error';submitButton.disabled=false}finally{submissionInProgress=false}});
+document.getElementById('reset').addEventListener('click',reset);
+submitButton.addEventListener('click',async()=>{
+  if(submissionInProgress||submitButton.disabled)return;
+  const name=studentName.value.trim();
+  if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='submission-status visible error';return;}
+  const answers=cards.map((card,index)=>`${index+1}: ${card.dataset.first}${card.querySelector('.answer').value.trim()||'(blank)'}`).join('; ');
+  const payload=new URLSearchParams({student:name,unit:'Unit 2',section:'Writing',exercise:'Exercise 1',answers,score:score.textContent+'/6'}).toString();
+  if(payload===submittedPayload){submitButton.textContent='✓ Results submitted';submitButton.disabled=true;submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status visible success';return;}
+  submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';
+  try{
+    const response=await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});
+    if(response.type!=='opaque'&&!response.ok)throw new Error(`Submission failed with status ${response.status}`);
+    submittedPayload=payload;submitButton.textContent='✓ Results submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status visible success';
+  }catch(error){submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='submission-status visible error';submitButton.disabled=false;}
+  finally{submissionInProgress=false;}
+});
 </script>
 </body>
 </html>
