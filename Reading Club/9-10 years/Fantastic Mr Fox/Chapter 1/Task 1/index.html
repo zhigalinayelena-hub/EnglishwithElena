@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 1 — Build the Farm — Reading Club</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}*{box-sizing:border-box}body{margin:0}.container{max-width:1200px;margin:auto;padding:30px 18px 44px}.eyebrow{text-align:center;color:#2869d8;font-size:.9rem;font-weight:bold;letter-spacing:.12em;margin:0 0 8px}h1{text-align:center;font-size:clamp(2rem,5vw,3rem);margin:0 0 8px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.12rem;margin:0 0 20px}.board-wrap{overflow:hidden;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.14);background:#f8dfa5}.farm-board{position:relative;width:100%;aspect-ratio:1536/786;background-image:url('assets/farm-scene.png');background-size:100% auto;background-repeat:no-repeat;background-position:top center;overflow:hidden}.farm-zone{position:absolute;top:79.4%;height:14.5%;display:flex;align-items:center;justify-content:center;padding:2px;border-radius:12px;transition:background .15s,outline-color .15s}.farm-zone[data-slot="boggis-1"]{left:5.1%;width:8.8%}.farm-zone[data-slot="boggis-2"]{left:14.8%;width:8.9%}.farm-zone[data-slot="boggis-3"]{left:24.6%;width:8.8%}.farm-zone[data-slot="bunce-1"]{left:42.3%;width:9.4%}.farm-zone[data-slot="bunce-2"]{left:52.9%;width:9.3%}.farm-zone[data-slot="bean-1"]{left:73.5%;width:9.9%}.farm-zone[data-slot="bean-2"]{left:84.5%;width:9.8%}.farm-zone.drag-over{background:rgba(255,255,255,.36);outline:3px solid #2869d8}.farm-zone.wrong{animation:wrong .32s ease;background:rgba(220,45,45,.3);outline:3px solid #c33333}@keyframes wrong{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}.placed-animal{display:flex;align-items:center;justify-content:center;min-width:25%;height:80%;max-height:66px;padding:2px 4px;border-radius:12px;background:rgba(255,255,255,.92);box-shadow:0 3px 8px rgba(0,0,0,.2);font-size:clamp(1.3rem,3.6vw,2.5rem);line-height:1;animation:snap .2s ease-out}@keyframes snap{from{transform:scale(.45);opacity:.4}to{transform:scale(1);opacity:1}}.animal-bank{margin:15px 0 0;padding:14px;background:#fff;border:3px solid #e7d1a8;border-radius:18px;box-shadow:0 5px 14px rgba(0,0,0,.08)}.animal-bank h2{text-align:center;font-size:1.1rem;margin:0 0 11px}.animals{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.animal{flex:0 0 130px;width:130px;height:139px;padding:0;border:0;border-radius:14px;background-image:url('assets/farm-scene.png');background-size:1198px 799px;background-position:var(--crop-x) -619px;background-repeat:no-repeat;cursor:grab;touch-action:none;user-select:none;transition:transform .15s;filter:drop-shadow(0 2px 2px rgba(80,55,20,.2))}.animal:hover{transform:translateY(-3px)}.animal:active{cursor:grabbing}.animal:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.score-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.score{padding:11px 17px;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.07);font-size:1.05rem;font-weight:bold}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:12px 22px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.button:disabled{opacity:.65;cursor:default}.feedback{text-align:center;min-height:28px;margin-top:12px;font-size:1.05rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:20px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}.student-entry{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:9px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:210px}.instructions{text-align:center;margin:0 0 12px;color:#35536f;font-weight:bold}
+@media(max-width:650px){.container{padding:22px 10px 34px}.farm-zone{gap:2px;padding:2px}.placed-animal{height:74%;font-size:clamp(1.15rem,6vw,1.8rem)}.animal{flex-basis:82px;width:82px;height:88px;background-size:768px 512px;background-position:var(--crop-x-small) -398px}.animals{gap:5px}.animal-bank{padding:11px 8px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="eyebrow">FANTASTIC MR FOX · CHAPTER 1 · TASK 1</p>
+  <h1>Build the Farm</h1>
+  <p class="subtitle">Drag and drop each animal to the correct farmer.</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+  <p class="instructions">Boggis, Bunce and Bean are waiting for their farm animals!</p>
+  <div class="board-wrap">
+    <div class="farm-board" role="group" aria-label="Farm scene. Drop chickens at Boggis, ducks and geese at Bunce, and turkeys at Bean.">
+      <div class="farm-zone" data-slot="boggis-1" data-farm="boggis" aria-label="Boggis's empty box 1" tabindex="0"></div>
+      <div class="farm-zone" data-slot="boggis-2" data-farm="boggis" aria-label="Boggis's empty box 2" tabindex="0"></div>
+      <div class="farm-zone" data-slot="boggis-3" data-farm="boggis" aria-label="Boggis's empty box 3" tabindex="0"></div>
+      <div class="farm-zone" data-slot="bunce-1" data-farm="bunce" aria-label="Bunce's empty box 1" tabindex="0"></div>
+      <div class="farm-zone" data-slot="bunce-2" data-farm="bunce" aria-label="Bunce's empty box 2" tabindex="0"></div>
+      <div class="farm-zone" data-slot="bean-1" data-farm="bean" aria-label="Bean's empty box 1" tabindex="0"></div>
+      <div class="farm-zone" data-slot="bean-2" data-farm="bean" aria-label="Bean's empty box 2" tabindex="0"></div>
+    </div>
+  </div>
+  <section class="animal-bank" aria-label="Draggable farm animals">
+    <h2>Drag the animals into the farms</h2>
+    <div class="animals" id="animals">
+      <button class="animal" type="button" style="--crop-x:-62px;--crop-x-small:-40px" data-animal="Chicken 1" data-icon="🐔" data-farmer="boggis" aria-label="Chicken 1, drag to Boggis"></button>
+      <button class="animal" type="button" style="--crop-x:-215px;--crop-x-small:-138px" data-animal="Goose 1" data-icon="🪿" data-farmer="bunce" aria-label="Goose, drag to Bunce"></button>
+      <button class="animal" type="button" style="--crop-x:-375px;--crop-x-small:-240px" data-animal="Turkey 1" data-icon="🦃" data-farmer="bean" aria-label="Turkey 1, drag to Bean"></button>
+      <button class="animal" type="button" style="--crop-x:-535px;--crop-x-small:-342px" data-animal="Chicken 2" data-icon="🐔" data-farmer="boggis" aria-label="Chicken 2, drag to Boggis"></button>
+      <button class="animal" type="button" style="--crop-x:-696px;--crop-x-small:-445px" data-animal="Duck 1" data-icon="🦆" data-farmer="bunce" aria-label="Duck, drag to Bunce"></button>
+      <button class="animal" type="button" style="--crop-x:-854px;--crop-x-small:-547px" data-animal="Turkey 2" data-icon="🦃" data-farmer="bean" aria-label="Turkey 2, drag to Bean"></button>
+      <button class="animal" type="button" style="--crop-x:-1004px;--crop-x-small:-643px" data-animal="Chicken 3" data-icon="🐔" data-farmer="boggis" aria-label="Chicken 3, drag to Boggis"></button>
+    </div>
+  </section>
+  <div class="score-row">
+    <div class="score" id="score" aria-live="polite">Score: 0 / 7</div>
+    <button class="button secondary" id="retryButton" type="button">Try Again</button>
+    <button class="button" id="submitButton" type="button">Submit Results</button>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
+  <a class="back" href="../index.html">← Back to Chapter 1</a>
+</main>
+<script>
+(()=>{
+  const animals=[...document.querySelectorAll('.animal')];
+  const animalBank=document.getElementById('animals');
+  const zones=[...document.querySelectorAll('.farm-zone')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  const status=document.getElementById('submissionStatus');
+  const studentName=document.getElementById('studentName');
+  const submitButton=document.getElementById('submitButton');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let points=0,dragged=null,placeholder=null,submitting=false;
+  const originalStyles=new WeakMap();
+  function updateScore(){score.textContent=`Score: ${points} / ${animals.length}`;}
+  function dropOn(animal,zone){
+    zones.forEach(item=>item.classList.remove('wrong'));
+    if(!animal)return;
+    if(!zone){restoreAnimal(animal);return;}
+    if(zone.dataset.occupied){
+      restoreAnimal(animal);zone.classList.remove('wrong');void zone.offsetWidth;zone.classList.add('wrong');
+      feedback.textContent='That box is full. Choose an empty box.';feedback.className='feedback try';
+      setTimeout(()=>zone.classList.remove('wrong'),450);return;
+    }
+    if(zone.dataset.farm===animal.dataset.farmer){
+      animal.disabled=true;
+      if(animalBank.contains(animal))animalBank.removeChild(animal);
+      placeholder?.remove();placeholder=null;originalStyles.delete(animal);zone.dataset.occupied='true';
+      const placed=document.createElement('span');placed.className='placed-animal';placed.textContent=animal.dataset.icon;placed.setAttribute('aria-label',animal.dataset.animal);placed.setAttribute('role','img');zone.append(placed);
+      points++;if(points===animals.length)animalBank.replaceChildren();updateScore();feedback.textContent=points===animals.length?'Wonderful! All the animals are in the right farms!':'Correct! The animal has settled into its farm.';feedback.className='feedback good';
+    }else{
+      restoreAnimal(animal);
+      zone.classList.remove('wrong');void zone.offsetWidth;zone.classList.add('wrong');
+      feedback.textContent=`Not quite. ${animal.dataset.animal.replace(/ \d+$/,'')} belongs with ${animal.dataset.farmer==='boggis'?'Boggis':animal.dataset.farmer==='bunce'?'Bunce':'Bean'}. Try again.`;feedback.className='feedback try';
+      setTimeout(()=>zone.classList.remove('wrong'),450);
+    }
+  }
+  function zoneAt(x,y){const element=document.elementFromPoint(x,y);return element?.closest('.farm-zone')||null;}
+  function startDrag(animal,x,y){
+    if(!animalBank.contains(animal))return;
+    const rect=animal.getBoundingClientRect();
+    originalStyles.set(animal,animal.getAttribute('style'));
+    placeholder=document.createElement('span');placeholder.setAttribute('aria-hidden','true');
+    placeholder.style.flex=`0 0 ${rect.width}px`;placeholder.style.width=`${rect.width}px`;placeholder.style.height=`${rect.height}px`;
+    animalBank.insertBefore(placeholder,animal);dragged=animal;
+    Object.assign(animal.style,{position:'fixed',left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,height:`${rect.height}px`,margin:'0',zIndex:'20',pointerEvents:'none',transform:'none'});
+    moveAnimal(x,y);
+  }
+  function moveAnimal(x,y){if(dragged){dragged.style.left=`${x-dragged.offsetWidth/2}px`;dragged.style.top=`${y-dragged.offsetHeight/2}px`;}}
+  function restoreAnimal(animal){
+    const style=originalStyles.get(animal);
+    if(style===null)animal.removeAttribute('style');else if(style!==undefined)animal.setAttribute('style',style);
+    if(placeholder?.parentNode===animalBank)animalBank.insertBefore(animal,placeholder);
+    placeholder?.remove();placeholder=null;originalStyles.delete(animal);
+  }
+  function finishDrag(x,y){if(!dragged)return;const animal=dragged,target=zoneAt(x,y);dragged=null;zones.forEach(zone=>zone.classList.remove('drag-over'));dropOn(animal,target);}
+  animals.forEach(animal=>{
+    animal.addEventListener('pointerdown',event=>{if(animal.disabled)return;event.preventDefault();animal.setPointerCapture?.(event.pointerId);startDrag(animal,event.clientX,event.clientY);});
+    animal.addEventListener('pointermove',event=>{if(dragged===animal){moveAnimal(event.clientX,event.clientY);zones.forEach(zone=>zone.classList.toggle('drag-over',zone===zoneAt(event.clientX,event.clientY)));}});
+    animal.addEventListener('pointerup',event=>{if(dragged===animal)finishDrag(event.clientX,event.clientY);});
+    animal.addEventListener('pointercancel',()=>{if(dragged===animal){dragged=null;restoreAnimal(animal);zones.forEach(zone=>zone.classList.remove('drag-over'));}});
+    animal.addEventListener('click',event=>{if(event.detail!==0)return;feedback.textContent='Drag this animal to the correct farm.';feedback.className='feedback';});
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',event=>event.preventDefault());
+    zone.addEventListener('drop',event=>{event.preventDefault();const id=event.dataTransfer?.getData('text/plain');const animal=animals.find(item=>item.dataset.animal===id);dropOn(animal,zone);});
+    zone.addEventListener('click',()=>{if(!dragged)feedback.textContent='Drag an animal from the tray into this farm.';});
+  });
+  document.getElementById('retryButton').addEventListener('click',()=>{
+    if(dragged){const animal=dragged;dragged=null;restoreAnimal(animal);}
+    points=0;animals.forEach(animal=>{animal.disabled=false;animalBank.append(animal);});zones.forEach(zone=>{zone.replaceChildren();delete zone.dataset.occupied;zone.classList.remove('wrong','drag-over');});updateScore();feedback.textContent='';feedback.className='feedback';status.textContent='';status.className='feedback';submitButton.disabled=false;submitButton.textContent='Submit Results';
+  });
+  submitButton.addEventListener('click',async()=>{
+    if(submitting||submitButton.disabled)return;
+    const name=studentName.value.trim();if(!name){studentName.focus();status.textContent='Please enter your name.';status.className='feedback try';return;}
+    const answers=animals.map(animal=>`${animal.dataset.animal}: ${animal.disabled?animal.dataset.farmer:'not placed'}`).join('; ');
+    const data=new URLSearchParams({student:name,unit:'Reading Club — 9–10 years',section:'Fantastic Mr Fox — Chapter 1',exercise:'Task 1 — Build the Farm',answers,score:`${points} / ${animals.length}`});
+    submitting=true;submitButton.disabled=true;status.textContent='';try{await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});status.textContent='Results submitted successfully!';status.className='feedback good';submitButton.textContent='✓ Results submitted';}catch(error){status.textContent='Sorry, the results could not be submitted. Please try again.';status.className='feedback try';submitButton.disabled=false;}finally{submitting=false;}
+  });
+})();
+</script>
+</body>
+</html>
