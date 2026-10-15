@@ -59,9 +59,13 @@
   const studentName=document.getElementById('studentName');
   const submitButton=document.getElementById('submitButton');
   const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
-  let points=0,dragged=null,placeholder=null,submitting=false;
+  let points=0,dragged=null,dragPointerId=null,placeholder=null,submitting=false;
   const originalStyles=new WeakMap();
   function updateScore(){score.textContent=`Score: ${points} / ${animals.length}`;}
+  function removeFloatingCards(){
+    document.querySelectorAll('.animal').forEach(card=>{if(!animals.includes(card)||!animalBank.contains(card))card.remove();});
+    document.querySelectorAll('.drag-ghost').forEach(card=>card.remove());
+  }
   function dropOn(animal,zone){
     zones.forEach(item=>item.classList.remove('wrong'));
     if(!animal)return;
@@ -73,10 +77,11 @@
     }
     if(zone.dataset.farm===animal.dataset.farmer){
       animal.disabled=true;
-      if(animalBank.contains(animal))animalBank.removeChild(animal);
-      placeholder?.remove();placeholder=null;originalStyles.delete(animal);zone.dataset.occupied='true';
+      animal.remove();
+      if(placeholder?.parentNode===animalBank)placeholder.remove();placeholder=null;originalStyles.delete(animal);
+      removeFloatingCards();zone.dataset.occupied='true';
       const placed=document.createElement('span');placed.className='placed-animal';placed.textContent=animal.dataset.icon;placed.setAttribute('aria-label',animal.dataset.animal);placed.setAttribute('role','img');zone.append(placed);
-      points++;if(points===animals.length)animalBank.replaceChildren();updateScore();feedback.textContent=points===animals.length?'Wonderful! All the animals are in the right farms!':'Correct! The animal has settled into its farm.';feedback.className='feedback good';
+      points++;if(points===animals.length){animalBank.replaceChildren();document.querySelectorAll('.animal').forEach(card=>card.remove());document.querySelectorAll('.drag-ghost').forEach(card=>card.remove());}updateScore();feedback.textContent=points===animals.length?'Wonderful! All the animals are in the right farms!':'Correct! The animal has settled into its farm.';feedback.className='feedback good';
     }else{
       restoreAnimal(animal);
       zone.classList.remove('wrong');void zone.offsetWidth;zone.classList.add('wrong');
@@ -84,7 +89,7 @@
       setTimeout(()=>zone.classList.remove('wrong'),450);
     }
   }
-  function zoneAt(x,y){const element=document.elementFromPoint(x,y);return element?.closest('.farm-zone')||null;}
+  function zoneAt(x,y){return zones.find(zone=>{const rect=zone.getBoundingClientRect();return x>=rect.left&&x<=rect.right&&y>=rect.top&&y<=rect.bottom;})||null;}
   function startDrag(animal,x,y){
     if(!animalBank.contains(animal))return;
     const rect=animal.getBoundingClientRect();
@@ -102,21 +107,22 @@
     if(placeholder?.parentNode===animalBank)animalBank.insertBefore(animal,placeholder);
     placeholder?.remove();placeholder=null;originalStyles.delete(animal);
   }
-  function finishDrag(x,y){if(!dragged)return;const animal=dragged,target=zoneAt(x,y);dragged=null;zones.forEach(zone=>zone.classList.remove('drag-over'));dropOn(animal,target);}
+  function finishDrag(x,y){if(!dragged)return;const animal=dragged,target=zoneAt(x,y);dragged=null;dragPointerId=null;zones.forEach(zone=>zone.classList.remove('drag-over'));dropOn(animal,target);}
   animals.forEach(animal=>{
-    animal.addEventListener('pointerdown',event=>{if(animal.disabled)return;event.preventDefault();animal.setPointerCapture?.(event.pointerId);startDrag(animal,event.clientX,event.clientY);});
-    animal.addEventListener('pointermove',event=>{if(dragged===animal){moveAnimal(event.clientX,event.clientY);zones.forEach(zone=>zone.classList.toggle('drag-over',zone===zoneAt(event.clientX,event.clientY)));}});
-    animal.addEventListener('pointerup',event=>{if(dragged===animal)finishDrag(event.clientX,event.clientY);});
-    animal.addEventListener('pointercancel',()=>{if(dragged===animal){dragged=null;restoreAnimal(animal);zones.forEach(zone=>zone.classList.remove('drag-over'));}});
+    animal.addEventListener('pointerdown',event=>{if(animal.disabled||dragged||!event.isPrimary)return;event.preventDefault();dragPointerId=event.pointerId;startDrag(animal,event.clientX,event.clientY);});
     animal.addEventListener('click',event=>{if(event.detail!==0)return;feedback.textContent='Drag this animal to the correct farm.';feedback.className='feedback';});
   });
+  document.addEventListener('pointermove',event=>{if(dragged&&event.pointerId===dragPointerId){moveAnimal(event.clientX,event.clientY);zones.forEach(zone=>zone.classList.toggle('drag-over',zone===zoneAt(event.clientX,event.clientY)));}});
+  document.addEventListener('pointerup',event=>{if(dragged&&event.pointerId===dragPointerId)finishDrag(event.clientX,event.clientY);});
+  document.addEventListener('pointercancel',event=>{if(dragged&&event.pointerId===dragPointerId){const animal=dragged;dragged=null;dragPointerId=null;restoreAnimal(animal);zones.forEach(zone=>zone.classList.remove('drag-over'));}});
+  window.addEventListener('blur',()=>{if(dragged){const animal=dragged;dragged=null;dragPointerId=null;restoreAnimal(animal);zones.forEach(zone=>zone.classList.remove('drag-over'));}});
   zones.forEach(zone=>{
     zone.addEventListener('dragover',event=>event.preventDefault());
     zone.addEventListener('drop',event=>{event.preventDefault();const id=event.dataTransfer?.getData('text/plain');const animal=animals.find(item=>item.dataset.animal===id);dropOn(animal,zone);});
     zone.addEventListener('click',()=>{if(!dragged)feedback.textContent='Drag an animal from the tray into this farm.';});
   });
   document.getElementById('retryButton').addEventListener('click',()=>{
-    if(dragged){const animal=dragged;dragged=null;restoreAnimal(animal);}
+    if(dragged){const animal=dragged;dragged=null;dragPointerId=null;restoreAnimal(animal);}
     points=0;animals.forEach(animal=>{animal.disabled=false;animalBank.append(animal);});zones.forEach(zone=>{zone.replaceChildren();delete zone.dataset.occupied;zone.classList.remove('wrong','drag-over');});updateScore();feedback.textContent='';feedback.className='feedback';status.textContent='';status.className='feedback';submitButton.disabled=false;submitButton.textContent='Submit Results';
   });
   submitButton.addEventListener('click',async()=>{
