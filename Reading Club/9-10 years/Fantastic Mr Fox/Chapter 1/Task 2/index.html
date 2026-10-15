@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Simple Hunt — Reading Club</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:36px 20px 44px}.eyebrow{text-align:center;color:#2869d8;font-size:.9rem;font-weight:bold;letter-spacing:.12em;margin:0 0 8px}h1{text-align:center;font-size:clamp(2rem,5vw,3rem);margin:0 0 8px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.12rem;margin:0 0 22px}.student-entry{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}.instructions{text-align:center;margin:0 0 22px;color:#35536f;font-weight:bold}.word-bank{padding:24px;background:#fff;border:3px solid #e7d1a8;border-radius:20px;box-shadow:0 8px 18px rgba(0,0,0,.08)}.words{display:grid;grid-template-columns:repeat(4,minmax(100px,1fr));gap:14px}.word{min-height:86px;border:2px solid #d9e5f1;border-radius:16px;background:linear-gradient(145deg,#fff,#f3f7fb);color:#1f3552;font:700 clamp(1.2rem,3vw,1.65rem) Arial,sans-serif;box-shadow:0 4px 10px rgba(31,53,82,.08);cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s,background .15s}.word:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 8px 16px rgba(31,53,82,.14);border-color:#9db8d8}.word:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.word.correct{color:#176b3a;background:#e5f6e9;border-color:#55ad71;cursor:default}.word.incorrect{color:#a72c2c;background:#fff0ee;border-color:#d75c55;animation:shake .28s ease}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}.score-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}.score{padding:11px 18px;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.07);font-size:1.08rem;font-weight:bold}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:12px 22px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.button:disabled{opacity:.65;cursor:default}.feedback{text-align:center;min-height:32px;margin-top:14px;font-size:1.08rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.feedback .result-score{display:block;margin-bottom:5px;font-size:1.35rem}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}@media(max-width:600px){.container{padding:26px 14px 34px}.word-bank{padding:15px}.words{grid-template-columns:repeat(2,minmax(100px,1fr));gap:10px}.word{min-height:72px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="eyebrow">FANTASTIC MR FOX · CHAPTER 1 · TASK 2</p>
+  <h1>Past Simple Hunt 🔎</h1>
+  <p class="subtitle">Fantastic Mr Fox · Chapter 1</p>
+  <div class="student-entry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+  <p class="instructions">Look at the words from the chapter. Click the verbs in the Past Simple.</p>
+  <section class="word-bank" aria-label="Clickable words">
+    <div class="words" id="words">
+      <button class="word" type="button" data-word="was">was</button>
+      <button class="word" type="button" data-word="eats">eats</button>
+      <button class="word" type="button" data-word="lived">lived</button>
+      <button class="word" type="button" data-word="has">has</button>
+      <button class="word" type="button" data-word="kept">kept</button>
+      <button class="word" type="button" data-word="lives">lives</button>
+      <button class="word" type="button" data-word="came">came</button>
+      <button class="word" type="button" data-word="is">is</button>
+    </div>
+  </section>
+  <div class="score-row">
+    <div class="score" id="score" aria-live="polite">Score: 0 / 4</div>
+    <button class="button secondary" id="retryButton" type="button">Try Again</button>
+    <button class="button" id="submitButton" type="button">Submit Results</button>
+  </div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div>
+  <a class="back" href="../index.html">← Back to Chapter 1</a>
+</main>
+<script>
+(()=>{
+  const correctWords=new Set(['lived','kept','came','was']);
+  const wordCards=[...document.querySelectorAll('.word')];
+  const score=document.getElementById('score');
+  const feedback=document.getElementById('feedback');
+  const status=document.getElementById('submissionStatus');
+  const studentName=document.getElementById('studentName');
+  const submitButton=document.getElementById('submitButton');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let points=0,submitting=false;
+  function updateScore(){score.textContent=`Score: ${points} / 4`;}
+  wordCards.forEach(card=>card.addEventListener('click',()=>{
+    if(card.disabled)return;
+    if(correctWords.has(card.dataset.word)){
+      card.disabled=true;card.classList.add('correct');card.setAttribute('aria-pressed','true');points++;updateScore();
+      if(points===4){feedback.innerHTML='<span class="result-score">4 / 4</span>🌟 Great job! You found all the Past Simple verbs!';feedback.className='feedback good';}
+      else{feedback.textContent='Correct!';feedback.className='feedback good';}
+    }else{
+      card.classList.remove('incorrect');void card.offsetWidth;card.classList.add('incorrect');feedback.textContent='Not quite. Try another word.';feedback.className='feedback try';
+      setTimeout(()=>card.classList.remove('incorrect'),500);
+    }
+  }));
+  function resetExercise(){
+    points=0;wordCards.forEach(card=>{card.disabled=false;card.classList.remove('correct','incorrect');card.removeAttribute('aria-pressed');});updateScore();feedback.textContent='';feedback.className='feedback';status.textContent='';status.className='feedback';submitButton.disabled=false;submitButton.textContent='Submit Results';
+  }
+  document.getElementById('retryButton').addEventListener('click',resetExercise);
+  window.addEventListener('pageshow',resetExercise);
+  submitButton.addEventListener('click',async()=>{
+    if(submitting||submitButton.disabled)return;
+    const name=studentName.value.trim();if(!name){studentName.focus();status.textContent='Please enter your name.';status.className='feedback try';return;}
+    const answers=wordCards.map(card=>`${card.dataset.word}: ${card.disabled?'correct verb found':'not selected'}`).join('; ');
+    const data=new URLSearchParams({student:name,unit:'Reading Club — 9–10 years',section:'Fantastic Mr Fox — Chapter 1',exercise:'Task 2 — Past Simple Hunt',answers,score:`${points} / 4`});
+    submitting=true;submitButton.disabled=true;status.textContent='';try{await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});status.textContent='Results submitted successfully!';status.className='feedback good';submitButton.textContent='✓ Results submitted';}catch(error){status.textContent='Sorry, the results could not be submitted. Please try again.';status.className='feedback try';submitButton.disabled=false;}finally{submitting=false;}
+  });
+})();
+</script>
+</body>
+</html>
