@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wider World 2 · Unit 2 · Grammar · Exercise 2</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1050px;margin:auto;padding:30px 22px 46px}
+.label{text-align:center;color:#2869d8;font-size:.92rem;font-weight:bold;letter-spacing:.14em;margin:0 0 9px}h1{text-align:center;font-size:clamp(1.8rem,4vw,2.7rem);margin:0 0 8px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 23px}
+.email{background:#fff;border-radius:20px;padding:25px 28px;box-shadow:0 8px 20px rgba(0,0,0,.08);font-size:1.08rem;line-height:2.15}.email p{margin:0 0 10px}.email .gap{height:1em;margin:0}.email .closing{margin-bottom:0}.number{font-weight:bold;color:#2869d8;margin-right:3px}.choice-group{display:inline-flex;align-items:center;gap:5px;vertical-align:middle;margin:0 4px;white-space:nowrap}.option{border:2px solid #b9d5f3;background:#edf6ff;color:#1f3552;border-radius:9px;padding:6px 9px;font:inherit;font-size:.93rem;font-weight:bold;line-height:1.35;cursor:pointer;transition:background .15s,border-color .15s,color .15s}.option:hover{background:#dceeff}.option[aria-pressed="true"]{background:#2869d8;border-color:#2869d8;color:#fff}.choice-group[data-correct="true"] .option[aria-pressed="true"]{background:#229a58;border-color:#229a58;color:#fff}.choice-group[data-correct="false"] .option[aria-pressed="true"]{background:#d74a4a;border-color:#d74a4a;color:#fff}.choice-group[data-correct="false"]:not(:has(.option[aria-pressed="true"])){outline:2px solid #ee8e8e;border-radius:10px}.email.checked-correct{outline:3px solid #70c994;background:#f6fff8}.email.checked-incorrect{outline:3px solid #ee8e8e;background:#fff9f9}
+.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0 0;font-weight:bold}.student-entry.visible{display:flex}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}
+.controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.button:disabled{opacity:.75;cursor:default}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.feedback{text-align:center;min-height:27px;margin-top:14px;font-size:1.08rem;font-weight:bold}.feedback.good,.submission-status.good{color:#168344}.feedback.try,.submission-status.try{color:#c33333}.submission-status{text-align:center;min-height:24px;margin:8px 0 0;font-weight:bold}.submit-results{display:none}.submit-results.visible{display:inline-block}.back{display:inline-block;margin-top:17px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}.option:focus-visible,.button:focus-visible,a:focus-visible,.student-entry input:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}
+@media(max-width:650px){.container{padding:24px 13px 35px}.email{padding:17px 14px;font-size:1rem;line-height:2.2}.choice-group{gap:4px;margin:0 2px}.option{padding:6px 7px;font-size:.86rem}.student-entry input{min-width:0;flex:1}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="label">UNIT 2 · GRAMMAR</p>
+  <h1>Choose the correct option.</h1>
+  <p class="subtitle">Read the email and choose the correct form in each numbered item.</p>
+  <section class="email" id="email" aria-label="Email from Jess to Eva">
+    <p>Hi Eva,</p>
+    <p class="gap" aria-hidden="true"></p>
+    <p>What <span class="choice-group" data-answer="are you doing" aria-label="Item 1"><span class="number">1</span><button class="option" type="button">are you doing</button><button class="option" type="button">do you do</button></span>? I’m sure you’re reading a book.</p>
+    <p>You <span class="choice-group" data-answer="read" aria-label="Item 2"><span class="number">2</span><button class="option" type="button">are reading</button><button class="option" type="button">read</button></span> every day!</p>
+    <p>I’m in my room. <span class="choice-group" data-answer="I’m trying" aria-label="Item 3"><span class="number">3</span><button class="option" type="button">I’m trying</button><button class="option" type="button">I try</button></span> to choose a dress for the party tonight.</p>
+    <p><span class="choice-group" data-answer="I don’t want" aria-label="Item 4"><span class="number">4</span><button class="option" type="button">I’m not wanting</button><button class="option" type="button">I don’t want</button></span> to wear the red one.</p>
+    <p><span class="choice-group" data-answer="I always wear" aria-label="Item 5"><span class="number">5</span><button class="option" type="button">I’m always wearing</button><button class="option" type="button">I always wear</button></span> that one to parties.</p>
+    <p>I need new clothes!</p>
+    <p><span class="choice-group" data-answer="Are you going" aria-label="Item 6"><span class="number">6</span><button class="option" type="button">Are you going</button><button class="option" type="button">Do you go</button></span> shopping this Saturday?</p>
+    <p>We can go together.</p>
+    <p>Anyway, I <span class="choice-group" data-answer="am doing" aria-label="Item 7"><span class="number">7</span><button class="option" type="button">do</button><button class="option" type="button">am doing</button></span> a quiz on fashion now. It’s fun!</p>
+    <p class="gap" aria-hidden="true"></p>
+    <p>Talk later!</p>
+    <p class="closing">Jess</p>
+  </section>
+  <div class="controls"><button class="button" id="checkButton" type="button">Check Answers</button><button class="button secondary" id="retryButton" type="button">Try Again</button><div class="score" id="score" aria-live="polite">Score: 0/7</div><button class="button secondary submit-results" id="submitButton" type="button">Submit Results</button></div>
+  <div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+  <div class="feedback" id="feedback" aria-live="polite"></div><div class="submission-status" id="submissionStatus" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const groups=[...document.querySelectorAll('.choice-group')],email=document.getElementById('email');
+  const score=document.getElementById('score'),feedback=document.getElementById('feedback');
+  const studentEntry=document.getElementById('studentEntry'),studentName=document.getElementById('studentName');
+  const submitButton=document.getElementById('submitButton'),submissionStatus=document.getElementById('submissionStatus');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let submissionInProgress=false,submittedPayload=null;
+  groups.forEach(group=>group.querySelectorAll('.option').forEach(option=>{
+    option.dataset.option=option.textContent.trim();option.setAttribute('aria-pressed','false');
+    option.addEventListener('click',()=>{group.querySelectorAll('.option').forEach(button=>button.setAttribute('aria-pressed','false'));option.setAttribute('aria-pressed','true');email.classList.remove('checked-correct','checked-incorrect');});
+  }));
+  function check(){
+    let points=0;
+    groups.forEach(group=>{
+      const selected=group.querySelector('.option[aria-pressed="true"]');const correct=selected?.dataset.option===group.dataset.answer;
+      group.dataset.correct=String(correct);if(correct)points++;
+    });
+    score.textContent=`Score: ${points}/7`;
+    groups.forEach(group=>{const correct=group.dataset.correct==='true';group.querySelectorAll('.option').forEach(option=>option.disabled=true);group.setAttribute('aria-label',`Item ${group.querySelector('.number').textContent}: ${correct?'correct':'incorrect'}`);});
+    email.classList.toggle('checked-correct',points===7);email.classList.toggle('checked-incorrect',points!==7);
+    feedback.textContent=points===7?'Excellent work! All answers are correct.':'Check the feedback: correct answers are marked green and incorrect answers red.';
+    feedback.className=`feedback ${points===7?'good':'try'}`;
+    studentEntry.classList.add('visible');submitButton.classList.add('visible');submitButton.disabled=false;submitButton.textContent='Submit Results';
+  }
+  function reset(){
+    groups.forEach(group=>{delete group.dataset.correct;group.querySelectorAll('.option').forEach(option=>{option.setAttribute('aria-pressed','false');option.disabled=false;option.classList.remove('answer-correct');});});
+    score.textContent='Score: 0/7';feedback.textContent='';feedback.className='feedback';email.classList.remove('checked-correct','checked-incorrect');studentEntry.classList.remove('visible');submitButton.classList.remove('visible');submitButton.disabled=false;submitButton.textContent='Submit Results';submissionStatus.textContent='';submissionStatus.className='submission-status';submittedPayload=null;
+  }
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  submitButton.addEventListener('click',async()=>{
+    if(submissionInProgress||submitButton.disabled)return;
+    const name=studentName.value.trim();if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='submission-status try';return;}
+    const answers=groups.map((group,index)=>`${index+1}: ${group.querySelector('.option[aria-pressed="true"]')?.dataset.option||'No answer'}`).join('; ');
+    const payload=new URLSearchParams({student:name,unit:'Unit 2',section:'Grammar',exercise:'Exercise 2',answers,score:score.textContent.replace(/^Score:\s*/,'')}).toString();
+    if(payload===submittedPayload){submitButton.textContent='✓ Results Submitted';submitButton.disabled=true;submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status good';return;}
+    submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';
+    try{const response=await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});if(response.type!=='opaque'&&!response.ok)throw new Error('Submission failed');submittedPayload=payload;submitButton.textContent='✓ Results Submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status good';}
+    catch(error){submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='submission-status try';submitButton.disabled=false;}
+    finally{submissionInProgress=false;}
+  });
+})();
+</script>
+</body>
+</html>
