@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 4 — Speaking — Wider World 1 Unit 4</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}*{box-sizing:border-box}body{margin:0}.container{max-width:1000px;margin:auto;padding:34px 22px 48px}.label{text-align:center;color:#2869d8;font-size:.95rem;font-weight:bold;letter-spacing:.14em;margin:0 0 10px}h1{text-align:center;font-size:clamp(1.7rem,4vw,2.55rem);margin:0 0 9px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.12rem;line-height:1.5;margin:0 0 24px}.student-entry{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;font-weight:bold}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin-bottom:20px}.section-title{font-size:1.2rem;margin:0 0 14px}.dialogue{display:grid;gap:8px}.line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;background:#f7faff;border:2px solid #e1eaf3;border-radius:12px;padding:11px 13px;font-size:1.04rem;line-height:1.55}.speaker{font-weight:bold}.gap-answer{display:inline-flex;align-items:center;gap:7px}.letter-select{font:inherit;font-weight:bold;color:#1f3552;border:2px solid #b9d5f3;border-radius:9px;background:#fff;padding:7px 9px;min-width:86px}.example-letter{font-weight:bold;color:#1f3552;background:#edf6ff;border:2px solid #b9d5f3;border-radius:9px;padding:6px 14px}.question.correct{border-color:#219653;background:#f0fff5}.question.incorrect{border-color:#d84343;background:#fff4f4}.result{display:block;min-height:20px;font-size:.9rem;font-weight:bold}.question.correct .result{color:#168344}.question.incorrect .result{color:#c33333}.responses{display:grid;gap:8px}.response{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:start;background:#f7faff;border:2px solid #e1eaf3;border-radius:12px;padding:11px 13px;line-height:1.55}.response-letter{font-weight:bold}.response.example-response{color:#6f7b88;background:#f2f4f6}.response.example-response .response-text{text-decoration:line-through;text-decoration-thickness:2px}.response.matched{border-color:#83d3a0;background:#f0fff5}.response.wrong-match{border-color:#e5a0a0;background:#fff4f4}.controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.button:disabled{opacity:.65;cursor:default}.score{background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.feedback{text-align:center;min-height:30px;margin-top:15px;font-size:1.08rem;font-weight:bold}.feedback.good{color:#168344}.feedback.try{color:#c33333}.back{display:inline-block;margin-top:22px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}@media(max-width:650px){.container{padding:25px 14px 36px}.card{padding:15px}.line{grid-template-columns:1fr;gap:7px;padding:10px}.line:not(.question){display:block}.letter-select{min-width:78px}.response{padding:9px 10px}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="label">SPEAKING</p>
+  <h1>Exercise 4</h1>
+  <p class="subtitle">Complete the dialogue with the responses below.</p>
+  <div class="student-entry"><label for="studentName">Student Name</label><input id="studentName" type="text" autocomplete="name"></div>
+
+  <section class="card" aria-labelledby="dialogue-title">
+    <h2 class="section-title" id="dialogue-title">Dialogue</h2>
+    <div class="dialogue">
+      <div class="line"><span><span class="speaker">Sal:</span> It’s Denny’s party tonight. Can I borrow your blue shoes?</span></div>
+      <div class="line example"><span><span class="speaker">Mia:</span> 1</span><span class="example-letter" aria-label="Completed example: c">c</span></div>
+      <div class="line"><span><span class="speaker">Sal:</span> Can I borrow the red ones?</span></div>
+      <div class="line question" data-answer="a"><span><span class="speaker">Mia:</span> 2</span><span class="gap-answer"><select class="letter-select" aria-label="Response for dialogue gap 2"><option value="">Choose</option><option value="a">a</option><option value="b">b</option><option value="d">d</option><option value="e">e</option></select><span class="result" aria-live="polite"></span></span></div>
+      <div class="line"><span><span class="speaker">Sal:</span> Can you help me with my hair? I can’t see the back.</span></div>
+      <div class="line question" data-answer="b"><span><span class="speaker">Mia:</span> 3</span><span class="gap-answer"><select class="letter-select" aria-label="Response for dialogue gap 3"><option value="">Choose</option><option value="a">a</option><option value="b">b</option><option value="d">d</option><option value="e">e</option></select><span class="result" aria-live="polite"></span></span></div>
+      <div class="line"><span><span class="speaker">Sal:</span> Hair, please!</span></div>
+      <div class="line question" data-answer="d"><span><span class="speaker">Mia:</span> 4</span><span class="gap-answer"><select class="letter-select" aria-label="Response for dialogue gap 4"><option value="">Choose</option><option value="a">a</option><option value="b">b</option><option value="d">d</option><option value="e">e</option></select><span class="result" aria-live="polite"></span></span></div>
+      <div class="line"><span><span class="speaker">Sal:</span> Can you hurry up? I don’t want to be late.</span></div>
+      <div class="line question" data-answer="e"><span><span class="speaker">Mia:</span> 5</span><span class="gap-answer"><select class="letter-select" aria-label="Response for dialogue gap 5"><option value="">Choose</option><option value="a">a</option><option value="b">b</option><option value="d">d</option><option value="e">e</option></select><span class="result" aria-live="polite"></span></span></div>
+      <div class="line"><span><span class="speaker">Sal:</span> Yes, OK. Sorry.</span></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="responses-title">
+    <h2 class="section-title" id="responses-title">Responses</h2>
+    <div class="responses">
+      <div class="response" data-response="a"><span class="response-letter">a.</span><span class="response-text">OK, just a second. They’re in my sister’s room. She likes the red ones too!</span></div>
+      <div class="response" data-response="b"><span class="response-letter">b.</span><span class="response-text">OK, no problem. Can you sit down? Then I can look.</span></div>
+      <div class="response example-response" data-response="c"><span class="response-letter">c.</span><span class="response-text">Sorry, you can’t. I’m wearing them.</span></div>
+      <div class="response" data-response="d"><span class="response-letter">d.</span><span class="response-text">Sorry, I can’t. Your hair is a mess. Sit still!</span></div>
+      <div class="response" data-response="e"><span class="response-letter">e.</span><span class="response-text">Sorry, I can’t do two things at the same time. Shoes or hair?</span></div>
+    </div>
+  </section>
+
+  <div class="controls"><button class="button" id="checkButton" type="button">Check Answers</button><button class="button secondary" id="retryButton" type="button">Try Again</button><div class="score" id="score" aria-live="polite">Score: 0 / 4</div><button class="button secondary" id="submitButton" type="button" hidden>Submit Results</button></div>
+  <div class="feedback" id="submissionStatus" aria-live="polite"></div><div class="feedback" id="feedback" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Speaking</a>
+</main>
+<script>
+(()=>{
+  const questions=[...document.querySelectorAll('.question[data-answer]')],selects=[...document.querySelectorAll('.letter-select')],responses=[...document.querySelectorAll('.response[data-response]')],score=document.getElementById('score'),feedback=document.getElementById('feedback'),submitButton=document.getElementById('submitButton'),submissionStatus=document.getElementById('submissionStatus'),studentName=document.getElementById('studentName');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';let checked=false,submissionInProgress=false;
+  function updateAvailableLetters(){const used=selects.map(select=>select.value).filter(Boolean);selects.forEach(select=>{[...select.options].forEach(option=>{option.disabled=Boolean(option.value)&&option.value!==select.value&&used.includes(option.value);});});}
+  function checkAnswers(){checked=true;let points=0;questions.forEach((question,index)=>{const selected=selects[index].value,correct=selected===question.dataset.answer;question.classList.remove('correct','incorrect');question.classList.add(correct?'correct':'incorrect');question.querySelector('.result').textContent=correct?'✓ Correct!':`✗ Correct response: ${question.dataset.answer}.`;if(correct)points++;});responses.forEach(response=>{response.classList.remove('matched','wrong-match');const matchIndex=selects.findIndex(select=>select.value===response.dataset.response);if(matchIndex!==-1){if(questions[matchIndex].dataset.answer===response.dataset.response)response.classList.add('matched');else response.classList.add('wrong-match');}});score.textContent=`Score: ${points} / 4`;submitButton.hidden=false;feedback.textContent=points===4?'Excellent work! All answers are correct.':'Check the feedback for each dialogue gap and try again.';feedback.className=`feedback ${points===4?'good':'try'}`;}
+  function reset(){selects.forEach(select=>{select.value='';});updateAvailableLetters();questions.forEach(question=>{question.classList.remove('correct','incorrect');question.querySelector('.result').textContent='';});responses.forEach(response=>response.classList.remove('matched','wrong-match'));checked=false;score.textContent='Score: 0 / 4';feedback.textContent='';feedback.className='feedback';submissionStatus.textContent='';submissionStatus.className='feedback';submitButton.hidden=true;submitButton.disabled=false;submitButton.textContent='Submit Results';}
+  selects.forEach(select=>select.addEventListener('change',()=>{updateAvailableLetters();if(checked)checkAnswers();}));
+  submitButton.addEventListener('click',async()=>{if(submissionInProgress||submitButton.disabled)return;if(!checked){submissionStatus.textContent='Check your answers before submitting.';submissionStatus.className='feedback try';return;}const name=studentName.value.trim();if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='feedback try';return;}const answers=questions.map((question,index)=>`${index+2}: ${selects[index].value||'No answer'}`).join('; ');const data=new URLSearchParams({student:name,unit:'Unit 4',section:'Speaking',exercise:'Exercise 4',answers,score:score.textContent.replace(/^Score:\s*/,'')});submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';try{await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:data.toString()});submitButton.textContent='✓ Results submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='feedback good';}catch(error){submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='feedback try';submitButton.disabled=false;}finally{submissionInProgress=false;}});
+  document.getElementById('checkButton').addEventListener('click',checkAnswers);document.getElementById('retryButton').addEventListener('click',reset);reset();
+})();
+</script>
+</body>
+</html>
