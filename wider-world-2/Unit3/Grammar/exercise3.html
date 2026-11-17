@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise 3 — Wider World 2 Unit 3 Grammar</title>
+<style>
+:root{font-family:Arial,sans-serif;color:#1f3552;background:#eef3f8}
+*{box-sizing:border-box}body{margin:0}.container{max-width:1050px;margin:auto;padding:30px 22px 46px}
+.label{text-align:center;color:#2869d8;font-size:.92rem;font-weight:bold;letter-spacing:.14em;margin:0 0 9px}h1{text-align:center;font-size:clamp(1.8rem,4vw,2.7rem);margin:0 0 8px}.subtitle{text-align:center;color:#5f6d7a;font-size:1.15rem;margin:0 0 25px}
+.dialogues{display:grid;gap:14px}.dialogue-item{background:#fff;border-radius:17px;padding:16px 19px;box-shadow:0 7px 18px rgba(0,0,0,.07)}.item-heading{display:flex;align-items:center;gap:10px;margin:0 0 8px}.item-number{display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:#e6f1ff;color:#2869d8;font-weight:bold;font-size:1.05rem}.verb-prompt{font-size:1rem;color:#5f6d7a;font-weight:bold}.turn{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:start;margin:7px 0}.speaker{font-weight:bold;color:#2869d8;padding-top:4px}.speech{min-width:0;font-size:1.08rem;line-height:1.85;font-weight:bold;margin:0}.gap{display:inline-flex;align-items:baseline;white-space:nowrap}.answer-input{width:150px;max-width:43vw;border:0;border-bottom:2px solid #8fb5e2;border-radius:3px 3px 0 0;background:#f5f9ff;color:#1f3552;padding:2px 7px;font:inherit;font-size:.96em;font-weight:normal;text-align:center;outline:none}.answer-input:focus{border-bottom-color:#2869d8;background:#edf6ff}.gap.long .answer-input{width:190px;max-width:52vw}.example-answer{color:#1f3552}.gap.correct .answer-input{border:2px solid #70c994;border-radius:7px;background:#f6fff8;color:#168344}.gap.incorrect .answer-input{border:2px solid #ee8e8e;border-radius:7px;background:#fff9f9;color:#c33333}.gap-result{display:none;margin-left:4px;font-size:.86rem;font-weight:bold}.checked .gap-result{display:inline}.gap.correct .gap-result{color:#168344}.gap.incorrect .gap-result{color:#c33333}
+.controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}.button{border:0;border-radius:12px;background:#2869d8;color:#fff;padding:13px 24px;font-weight:bold;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}.button:hover{background:#1e56b5}.button.secondary{background:#fff;color:#2869d8;border:2px solid #2869d8}.button:focus-visible,a:focus-visible,.student-entry input:focus-visible{outline:3px solid #ffbf47;outline-offset:3px}.score{display:none;background:#fff;border-radius:12px;padding:12px 18px;font-size:1.05rem;font-weight:bold;box-shadow:0 4px 12px rgba(0,0,0,.07)}.score.visible{display:block}.student-entry{display:none;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0 0;font-weight:bold}.student-entry.visible{display:flex}.student-entry input{font:inherit;font-weight:normal;padding:10px 12px;border:2px solid #d9e5f1;border-radius:10px;min-width:220px}.submit-results{display:none}.submit-results.visible{display:inline-block}.submit-results:disabled{opacity:.75;cursor:default}.feedback,.submission-status{text-align:center;min-height:27px;margin-top:12px;font-size:1rem;font-weight:bold}.feedback.good,.submission-status.good{color:#168344}.feedback.try,.submission-status.try{color:#c33333}.back{display:inline-block;margin-top:17px;color:#2869d8;text-decoration:none;font-weight:bold}.back:hover{text-decoration:underline}
+@media(max-width:650px){.container{padding:24px 13px 35px}.dialogue-item{padding:13px 11px}.item-number{width:30px;height:30px;flex-basis:30px}.turn{grid-template-columns:29px minmax(0,1fr);gap:7px}.speech{font-size:1rem;line-height:2}.answer-input{width:108px;padding:2px 4px}.gap.long .answer-input{width:142px}.student-entry input{min-width:0;flex:1}}
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="label">UNIT 3 · GRAMMAR</p>
+  <h1>Exercise 3</h1>
+  <p class="subtitle">Complete the dialogues with the correct Past Simple form of the verbs.</p>
+  <section class="dialogues" id="dialogues" aria-label="Complete the dialogues">
+    <article class="dialogue-item example">
+      <h2 class="item-heading"><span class="item-number">1</span><span class="verb-prompt">(watch)</span></h2>
+      <div class="turn"><span class="speaker">A:</span><p class="speech">Did you watch the documentary<br>about wild animals last night?</p></div>
+      <div class="turn"><span class="speaker">B:</span><p class="speech">No, I didn't watch the documentary,<br>but I watched a game show.</p></div>
+    </article>
+    <article class="dialogue-item">
+      <h2 class="item-heading"><span class="item-number">2</span><span class="verb-prompt">(phone)</span></h2>
+      <div class="turn"><span class="speaker">A:</span><p class="speech">When <span class="gap long" data-answer="did you phone"><input class="answer-input" type="text" aria-label="Exercise 2 question" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> Hannah?</p></div>
+      <div class="turn"><span class="speaker">B:</span><p class="speech">I <span class="gap" data-answer="phoned"><input class="answer-input" type="text" aria-label="Exercise 2 answer" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> her at 7.30, but she<br>wasn't at home.</p></div>
+    </article>
+    <article class="dialogue-item">
+      <h2 class="item-heading"><span class="item-number">3</span><span class="verb-prompt">(listen)</span></h2>
+      <div class="turn"><span class="speaker">A:</span><p class="speech"><span class="gap long" data-answer="did you listen"><input class="answer-input" type="text" aria-label="Exercise 3 question" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> to Beyoncé's new<br>song?</p></div>
+      <div class="turn"><span class="speaker">B:</span><p class="speech">Yes, I <span class="gap" data-answer="listened"><input class="answer-input" type="text" aria-label="Exercise 3 answer" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> to it last night.<br>It was brilliant.</p></div>
+    </article>
+    <article class="dialogue-item">
+      <h2 class="item-heading"><span class="item-number">4</span><span class="verb-prompt">(see)</span></h2>
+      <div class="turn"><span class="speaker">A:</span><p class="speech"><span class="gap long" data-answer="did you see"><input class="answer-input" type="text" aria-label="Exercise 4 question" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> Helena last night?</p></div>
+      <div class="turn"><span class="speaker">B:</span><p class="speech">Yes! I <span class="gap" data-answer="saw"><input class="answer-input" type="text" aria-label="Exercise 4 answer" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> her at the party.</p></div>
+    </article>
+    <article class="dialogue-item">
+      <h2 class="item-heading"><span class="item-number">5</span><span class="verb-prompt">(draw)</span></h2>
+      <div class="turn"><span class="speaker">A:</span><p class="speech"><span class="gap" data-answer="Did"><input class="answer-input" type="text" aria-label="Exercise 5 first gap" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> the artist<br><span class="gap" data-answer="draw"><input class="answer-input" type="text" aria-label="Exercise 5 second gap" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> a picture of the<br>mountains?</p></div>
+      <div class="turn"><span class="speaker">B:</span><p class="speech">No. He <span class="gap" data-answer="drew"><input class="answer-input" type="text" aria-label="Exercise 5 answer" autocomplete="off" spellcheck="false"><span class="gap-result" aria-live="polite"></span></span> a picture of<br>some flowers.</p></div>
+    </article>
+  </section>
+  <div class="controls"><button class="button" id="checkButton" type="button">Check Answers</button><button class="button secondary" id="retryButton" type="button">Try Again</button><div class="score" id="score" aria-live="polite">Score: 0/9</div></div>
+  <div class="student-entry" id="studentEntry"><label for="studentName">Student name</label><input id="studentName" type="text" autocomplete="name"></div>
+  <div class="controls"><button class="button submit-results" id="submitButton" type="button">Submit Results</button></div>
+  <div class="feedback" id="feedback" aria-live="polite"></div><div class="submission-status" id="submissionStatus" aria-live="polite"></div>
+  <a class="back" href="index.html">← Back to Grammar</a>
+</main>
+<script>
+(() => {
+  const gaps=[...document.querySelectorAll('.gap[data-answer]')];
+  const dialogues=document.getElementById('dialogues'),score=document.getElementById('score'),feedback=document.getElementById('feedback');
+  const studentEntry=document.getElementById('studentEntry'),studentName=document.getElementById('studentName');
+  const submitButton=document.getElementById('submitButton'),submissionStatus=document.getElementById('submissionStatus');
+  const webAppUrl='https://script.google.com/macros/s/AKfycbwPTqHGfAnL8tFUJ8A9LM6Kp2XDx8dyICSOufLuagbBvaw9RiQd8AMLdtKMmYxf0nUx/exec';
+  let submissionInProgress=false,submittedPayload=null;
+  function check(){
+    let points=0;dialogues.classList.add('checked');
+    gaps.forEach(gap=>{
+      const input=gap.querySelector('input'),correct=input.value.trim().toLowerCase()===gap.dataset.answer.toLowerCase();
+      gap.classList.toggle('correct',correct);gap.classList.toggle('incorrect',!correct);
+      gap.querySelector('.gap-result').textContent=correct?'✓':`✗ ${gap.dataset.answer}`;
+      input.setAttribute('aria-invalid',String(!correct));if(correct)points++;
+    });
+    score.textContent=`Score: ${points}/9`;score.classList.add('visible');
+    feedback.textContent=points===9?'Excellent work! All answers are correct.':'Check the feedback for each gap and try again.';
+    feedback.className=`feedback ${points===9?'good':'try'}`;
+    studentEntry.classList.add('visible');submitButton.classList.add('visible');submitButton.disabled=false;submitButton.textContent='Submit Results';
+  }
+  function reset(){
+    dialogues.classList.remove('checked');
+    gaps.forEach(gap=>{const input=gap.querySelector('input');input.value='';input.removeAttribute('aria-invalid');gap.classList.remove('correct','incorrect');gap.querySelector('.gap-result').textContent='';});
+    score.textContent='Score: 0/9';score.classList.remove('visible');feedback.textContent='';feedback.className='feedback';
+    studentEntry.classList.remove('visible');submitButton.classList.remove('visible');submitButton.disabled=false;submitButton.textContent='Submit Results';submissionStatus.textContent='';submissionStatus.className='submission-status';submittedPayload=null;
+  }
+  document.getElementById('checkButton').addEventListener('click',check);
+  document.getElementById('retryButton').addEventListener('click',reset);
+  submitButton.addEventListener('click',async()=>{
+    if(submissionInProgress||submitButton.disabled)return;
+    const name=studentName.value.trim();
+    if(!name){studentName.focus();submissionStatus.textContent='Please enter your name.';submissionStatus.className='submission-status try';return;}
+    const answers=gaps.map((gap,index)=>`${index+1}: ${gap.querySelector('input').value.trim()||'No answer'}`).join('; ');
+    const payload=new URLSearchParams({student:name,unit:'Unit 3',section:'Grammar',exercise:'Exercise 3',answers,score:score.textContent.replace(/^Score:\s*/,'')}).toString();
+    if(payload===submittedPayload){submitButton.textContent='✓ Results Submitted';submitButton.disabled=true;submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status good';return;}
+    submissionInProgress=true;submitButton.disabled=true;submissionStatus.textContent='';
+    try{const response=await fetch(webAppUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:payload});if(response.type!=='opaque'&&!response.ok)throw new Error('Submission failed');submittedPayload=payload;submitButton.textContent='✓ Results Submitted';submissionStatus.textContent='Results submitted successfully!';submissionStatus.className='submission-status good';}
+    catch(error){submissionStatus.textContent='Sorry, the results could not be submitted. Please try again.';submissionStatus.className='submission-status try';submitButton.disabled=false;}
+    finally{submissionInProgress=false;}
+  });
+})();
+</script>
+</body>
+</html>
